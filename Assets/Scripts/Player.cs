@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     [Header("XZ Input")]
     public float speed;
+    public float sprintMod;
+    float currentSprintMod;
     Rigidbody rb;
     Vector2 input;
 
@@ -20,6 +22,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         startScreenPos = cam.WorldToScreenPoint(transform.position);
         defaultWeaponOffset = weapon.localPosition.z;
+
+        currentSprintMod = 1;
     }
 
     private void Update()
@@ -32,12 +36,15 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W)) { input.y = 1; }
         else if (Input.GetKey(KeyCode.S)) { input.y = -1; }
         else { input.y = 0; }
+
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { currentSprintMod = sprintMod; }
+        else { currentSprintMod = 1; }
     }
 
     private void FixedUpdate()
     {
         // Sets rb velocity
-        Vector2 adjustedVelocity = input.normalized * speed;
+        Vector2 adjustedVelocity = input.normalized * speed * currentSprintMod;
         rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
 
         // Sets rotation
