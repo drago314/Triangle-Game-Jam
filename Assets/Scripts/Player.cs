@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         // Sets rotation
         weaponBase.eulerAngles = new(0, RotationFromMouse() + 90, 0);
         // Offsets weapon localpos to avoid clipping through torso when weapon faces side to side
-        weapon.localPosition = new(0, 0, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/2);
+        weapon.localPosition = new(0, 0, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/4);
     }
 
     private float RotationFromMouse()
