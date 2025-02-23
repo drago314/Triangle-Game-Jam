@@ -537,7 +537,7 @@ Transform:
   m_GameObject: {fileID: 1353283162}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24, y: -0.512, z: 0}
+  m_LocalPosition: {x: -0.016, y: -0.146, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -810,6 +810,8 @@ MonoBehaviour:
     fireRate: 0.1
     range: 15
     reloadTime: 1
+    reloadTimer: 0
+    fireRateTimer: 0
     maxClip: 5
     type: 0
     toSpawn: {fileID: 5460620419312725668, guid: ee636f3dfd3a5fc408f033b4ac64b6db, type: 3}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684190632001121009}
   - component: {fileID: 6037891166575130325}
+  - component: {fileID: 7270625775402206174}
   m_Layer: 0
   m_Name: Bullet Line
   m_TagString: Untagged
@@ -133,6 +134,18 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7270625775402206174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460620419312725668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d917b98cc7a3f4a93b03a9df9cefa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

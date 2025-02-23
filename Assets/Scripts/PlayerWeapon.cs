@@ -6,6 +6,7 @@ using UnityEngine;
 public class Weapon
 {
     public float damage, fireRate, range, reloadTime;
+    [HideInInspector] public float reloadTimer, fireRateTimer;
     public int maxClip, type;
     public GameObject toSpawn;
 }
@@ -13,7 +14,6 @@ public class Weapon
 public class PlayerWeapon : MonoBehaviour
 {
     int clip;
-    float reloadTimer;
     Weapon activeWeapon;
     public Weapon[] weapons;
 
@@ -22,20 +22,27 @@ public class PlayerWeapon : MonoBehaviour
     private void Start()
     {
         activeWeapon = weapons[0];
+        clip = activeWeapon.maxClip;
     }
 
     private void Update()
     {
-        if (reloadTimer > 0) { reloadTimer -= Time.deltaTime; }
+        foreach (Weapon w in weapons)
+        {
+            if (w.reloadTimer > 0) w.reloadTimer -= Time.deltaTime;
+            if (w.fireRateTimer > 0) w.fireRateTimer -= Time.deltaTime;
+        }
         if (Input.GetMouseButton(0)) TryFire();
     }
 
     private void TryFire()
     {
-        if (reloadTimer > 0 || clip <= 0) return;
+        if (activeWeapon.reloadTimer > 0 || clip <= 0 || activeWeapon.fireRateTimer > 0) return;
         clip--;
-        if (clip <= 0) { clip = activeWeapon.maxClip; reloadTimer = activeWeapon.reloadTime; }
+        if (clip <= 0) { clip = activeWeapon.maxClip; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
+        activeWeapon.fireRateTimer = activeWeapon.fireRate;
 
+        // Handles raycast type weapons
         if (activeWeapon.type == 0)
         {
             LineRenderer lr = Instantiate(activeWeapon.toSpawn).GetComponent<LineRenderer>();
