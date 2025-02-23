@@ -21,6 +21,14 @@ public class PlayerAnimate : MonoBehaviour
 
     public bool walking;
 
+    public int currentState = 0;
+    public int maxStates = 2;
+    public float walkSpeed = 10f/60;
+
+    private void Start(){
+        InvokeRepeating("ChangeFrame", walkSpeed, walkSpeed);
+    }
+
     private void Update()
     {
         currentDirection = GetDirection();
@@ -34,7 +42,15 @@ public class PlayerAnimate : MonoBehaviour
 
         if(walking)
         {
-            weaponBase.localPosition = new Vector3(0,0.12f*Mathf.Sin(6*Time.time),0);
+            if(currentState==0)
+            {
+                myMat.mainTexture = fullAnimations[currentDimension].walk1[currentDirection];
+            }
+            else
+            {
+                myMat.mainTexture = fullAnimations[currentDimension].walk2[currentDirection];
+            }
+            weaponBase.localPosition = Vector3.Lerp(weaponBase.localPosition,new Vector3(0,0.14f*Mathf.Sin(6*Time.time),0),Time.deltaTime*10);
         }
     }
 
@@ -52,5 +68,10 @@ public class PlayerAnimate : MonoBehaviour
             }
         }
         return currentDir;
+    }
+
+    private void ChangeFrame(){
+        currentState++;
+        currentState %= maxStates;
     }
 }
