@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.S)) { input.y = -1; }
         else { input.y = 0; }
 
-        pa.walking = input == Vector2.zero;
+        pa.walking = input != Vector2.zero;
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { currentSprintMod = sprintMod; }
         else { currentSprintMod = 1; }
