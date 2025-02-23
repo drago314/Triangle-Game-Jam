@@ -23,15 +23,18 @@ public class PlayerAnimate : MonoBehaviour
 
     private void Update()
     {
+        currentDirection = GetDirection();
         if (!walking)
         {
-            currentDirection = GetDirection();
             myMat.mainTexture = fullAnimations[currentDimension].idle[currentDirection];
+
+            if(weaponBase.localPosition.y != 0)
+                weaponBase.localPosition = Vector3.Lerp(weaponBase.localPosition,Vector3.zero,Time.deltaTime*10);
         }
 
         if(walking)
         {
-            weaponBase.localPosition = new Vector3(0,Mathf.Sin(Time.time),0);
+            weaponBase.localPosition = new Vector3(0,0.12f*Mathf.Sin(6*Time.time),0);
         }
     }
 
