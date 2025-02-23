@@ -15,7 +15,9 @@ public class PlayerWeapon : MonoBehaviour
     int clip;
     float reloadTimer;
     Weapon activeWeapon;
-    Weapon[] weapons;
+    public Weapon[] weapons;
+
+    public Transform weaponTip, weaponMaxRangePoint;
 
     private void Start()
     {
@@ -36,7 +38,10 @@ public class PlayerWeapon : MonoBehaviour
 
         if (activeWeapon.type == 0)
         {
-
+            LineRenderer lr = Instantiate(activeWeapon.toSpawn).GetComponent<LineRenderer>();
+            lr.SetPosition(0, weaponTip.position);
+            lr.SetPosition(1, weaponMaxRangePoint.position);
+            Destroy(lr.gameObject, 1);
         }
     }
 }

@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 1763867924}
   - component: {fileID: 1763867925}
   - component: {fileID: 1763867926}
+  - component: {fileID: 1763867927}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -789,6 +790,28 @@ MonoBehaviour:
   currentDirection: 0
   weaponBase: {fileID: 1099580966}
   walking: 0
+--- !u!114 &1763867927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763867918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ff44ea106d0fe48bfec75e1e2cc78c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - damage: 1
+    fireRate: 0.1
+    range: 15
+    reloadTime: 1
+    maxClip: 5
+    type: 0
+    toSpawn: {fileID: 5460620419312725668, guid: ee636f3dfd3a5fc408f033b4ac64b6db, type: 3}
+  weaponTip: {fileID: 1353283163}
+  weaponMaxRangePoint: {fileID: 1556148559}
 --- !u!1 &1782074872
 GameObject:
   m_ObjectHideFlags: 0
