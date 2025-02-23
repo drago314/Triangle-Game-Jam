@@ -6,8 +6,7 @@ using UnityEngine;
 public class Weapon
 {
     public float damage, fireRate, range, reloadTime;
-    public int maxClip;
-    int type;
+    public int maxClip, type;
     public GameObject toSpawn;
 }
 
@@ -16,6 +15,12 @@ public class PlayerWeapon : MonoBehaviour
     int clip;
     float reloadTimer;
     Weapon activeWeapon;
+    Weapon[] weapons;
+
+    private void Start()
+    {
+        activeWeapon = weapons[0];
+    }
 
     private void Update()
     {
@@ -29,6 +34,9 @@ public class PlayerWeapon : MonoBehaviour
         clip--;
         if (clip <= 0) { clip = activeWeapon.maxClip; reloadTimer = activeWeapon.reloadTime; }
 
+        if (activeWeapon.type == 0)
+        {
 
+        }
     }
 }

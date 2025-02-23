@@ -149,8 +149,8 @@ Transform:
   m_GameObject: {fileID: 127686277}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0.193, z: -0.57}
-  m_LocalScale: {x: 0.34, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.193, z: -0.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1353283163}
@@ -176,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c830c59f67284214d93dc1adec3429ee, type: 2}
+  - {fileID: 2100000, guid: bee2cc2688b24934b958f376104ad170, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 1763867919}
   - component: {fileID: 1763867924}
   - component: {fileID: 1763867925}
+  - component: {fileID: 1763867926}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -643,7 +644,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c830c59f67284214d93dc1adec3429ee, type: 2}
+  - {fileID: 2100000, guid: db60737feeba61f468b57a18dcda2761, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -730,6 +731,47 @@ MonoBehaviour:
   screenPoint: {fileID: 297339934}
   weaponBase: {fileID: 1099580966}
   weapon: {fileID: 127686278}
+--- !u!114 &1763867926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763867918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6321cd330984544958d9fa77e70d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMat: {fileID: 2100000, guid: db60737feeba61f468b57a18dcda2761, type: 2}
+  fullAnimations:
+  - idle:
+    - {fileID: 2800000, guid: abc394e802f23bc46989dd63ea8dfbbc, type: 3}
+    - {fileID: 2800000, guid: 2714300bf44bdeb4890969679e358c3d, type: 3}
+    - {fileID: 2800000, guid: 8dd0a6cd7ea319143805ecdcd1b73017, type: 3}
+    - {fileID: 2800000, guid: 135b7d521c0374249a5308a3952d175b, type: 3}
+    - {fileID: 2800000, guid: cdc3ef7ca76c3b04c895a7d9d51895d7, type: 3}
+    - {fileID: 2800000, guid: 57c19b05485db2a47b7823788b4c73c5, type: 3}
+    - {fileID: 2800000, guid: 66d2d00670e7f7d4e9bbdb829c0496a3, type: 3}
+    - {fileID: 2800000, guid: f8b64004de8ecf449a52852fd8be0b0f, type: 3}
+    walk1: []
+    walk2: []
+  - idle: []
+    walk1: []
+    walk2: []
+  - idle: []
+    walk1: []
+    walk2: []
+  - idle: []
+    walk1: []
+    walk2: []
+  - idle: []
+    walk1: []
+    walk2: []
+  currentDimension: 0
+  currentDirection: 0
+  weaponBase: {fileID: 1099580966}
+  walking: 0
 --- !u!1 &1782074872
 GameObject:
   m_ObjectHideFlags: 0
