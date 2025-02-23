@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public PlayerAnimate pa;
+
     [Header("XZ Input")]
     public float speed;
     public float sprintMod;
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W)) { input.y = 1; }
         else if (Input.GetKey(KeyCode.S)) { input.y = -1; }
         else { input.y = 0; }
+
+        pa.walking = input == Vector2.zero;
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { currentSprintMod = sprintMod; }
         else { currentSprintMod = 1; }
