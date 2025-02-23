@@ -790,6 +790,9 @@ MonoBehaviour:
   currentDirection: 0
   weaponBase: {fileID: 1099580966}
   walking: 0
+  currentState: 0
+  maxStates: 2
+  walkSpeed: 0.1666667
 --- !u!114 &1763867927
 MonoBehaviour:
   m_ObjectHideFlags: 0
