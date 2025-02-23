@@ -28,6 +28,11 @@ public class PlayerAnimate : MonoBehaviour
             currentDirection = GetDirection();
             myMat.mainTexture = fullAnimations[currentDimension].idle[currentDirection];
         }
+
+        if(walking)
+        {
+            weaponBase.localPosition = new Vector3(0,Mathf.Sin(Time.time),0);
+        }
     }
 
     private int GetDirection()
