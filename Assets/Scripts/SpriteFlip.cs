@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpriteFlip : MonoBehaviour
+{
+    public float flipLength;
+    float flipTimer;
+    public bool flipX, flipY, flipZ;
+    Vector3 prevEulers;
+
+    private void Start()
+    {
+        GameManager.Inst.OnDimensionSwitch += Flip;
+    }
+
+    private void FixedUpdate()
+    {
+        if (flipTimer > 0)
+        {
+            flipTimer -= Time.fixedDeltaTime;
+            float mod = 360/flipLength;
+            int x = flipX ? 1 : 0;
+            int y = flipY ? 1 : 0;
+            int z = flipZ ? 1 : 0;
+            transform.Rotate(new Vector3(x, y, z) * mod * Time.fixedDeltaTime);
+            if (flipTimer <= 0) transform.eulerAngles = prevEulers;
+        }
+    }
+
+    public void Flip(Dimension dim) { prevEulers = transform.eulerAngles; flipTimer = flipLength; }
+}

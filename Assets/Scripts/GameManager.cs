@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public Player player;
 
-    public static event Action<Dimension> OnDimensionSwitch;
+    public event Action<Dimension> OnDimensionSwitch;
     public Dimension dimension;
 
     void Awake()
@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         if (Inst != null)
             Destroy(this);
         Inst = this;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) { SwitchDimension(dimension); }
     }
 
     public void SwitchDimension(Dimension newDimension)

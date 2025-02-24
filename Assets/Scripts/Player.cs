@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     [Header("Rotation")]
     public Camera cam;
-    public Transform mousePoint, screenPoint, weaponBase, weapon;
+    public Transform mousePoint, screenPoint, weaponBase, weapon, gyro;
     private Vector2 startScreenPos;
     float defaultWeaponOffset;
 
@@ -56,13 +56,15 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
 
         // Sets rotation
-        weaponBase.eulerAngles = new(0, RotationFromMouse() + 90, 0);
+        weaponBase.eulerAngles = new(weaponBase.eulerAngles.x, RotationFromMouse() + 90, 0);
         // Offsets weapon localpos to avoid clipping through torso when weapon faces side to side
-        weapon.localPosition = new(0, 0, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/4);
+        weapon.localPosition = new(0, weapon.localPosition.y, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/4);
     }
 
     private float RotationFromMouse()
     {
+        // return gyro.localRotation.eulerAngles.y;
+
         // ROTATES TOWARDS MOUSE by projecting player onto screen and finding angle between that and mouse (its messy)
         mousePoint.position = Input.mousePosition;
         Vector3 screenPos = cam.WorldToScreenPoint(transform.position);

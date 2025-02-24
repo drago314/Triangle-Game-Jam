@@ -25,7 +25,8 @@ public class PlayerAnimate : MonoBehaviour
     public int maxStates = 2;
     public float walkSpeed = 10f/60;
 
-    private void Start(){
+    private void Start()
+    {
         InvokeRepeating("ChangeFrame", walkSpeed, walkSpeed);
     }
 
