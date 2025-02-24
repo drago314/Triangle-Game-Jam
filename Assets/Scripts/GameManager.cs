@@ -14,7 +14,9 @@ public enum Dimension
 
 public class GameManager : MonoBehaviour
 {
-    public GameManager Inst;
+    public static GameManager Inst;
+
+    public Player player;
 
     public static event Action<Dimension> OnDimensionSwitch;
     public Dimension dimension;
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if (Inst != null)
             Destroy(this);
-        Inst = this; 
+        Inst = this;
     }
 
     public void SwitchDimension(Dimension newDimension)

@@ -673,6 +673,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f219cb67b3834ea1825cfd1d583ead1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bufferTime: 0.1
+  attackCooldown: 1
+  attackRange: 0.8
+  moveSpeed: 1
+  damage: 1
 --- !u!1 &1353283162
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +740,52 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1353283163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1748456163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748456165}
+  - component: {fileID: 1748456164}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1748456164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748456163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b4bbca1f8654e1e9954723f57cd043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  dimension: 0
+--- !u!4 &1748456165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748456163}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0862641, y: 0.6160674, z: 2.33117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763867918
 GameObject:
@@ -846,7 +897,7 @@ Transform:
   m_GameObject: {fileID: 1763867918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.83, z: 0}
+  m_LocalPosition: {x: 0, y: 2.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -895,6 +946,7 @@ MonoBehaviour:
   screenPoint: {fileID: 297339934}
   weaponBase: {fileID: 1099580966}
   weapon: {fileID: 127686278}
+  health: {fileID: 0}
 --- !u!114 &1763867926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,3 +1205,4 @@ SceneRoots:
   - {fileID: 1333817027}
   - {fileID: 1782074873}
   - {fileID: 297339934}
+  - {fileID: 1748456165}
