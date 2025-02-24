@@ -10,6 +10,10 @@ public class Health : MonoBehaviour
     private bool isDead;
     private const int MIN_HEALTH = 0;
 
+    [SerializeField] private MeshRenderer[] renderers;
+    [SerializeField] private Material hitMaterial;
+    private Material[] defaultMaterials;
+
     public event Action<Damage> OnHit;
     public event Action OnDeath;
     public event Action OnHeal;
@@ -20,6 +24,15 @@ public class Health : MonoBehaviour
         if (this.currentHealth > this.maxHealth)
         {
             this.currentHealth = maxHealth;
+        }
+    }
+
+    private void Start()
+    {
+        defaultMaterials = new Material[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            defaultMaterials[i] = renderers[i].material;
         }
     }
 
@@ -53,6 +66,15 @@ public class Health : MonoBehaviour
     public void Damage(Damage damage)
     {
         this.currentHealth = Mathf.Clamp(currentHealth - damage.damage, MIN_HEALTH, this.maxHealth);
+
+        // does hit mat thingy
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material = hitMaterial;
+        }
+        CancelInvoke("ResetMats");
+        Invoke("ResetMats", 0.14f);
+
         if (currentHealth <= MIN_HEALTH)
         {
             this.isDead = true;
@@ -65,6 +87,14 @@ public class Health : MonoBehaviour
         {
             OnHit?.Invoke(damage);
             OnHealthChanged?.Invoke();
+        }
+    }
+
+    private void ResetMats()
+    {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material = defaultMaterials[i];
         }
     }
 

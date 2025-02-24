@@ -21,13 +21,19 @@ public class PlayerWeapon : MonoBehaviour
 
     public Transform weaponTip, weaponMaxRangePoint, weaponBase;
 
+    // melee
+    public float offset, swingSpeed;
+    private float goalOffset;
+    int flipped = 1;
+    public TrailRenderer weaponTrail;
+
     public LayerMask enemy;
     public Camera cam;
 
     private void Start()
     {
-        activeWeapon = weapons[0];
-        clip = activeWeapon.maxClip;
+        SwitchWeapon(Dimension.Openness);
+        GameManager.Inst.OnDimensionSwitch += SwitchWeapon;
     }
 
     private void Update()
@@ -39,9 +45,20 @@ public class PlayerWeapon : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0)) TryFire();
 
+        // makes weapon go down when reloading
         float goalRot = 0;
-        if (activeWeapon.reloadTimer > 0) goalRot = -35;
+        if (activeWeapon.reloadTimer > 0 && activeWeapon.weaponType != Dimension.Openness && activeWeapon.weaponType != Dimension.Neuroticism) goalRot = -35;
         weaponBase.eulerAngles = new(Mathf.LerpAngle(weaponBase.eulerAngles.x, goalRot, Time.deltaTime * 8), weaponBase.eulerAngles.y, 0);
+
+        // melee
+        offset = Mathf.MoveTowards(offset, goalOffset, Time.deltaTime * swingSpeed);
+        if (Mathf.Abs(offset - goalOffset) < 7 && Mathf.Abs(offset) > 5) { goalOffset = 0; weaponTrail.emitting = false; }
+    }
+
+    public void SwitchWeapon(Dimension dim)
+    {
+        activeWeapon = weapons[(int)dim];
+        clip = activeWeapon.maxClip;
     }
 
     private void TryFire()
@@ -53,8 +70,23 @@ public class PlayerWeapon : MonoBehaviour
 
         Vector3 lineEnd = weaponMaxRangePoint.position;
 
+        // Handles melee weapons
+        if (activeWeapon.weaponType == Dimension.Openness || activeWeapon.weaponType == Dimension.Neuroticism)
+        {
+            // melee weapons use the clip as a combo
+            // so once you run out of clip you have to "Reload" which is just the cooldonw before starting a new combo
+            flipped *= -1;
+            //transform.Translate(-weaponBase.forward/2);
+            offset = activeWeapon.range * -flipped;
+            goalOffset = activeWeapon.range * flipped;
+
+            weaponTrail.emitting = true;
+
+            activeWeapon.toSpawn.GetComponent<SwordHitbox>().HitAllIntersections(activeWeapon);
+        }
+
         // Handles raycast type weapons
-        if (activeWeapon.weaponType == 0)
+        if (activeWeapon.weaponType == Dimension.Conscientiousness)
         {
             // raycasts trying to hit enemy
             // this uses two raycasts; one from the tip of the gun and one from the cursor itself. this makes aiming feel much more fair

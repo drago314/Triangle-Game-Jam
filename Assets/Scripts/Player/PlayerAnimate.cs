@@ -17,7 +17,7 @@ public class PlayerAnimate : MonoBehaviour
     public DimensionAnimations[] fullAnimations;
 
     public int currentDimension, currentDirection;
-    public Transform weaponBase;
+    public Transform weaponBase, gyro;
 
     public bool walking;
 
@@ -61,7 +61,7 @@ public class PlayerAnimate : MonoBehaviour
     {
         int currentDir = 0;
         float closestAngle = 360;
-        float angle = weaponBase.localEulerAngles.y;
+        float angle = gyro.localEulerAngles.y;
 
         int sum = 45;
         if (sf.flipped) sum = 45;

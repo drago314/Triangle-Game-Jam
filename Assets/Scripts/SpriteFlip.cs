@@ -13,6 +13,9 @@ public class SpriteFlip : MonoBehaviour
     public PlayerAnimate pa;
     int dimension;
 
+    public Texture2D[] textures;
+    public MeshRenderer[] renderers;
+
     private void Start()
     {
         GameManager.Inst.OnDimensionSwitch += Flip;
@@ -43,10 +46,14 @@ public class SpriteFlip : MonoBehaviour
         flipTimer = flipLength;
         dimension = (int)dim;
 
-        if (pa) Invoke("SwitchPlayer", flipLength / 2);
+        if (pa || textures.Length > 0) Invoke("SwitchPlayer", flipLength / 2);
     }
 
-    private void SwitchPlayer() { pa.currentDimension = dimension; }
+    private void SwitchPlayer() 
+    {
+        if (pa) pa.currentDimension = dimension;
+        if (textures.Length > 0) { foreach (MeshRenderer mr in renderers) { mr.material.mainTexture = textures[dimension]; } }
+    }
 
     private void OnEnable()
     {

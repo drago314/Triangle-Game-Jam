@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public PlayerAnimate pa;
+    public PlayerWeapon pw;
 
     [Header("XZ Input")]
     public float speed;
@@ -86,7 +87,8 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
         }
         // Sets rotation
-        weaponBase.eulerAngles = new(weaponBase.eulerAngles.x, RotationFromMouse() + 90, 0);
+        weaponBase.eulerAngles = new(weaponBase.eulerAngles.x, RotationFromMouse() + 90 + pw.offset, 0);
+        gyro.eulerAngles = new(0, RotationFromMouse() + 90, 0);
         // Offsets weapon localpos to avoid clipping through torso when weapon faces side to side
         weapon.localPosition = new(0, weapon.localPosition.y, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/4);
     }
