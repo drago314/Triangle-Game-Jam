@@ -220,9 +220,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipLength: 0.25
+  amountToFlip: 360
   flipX: 0
   flipY: 1
   flipZ: 0
+  flipped: 0
 --- !u!1 &297339933
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,9 +711,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipLength: 0.25
+  amountToFlip: 180
   flipX: 0
-  flipY: 1
+  flipY: 0
   flipZ: 0
+  flipped: 0
 --- !u!1 &1353283162
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,9 +876,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipLength: 0.25
+  amountToFlip: 180
   flipX: 0
   flipY: 1
   flipZ: 0
+  flipped: 0
 --- !u!1 &1748456163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1097,7 @@ MonoBehaviour:
   currentState: 0
   maxStates: 2
   walkSpeed: 0.1666667
+  sf: {fileID: 1613218207}
 --- !u!114 &1763867927
 MonoBehaviour:
   m_ObjectHideFlags: 0

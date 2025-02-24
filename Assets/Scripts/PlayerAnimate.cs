@@ -25,6 +25,8 @@ public class PlayerAnimate : MonoBehaviour
     public int maxStates = 2;
     public float walkSpeed = 10f/60;
 
+    public SpriteFlip sf;
+
     private void Start()
     {
         InvokeRepeating("ChangeFrame", walkSpeed, walkSpeed);
@@ -60,14 +62,18 @@ public class PlayerAnimate : MonoBehaviour
         int currentDir = 0;
         float closestAngle = 360;
         float angle = weaponBase.localEulerAngles.y;
-        for (int i = 0; i < 360; i += 45)
+
+        int sum = 45;
+        if (sf.flipped) sum = -45;
+        for (int i = 0; Mathf.Abs(i) < 360; i += sum)
         {
             if (Mathf.Abs(Mathf.DeltaAngle(-angle, i)) < closestAngle)
             {
                 closestAngle = Mathf.Abs(Mathf.DeltaAngle(-angle, i));
-                currentDir = i / 45;
+                currentDir = Mathf.Abs(i) / 45;
             }
         }
+
         return currentDir;
     }
 

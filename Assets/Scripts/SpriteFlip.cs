@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SpriteFlip : MonoBehaviour
 {
-    public float flipLength;
+    public float flipLength, amountToFlip;
     float flipTimer;
     public bool flipX, flipY, flipZ;
+    public bool flipped;
     Vector3 prevEulers;
 
     private void Start()
@@ -19,14 +20,32 @@ public class SpriteFlip : MonoBehaviour
         if (flipTimer > 0)
         {
             flipTimer -= Time.fixedDeltaTime;
-            float mod = 360/flipLength;
+            float mod = amountToFlip/flipLength;
             int x = flipX ? 1 : 0;
             int y = flipY ? 1 : 0;
             int z = flipZ ? 1 : 0;
             transform.Rotate(new Vector3(x, y, z) * mod * Time.fixedDeltaTime);
-            if (flipTimer <= 0) transform.eulerAngles = prevEulers;
+            if (flipTimer <= 0) transform.localEulerAngles = prevEulers;
         }
     }
 
-    public void Flip(Dimension dim) { prevEulers = transform.eulerAngles; flipTimer = flipLength; }
+    public void Flip(Dimension dim) 
+    {
+        if (flipLength <= 0 || flipTimer > 0) return;
+        int x = flipX ? 1 : 0;
+        int y = flipY ? 1 : 0;
+        int z = flipZ ? 1 : 0;
+        flipped = !flipped;
+        prevEulers = transform.localEulerAngles + new Vector3(amountToFlip*x, amountToFlip*y, amountToFlip*z);
+        flipTimer = flipLength; 
+    }
+
+    private void OnEnable()
+    {
+        //GameManager.Inst.OnDimensionSwitch += Flip;
+    }
+    private void OnDisable()
+    {
+        GameManager.Inst.OnDimensionSwitch -= Flip;
+    }
 }
