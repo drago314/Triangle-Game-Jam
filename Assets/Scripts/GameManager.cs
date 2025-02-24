@@ -6,9 +6,9 @@ using UnityEngine;
 public enum Dimension
 {
     Openness,
-    Agreeableness,
-    Extroversion,
     Conscientiousness,
+    Extroversion,
+    Agreeableness,
     Neuroticism
 }
 
@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         if (Inst != null)
             Destroy(this);
         Inst = this;
+    }
+
+    private void Start()
+    {
+        SwitchDimension(Dimension.Openness);
     }
 
     public void SwitchDimension(Dimension newDimension)

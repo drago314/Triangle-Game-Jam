@@ -10,6 +10,9 @@ public class SpriteFlip : MonoBehaviour
     public bool flipped;
     Vector3 prevEulers;
 
+    public PlayerAnimate pa;
+    int dimension;
+
     private void Start()
     {
         GameManager.Inst.OnDimensionSwitch += Flip;
@@ -37,8 +40,13 @@ public class SpriteFlip : MonoBehaviour
         int z = flipZ ? 1 : 0;
         flipped = !flipped;
         prevEulers = transform.localEulerAngles + new Vector3(amountToFlip*x, amountToFlip*y, amountToFlip*z);
-        flipTimer = flipLength; 
+        flipTimer = flipLength;
+        dimension = (int)dim;
+
+        if (pa) Invoke("SwitchPlayer", flipLength / 2);
     }
+
+    private void SwitchPlayer() { pa.currentDimension = dimension; }
 
     private void OnEnable()
     {

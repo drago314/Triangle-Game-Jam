@@ -64,7 +64,7 @@ public class PlayerAnimate : MonoBehaviour
         float angle = weaponBase.localEulerAngles.y;
 
         int sum = 45;
-        if (sf.flipped) sum = -45;
+        if (sf.flipped) sum = 45;
         for (int i = 0; Mathf.Abs(i) < 360; i += sum)
         {
             if (Mathf.Abs(Mathf.DeltaAngle(-angle, i)) < closestAngle)
