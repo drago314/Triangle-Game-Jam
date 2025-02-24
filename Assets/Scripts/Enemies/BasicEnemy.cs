@@ -18,7 +18,6 @@ public class BasicEnemy : Enemy
 
     protected void OnDeath()
     {
-        Debug.Log("dead");
         Destroy(gameObject);
     }
 }

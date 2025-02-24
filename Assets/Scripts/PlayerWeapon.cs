@@ -55,10 +55,10 @@ public class PlayerWeapon : MonoBehaviour
             RaycastHit hit;
             float range = (weaponMaxRangePoint.position - weaponTip.position).magnitude;
             if (Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range)) {
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
+                Enemy enemy = null;
+                hit.collider.TryGetComponent<Enemy>(out enemy);
                 if (enemy == null)
                     return;
-                Debug.Log("here");
                 Health health = enemy.GetComponent<Health>();
                 health.Damage(new Damage(activeWeapon.damage, this.gameObject, enemy.gameObject, activeWeapon.knockBack));
             }

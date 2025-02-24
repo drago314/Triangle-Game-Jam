@@ -53,10 +53,8 @@ public class Health : MonoBehaviour
     public void Damage(Damage damage)
     {
         this.currentHealth = Mathf.Clamp(currentHealth - damage.damage, MIN_HEALTH, this.maxHealth);
-        Debug.Log("there");
         if (currentHealth <= MIN_HEALTH)
         {
-            Debug.Log("dead");
             this.isDead = true;
             this.currentHealth = MIN_HEALTH;
 
