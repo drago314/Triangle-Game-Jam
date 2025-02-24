@@ -8,8 +8,10 @@ public class Player : MonoBehaviour
 
     [Header("XZ Input")]
     public float speed;
-    public float sprintMod;
-    float currentSprintMod;
+    public float sprintMod, dashSpeed, dashTime, dashCooldown;
+    private float currentSprintMod, dashTimer, dashCooldownTimer;
+    private Vector2 dashDirection;
+    private bool dashing;
     Rigidbody rb;
     Vector2 input;
 
@@ -47,14 +49,42 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { currentSprintMod = sprintMod; }
         else { currentSprintMod = 1; }
+
+        dashCooldownTimer -= Time.deltaTime;
+        if (Input.GetKey(KeyCode.Space) && !dashing && dashCooldownTimer <= 0)
+        {
+            dashDirection = input;
+            dashTimer = dashTime;
+            dashing = true;
+            Dimension nextDimension = GameManager.Inst.dimension + 1;
+            if ((int) nextDimension >= 5)
+                nextDimension = 0;
+            GameManager.Inst.SwitchDimension(nextDimension);
+        }
     }
 
     private void FixedUpdate()
     {
         // Sets rb velocity
-        Vector2 adjustedVelocity = input.normalized * speed * currentSprintMod;
-        rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
-
+        if (dashing)
+        {
+            dashTimer -= Time.deltaTime;
+            if (dashTimer < 0)
+            {
+                dashing = false;
+                dashCooldownTimer = dashCooldown;
+            }
+            else
+            {
+                Vector2 adjustedVelocity = input.normalized * dashSpeed;
+                rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
+            }
+        }
+        if (!dashing)
+        {
+            Vector2 adjustedVelocity = input.normalized * speed * currentSprintMod;
+            rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
+        }
         // Sets rotation
         weaponBase.eulerAngles = new(weaponBase.eulerAngles.x, RotationFromMouse() + 90, 0);
         // Offsets weapon localpos to avoid clipping through torso when weapon faces side to side

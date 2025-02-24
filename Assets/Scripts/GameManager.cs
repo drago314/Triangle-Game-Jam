@@ -28,11 +28,6 @@ public class GameManager : MonoBehaviour
         Inst = this;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) { SwitchDimension(dimension); }
-    }
-
     public void SwitchDimension(Dimension newDimension)
     {
         dimension = newDimension;

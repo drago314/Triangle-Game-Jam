@@ -1061,6 +1061,9 @@ MonoBehaviour:
   pa: {fileID: 1763867926}
   speed: 5
   sprintMod: 1.4
+  dashSpeed: 20
+  dashTime: 0.3
+  dashCooldown: 1
   cam: {fileID: 349361381}
   mousePoint: {fileID: 1782074873}
   screenPoint: {fileID: 297339934}
