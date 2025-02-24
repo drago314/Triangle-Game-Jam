@@ -5,9 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class Weapon
 {
-    public float damage, fireRate, range, reloadTime;
+    public int damage;
+    public float fireRate, range, reloadTime, knockBack;
     [HideInInspector] public float reloadTimer, fireRateTimer;
-    public int maxClip, type;
+    public int maxClip;
+    public Dimension weaponType;
     public GameObject toSpawn;
 }
 
@@ -43,12 +45,23 @@ public class PlayerWeapon : MonoBehaviour
         activeWeapon.fireRateTimer = activeWeapon.fireRate;
 
         // Handles raycast type weapons
-        if (activeWeapon.type == 0)
+        if (activeWeapon.weaponType == 0)
         {
             LineRenderer lr = Instantiate(activeWeapon.toSpawn).GetComponent<LineRenderer>();
             lr.SetPosition(0, weaponTip.position);
             lr.SetPosition(1, weaponMaxRangePoint.position);
             Destroy(lr.gameObject, 1);
+
+            RaycastHit hit;
+            float range = (weaponMaxRangePoint.position - weaponTip.position).magnitude;
+            if (Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range)) {
+                Enemy enemy = hit.collider.GetComponent<Enemy>();
+                if (enemy == null)
+                    return;
+                Debug.Log("here");
+                Health health = enemy.GetComponent<Health>();
+                health.Damage(new Damage(activeWeapon.damage, this.gameObject, enemy.gameObject, activeWeapon.knockBack));
+            }
         }
     }
 }
