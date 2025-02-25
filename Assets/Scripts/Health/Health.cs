@@ -19,6 +19,8 @@ public class Health : MonoBehaviour
     public SpriteFlip sf;
     public int bloodToSpawn;
     public GameObject blood;
+    public CameraShake cs;
+    public float shakeAmount;
 
     public event Action<Damage> OnHit;
     public event Action OnDeath;
@@ -111,6 +113,7 @@ public class Health : MonoBehaviour
             foreach (Collider c in collidersToDeactivate) { c.enabled = false; }
             if (rb) rb.isKinematic = true;
             if (sf) sf.Flip(0);
+            if (cs) { cs.Shake(shakeAmount); }
 
             if (bloodToSpawn > 0)
             {
