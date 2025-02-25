@@ -21,6 +21,7 @@ public class SpriteFlip : MonoBehaviour
     private void Start()
     {
         if (!overrideDimensionSwitch) GameManager.Inst.OnDimensionSwitch += Flip;
+        if (textures.Length > 0) { foreach (MeshRenderer mr in renderers) { mr.material.mainTexture = textures[dimension]; } }
     }
 
     private void FixedUpdate()

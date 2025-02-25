@@ -10,9 +10,11 @@ public class BasicEnemy : Enemy
     Player player;
     private float bufferTimer, attackTimer;
 
+    Health health;
+
     private void Start()
     {
-        Health health = gameObject.GetComponent<Health>();
+        health = gameObject.GetComponent<Health>();
         health.OnHit += OnHit;
         health.OnDeath += OnDeath;
     }
@@ -69,6 +71,7 @@ public class BasicEnemy : Enemy
 
     protected void OnDeath()
     {
+        health.enabled = false;
         this.enabled = false;
         //Destroy(gameObject);
     }

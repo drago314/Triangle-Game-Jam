@@ -27,6 +27,8 @@ public class PlayerWeapon : MonoBehaviour
     int flipped = 1;
     public TrailRenderer weaponTrail;
 
+    public ParticleSystem gunParticles;
+
     public LayerMask enemy;
     public Camera cam;
 
@@ -115,6 +117,8 @@ public class PlayerWeapon : MonoBehaviour
             lr.SetPosition(0, weaponTip.position);
             lr.SetPosition(1, lineEnd);
             Destroy(lr.gameObject, 1);
+
+            gunParticles.Play();
         }
 
         // Handels Bazooka (and maybe magic if that's also a projectile)

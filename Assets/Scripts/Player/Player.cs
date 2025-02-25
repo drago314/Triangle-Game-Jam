@@ -10,10 +10,12 @@ public class Player : MonoBehaviour
 
     [Header("XZ Input")]
     public float speed;
-    public float sprintMod, dashSpeed, dashTime, dashCooldown;
-    private float currentSprintMod, dashTimer, dashCooldownTimer;
+    public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq;
+    private float currentSprintMod, dashTimer, dashCooldownTimer, dashGhostTimer;
     private Vector2 dashDirection;
     private bool dashing;
+    public GameObject dashGhost;
+    public MeshRenderer[] renderers;
     Rigidbody rb;
     Vector2 input;
 
@@ -76,7 +78,23 @@ public class Player : MonoBehaviour
         // Sets rb velocity
         if (dashing)
         {
-            dashTimer -= Time.deltaTime;
+            // Spawns dash ghosts
+            dashGhostTimer -= Time.fixedDeltaTime;
+            if (dashGhostTimer <= 0)
+            {
+                dashGhostTimer = dashGhostFreq;
+                GameObject ghost = Instantiate(dashGhost, transform.position, Quaternion.identity);
+                ghost.transform.GetChild(0).localEulerAngles = weaponBase.localEulerAngles;
+                DashGhost dg = ghost.GetComponent<DashGhost>();
+                for(int i = 0; i < dg.renderers.Length; i++)
+                {
+                    //dg.renderers[i].material.mainTexture = renderers[i].material.mainTexture;
+                    dg.renderers[i].material.color = Color.blue;
+                }
+                Destroy(ghost, 0.25f);
+            }
+
+            dashTimer -= Time.fixedDeltaTime;
             if (dashTimer < 0)
             {
                 dashing = false;

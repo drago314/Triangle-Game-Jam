@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     [SerializeField] private MeshRenderer[] renderers;
     [SerializeField] private Material hitMaterial;
     private Material[] defaultMaterials;
-    public Material playerMat;
+    public Material[] playerMat;
     public ParticleSystem ps;
     public Collider[] collidersToDeactivate;
     public SpriteFlip sf;
@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
             renderer.material.SetColor("_EmissionColor", Color.black);
             renderer.material.color = Color.white;
         }
-        if (playerMat) { playerMat.SetColor("_EmissionColor", Color.black); playerMat.color = Color.white; }
+        foreach (Material m in playerMat) { m.SetColor("_EmissionColor", Color.black); m.color = Color.white; }
     }
 
     /// <returns>A boolean of the current deathstate.</returns>
@@ -78,7 +78,7 @@ public class Health : MonoBehaviour
 
         // does hit mat thingy
         foreach (Renderer renderer in renderers) { renderer.material.SetColor("_EmissionColor", Color.red * 10); renderer.material.color = Color.red; }
-        if (playerMat) { playerMat.SetColor("_EmissionColor", Color.red * 10); playerMat.color = Color.red; }
+        foreach (Material m in playerMat) { m.SetColor("_EmissionColor", Color.red); m.color = Color.red; }
         CancelInvoke("ResetMats");
         Invoke("ResetMats", 0.14f);
 
@@ -99,7 +99,7 @@ public class Health : MonoBehaviour
 
             foreach (Collider c in collidersToDeactivate) { c.enabled = false; }
             if (rb) rb.isKinematic = true;
-            sf.Flip(0);
+            if (sf) sf.Flip(0);
 
             OnDeath?.Invoke();
             OnHealthChanged?.Invoke();
@@ -113,7 +113,7 @@ public class Health : MonoBehaviour
 
     private void ResetMats()
     {
-        if (playerMat) { playerMat.SetColor("_EmissionColor", Color.black); playerMat.color = Color.white; }
+        foreach (Material m in playerMat) { m.SetColor("_EmissionColor", Color.black); m.color = Color.white; }
         foreach (Renderer renderer in renderers) { renderer.material.EnableKeyword("_EMISSION"); renderer.material.SetColor("_EmissionColor", Color.black); renderer.material.color = Color.white; }
     }
 
