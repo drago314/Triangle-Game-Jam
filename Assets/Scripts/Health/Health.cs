@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     [SerializeField] private MeshRenderer[] renderers;
     [SerializeField] private Material hitMaterial;
     private Material[] defaultMaterials;
+    public Material playerMat;
+    public ParticleSystem ps;
 
     public event Action<Damage> OnHit;
     public event Action OnDeath;
@@ -30,7 +32,13 @@ public class Health : MonoBehaviour
     private void Start()
     {
         defaultMaterials = new Material[renderers.Length];
-        foreach (Renderer renderer in renderers) { renderer.material.EnableKeyword("_EMISSION"); renderer.material.SetColor("_EmissionColor", Color.black); }
+        foreach (Renderer renderer in renderers) 
+        {
+            renderer.material.EnableKeyword("_EMISSION"); 
+            renderer.material.SetColor("_EmissionColor", Color.black);
+            renderer.material.color = Color.white;
+        }
+        if (playerMat) { playerMat.SetColor("_EmissionColor", Color.black); playerMat.color = Color.white; }
     }
 
     /// <returns>A boolean of the current deathstate.</returns>
@@ -64,11 +72,15 @@ public class Health : MonoBehaviour
     {
         this.currentHealth = Mathf.Clamp(currentHealth - damage.damage, MIN_HEALTH, this.maxHealth);
 
+        if (ps) ps.Play();
+
         // does hit mat thingy
-        foreach (Renderer renderer in renderers) { renderer.material.SetColor("_EmissionColor", Color.red * 10); }
+        foreach (Renderer renderer in renderers) { renderer.material.SetColor("_EmissionColor", Color.red * 10); renderer.material.color = Color.red; }
+        if (playerMat) { playerMat.SetColor("_EmissionColor", Color.red * 10); playerMat.color = Color.red; }
         CancelInvoke("ResetMats");
         Invoke("ResetMats", 0.14f);
 
+        // knockback
         Rigidbody rb;
         TryGetComponent(out rb);
         if (rb)
@@ -95,7 +107,8 @@ public class Health : MonoBehaviour
 
     private void ResetMats()
     {
-        foreach (Renderer renderer in renderers) { renderer.material.EnableKeyword("_EMISSION"); renderer.material.SetColor("_EmissionColor", Color.black); }
+        if (playerMat) { playerMat.SetColor("_EmissionColor", Color.black); playerMat.color = Color.white; }
+        foreach (Renderer renderer in renderers) { renderer.material.EnableKeyword("_EMISSION"); renderer.material.SetColor("_EmissionColor", Color.black); renderer.material.color = Color.white; }
     }
 
     /// <param name="_heal">the heal amount.</param>
