@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
                 for(int i = 0; i < dg.renderers.Length; i++)
                 {
                     //dg.renderers[i].material.mainTexture = renderers[i].material.mainTexture;
-                    dg.renderers[i].material.color = Color.blue;
+                    dg.renderers[i].material.color = new Color(0, 1, 1);
                 }
                 Destroy(ghost, 0.25f);
             }
