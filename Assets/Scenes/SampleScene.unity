@@ -16528,10 +16528,6 @@ PrefabInstance:
       propertyPath: screenPoint
       value: 
       objectReference: {fileID: 297339934}
-    - target: {fileID: 8055706014391028508, guid: a212cf6072a00304896e7424259bc329, type: 3}
-      propertyPath: daggerDashSpeed
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 9095432398057119625, guid: a212cf6072a00304896e7424259bc329, type: 3}
       propertyPath: textures.Array.size
       value: 5

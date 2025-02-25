@@ -128,7 +128,7 @@ public class PlayerWeapon : MonoBehaviour
         }
 
         // Handels Bazooka (and maybe magic if that's also a projectile)
-        if (activeWeapon.weaponType == Dimension.Extroversion)
+        if (activeWeapon.weaponType == Dimension.Extroversion || activeWeapon.weaponType == Dimension.Agreeableness)
         {
             float angle = Mathf.Atan2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z);
             Quaternion rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 90, 0);
