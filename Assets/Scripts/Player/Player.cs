@@ -13,11 +13,11 @@ public class Player : MonoBehaviour
     public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq, daggerDashSpeed, daggerDashTime;
     private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer;
     private bool dashing, daggerDashing;
-    private Vector2 daggerDashDirection;
+    private Vector2 dashDirection, daggerDashDirection;
     public GameObject dashGhost;
     public MeshRenderer[] renderers;
     Rigidbody rb;
-    Vector2 input;
+    Vector2 input, lastNonzeroInput;
 
     [Header("Rotation")]
     public Camera cam;
@@ -56,6 +56,9 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.S)) { input.y = -1; }
         else { input.y = 0; }
 
+        if (input != Vector2.zero)
+            lastNonzeroInput = input;
+
         pa.walking = input != Vector2.zero;
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { currentSprintMod = sprintMod; }
@@ -66,6 +69,10 @@ public class Player : MonoBehaviour
         {
             dashTimer = dashTime;
             dashing = true;
+            if (input != Vector2.zero)
+                dashDirection = input;
+            else
+                dashDirection = lastNonzeroInput;
             Dimension nextDimension = GameManager.Inst.dimension + 1;
             if ((int) nextDimension > 4)
                 nextDimension = 0;
@@ -104,7 +111,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Vector2 adjustedVelocity = input.normalized * dashSpeed;
+                Vector2 adjustedVelocity = dashDirection.normalized * dashSpeed;
                 rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
             }
         }
