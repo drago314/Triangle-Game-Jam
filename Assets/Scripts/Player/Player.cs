@@ -32,6 +32,10 @@ public class Player : MonoBehaviour
         defaultWeaponOffset = weapon.localPosition.z;
         health = GetComponent<Health>();
 
+        if(PlayerPrefs.GetFloat("CheckpointX")!=0&&PlayerPrefs.GetFloat("CheckpointZ")!=0)
+            transform.position = new Vector3(PlayerPrefs.GetFloat("CheckpointX"),transform.position.y,PlayerPrefs.GetFloat("CheckpointZ"));
+
+
         currentSprintMod = 1;
     }
 
