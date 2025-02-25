@@ -27,7 +27,7 @@ public class SwordHitbox : MonoBehaviour
         List<Health> killedThings = new List<Health>();
         foreach (Health health in currentlyIntersecting)
         {
-            if (health != null)
+            if (!health.IsDead())
                 health.Damage(new Damage(weapon.damage, weaponBase, health.gameObject, weapon.knockBack));
             else
                 killedThings.Add(health);
