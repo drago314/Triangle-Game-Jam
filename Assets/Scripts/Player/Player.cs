@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class Player : MonoBehaviour
 
 
         currentSprintMod = 1;
+
+        health.OnDeath += OnDeath;
     }
 
     private void Update()
@@ -111,7 +114,8 @@ public class Player : MonoBehaviour
         return rot;
     }
 
-    protected void onDeath(){
-        
+    protected void OnDeath()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

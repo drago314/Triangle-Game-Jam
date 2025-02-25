@@ -30,10 +30,7 @@ public class Health : MonoBehaviour
     private void Start()
     {
         defaultMaterials = new Material[renderers.Length];
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            defaultMaterials[i] = renderers[i].material;
-        }
+        foreach (Renderer renderer in renderers) { renderer.material.EnableKeyword("_EMISSION"); renderer.material.SetColor("_EmissionColor", Color.black); }
     }
 
     /// <returns>A boolean of the current deathstate.</returns>
@@ -68,10 +65,7 @@ public class Health : MonoBehaviour
         this.currentHealth = Mathf.Clamp(currentHealth - damage.damage, MIN_HEALTH, this.maxHealth);
 
         // does hit mat thingy
-        foreach (Renderer renderer in renderers)
-        {
-            renderer.material = hitMaterial;
-        }
+        foreach (Renderer renderer in renderers) { renderer.material.SetColor("_EmissionColor", Color.red * 10); }
         CancelInvoke("ResetMats");
         Invoke("ResetMats", 0.14f);
 
@@ -84,6 +78,8 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= MIN_HEALTH)
         {
+            Debug.Log("died");
+
             this.isDead = true;
             this.currentHealth = MIN_HEALTH;
 
@@ -99,10 +95,7 @@ public class Health : MonoBehaviour
 
     private void ResetMats()
     {
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            renderers[i].material = defaultMaterials[i];
-        }
+        foreach (Renderer renderer in renderers) { renderer.material.EnableKeyword("_EMISSION"); renderer.material.SetColor("_EmissionColor", Color.black); }
     }
 
     /// <param name="_heal">the heal amount.</param>
