@@ -5763,7 +5763,7 @@ MonoBehaviour:
   dashTime: 0.22
   dashCooldown: 0.66
   dashGhostFreq: 0.04
-  daggerDashSpeed: 20
+  daggerDashSpeed: 15
   daggerDashTime: 0.05
   dashGhost: {fileID: 373274351998128777, guid: 4f8e1e652fe674e4a9abea0277c995f4, type: 3}
   renderers:

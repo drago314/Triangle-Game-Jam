@@ -42,6 +42,6 @@ public class BloodParticle : MonoBehaviour
         _splatImage.SetActive(false);
         _transitImage.SetActive(true);
         rb.isKinematic = false;
-        rb.velocity = new(Random.Range(-2, 2), Random.Range(2.5f, 5), Random.Range(-2, 2));
+        rb.velocity = new(Random.Range(-2, 2), Random.Range(3.5f, 6), Random.Range(-2, 2));
     }
 }
