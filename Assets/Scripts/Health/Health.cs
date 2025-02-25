@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     public SpriteFlip sf;
     public int bloodToSpawn;
     public GameObject blood;
-    public CameraShake cs;
+    private CameraShake cs;
     public float shakeAmount;
 
     public event Action<Damage> OnHit;
@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        cs = GameManager.Inst.player.GetComponentInChildren<CameraShake>();
         defaultMaterials = new Material[renderers.Length];
         foreach (Renderer renderer in renderers) 
         {

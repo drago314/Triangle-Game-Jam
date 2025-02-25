@@ -49,7 +49,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // makes weapon go down when reloading
         float goalRot = 0;
-        if (activeWeapon.reloadTimer > 0 && activeWeapon.weaponType != Dimension.Openness && activeWeapon.weaponType != Dimension.Neuroticism) goalRot = -35;
+        if (activeWeapon.reloadTimer > 0.3 && activeWeapon.weaponType != Dimension.Openness && activeWeapon.weaponType != Dimension.Neuroticism) goalRot = -35;
         weaponBase.eulerAngles = new(Mathf.LerpAngle(weaponBase.eulerAngles.x, goalRot, Time.deltaTime * 8), weaponBase.eulerAngles.y, 0);
 
         // melee
@@ -111,8 +111,8 @@ public class PlayerWeapon : MonoBehaviour
                 // second one from cursor
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit2;
-
-                if (Physics.Raycast(ray, out hit2))
+                Enemy enemy;
+                if (Physics.Raycast(ray, out hit2) && hit2.collider.TryGetComponent<Enemy>(out enemy))
                 {
                     lineEnd = TryHit(hit2);
                 }

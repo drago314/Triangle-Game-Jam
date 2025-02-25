@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
         if (Inst != null)
             Destroy(this);
         Inst = this;
+
+        player = FindObjectOfType<Player>();
     }
 
     private void Start()

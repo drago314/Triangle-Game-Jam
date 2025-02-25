@@ -28,9 +28,12 @@ public class Player : MonoBehaviour
     public Health health;
 
 
+    private void OnEnable()
+    {
+    }
+
     private void Start()
     {
-        GameManager.Inst.player = this;
         rb = GetComponent<Rigidbody>();
         startScreenPos = cam.WorldToScreenPoint(transform.position);
         defaultWeaponOffset = weapon.localPosition.z;

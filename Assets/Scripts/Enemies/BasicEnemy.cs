@@ -47,7 +47,6 @@ public class BasicEnemy : Enemy
     private void Attack() {
         attackTimer = attackCooldown;
         player.health.Damage(new Damage(damage));
-        Debug.Log("attacked");
     }
 
     private void MoveTowardsPlayer()
