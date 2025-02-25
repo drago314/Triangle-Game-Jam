@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3fb6d0a42f187478d5911ac3b11547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBase: {fileID: 1099580965}
   currentlyIntersecting: []
 --- !u!65 &31767953
 BoxCollider:
@@ -1691,7 +1692,7 @@ MonoBehaviour:
     fireRate: 0
     range: 70
     reloadTime: 0.5
-    knockBack: 0
+    knockBack: -500
     reloadTimer: 0
     fireRateTimer: 0
     maxClip: 2
@@ -1701,7 +1702,7 @@ MonoBehaviour:
     fireRate: 0.1
     range: 15
     reloadTime: 1
-    knockBack: 0
+    knockBack: -250
     reloadTimer: 0
     fireRateTimer: 0
     maxClip: 5

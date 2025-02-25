@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwordHitbox : MonoBehaviour
 {
+    public GameObject weaponBase;
     public List<Health> currentlyIntersecting;
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +28,7 @@ public class SwordHitbox : MonoBehaviour
         foreach (Health health in currentlyIntersecting)
         {
             if (health != null)
-                health.Damage(new Damage(weapon.damage, gameObject, health.gameObject, weapon.knockBack));
+                health.Damage(new Damage(weapon.damage, weaponBase, health.gameObject, weapon.knockBack));
             else
                 killedThings.Add(health);
         }

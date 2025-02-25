@@ -15,7 +15,7 @@ public class Damage
     public Damage(int damage, GameObject source, GameObject recieving, float knockbackAmount)
     {
         this.damage = damage;
-        knockbackVector = (recieving.transform.position -  source.transform.position) * knockbackAmount;
+        knockbackVector = source.transform.forward * knockbackAmount;
     }
 
     public Damage(int damage, Vector2 knockbackVector)

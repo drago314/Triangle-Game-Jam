@@ -75,6 +75,13 @@ public class Health : MonoBehaviour
         CancelInvoke("ResetMats");
         Invoke("ResetMats", 0.14f);
 
+        Rigidbody rb;
+        TryGetComponent(out rb);
+        if (rb)
+        {
+            rb.AddForce(damage.knockbackVector);
+        }
+
         if (currentHealth <= MIN_HEALTH)
         {
             this.isDead = true;

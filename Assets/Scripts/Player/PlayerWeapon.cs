@@ -126,7 +126,7 @@ public class PlayerWeapon : MonoBehaviour
         if (enemy != null)
         {
             Health health = enemy.GetComponent<Health>();
-            health.Damage(new Damage(activeWeapon.damage, gameObject, enemy.gameObject, activeWeapon.knockBack));
+            health.Damage(new Damage(activeWeapon.damage, weaponBase.gameObject, enemy.gameObject, activeWeapon.knockBack));
         }
         return hit.point;
     }
