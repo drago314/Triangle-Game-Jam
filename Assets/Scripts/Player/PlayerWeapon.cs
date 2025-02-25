@@ -116,6 +116,14 @@ public class PlayerWeapon : MonoBehaviour
             lr.SetPosition(1, lineEnd);
             Destroy(lr.gameObject, 1);
         }
+
+        // Handels Bazooka (and maybe magic if that's also a projectile)
+        if (activeWeapon.weaponType == Dimension.Extroversion)
+        {
+            float angle = Mathf.Atan2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z);
+            Quaternion rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 90, 0);
+            Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+        }
     }
 
     private Vector3 TryHit(RaycastHit hit)

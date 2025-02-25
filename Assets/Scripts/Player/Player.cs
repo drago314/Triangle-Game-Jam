@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
             dashTimer = dashTime;
             dashing = true;
             Dimension nextDimension = GameManager.Inst.dimension + 1;
-            if ((int) nextDimension > 1)
+            if ((int) nextDimension > 2)
                 nextDimension = 0;
             GameManager.Inst.SwitchDimension(nextDimension);
         }
