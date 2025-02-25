@@ -11,7 +11,7 @@ public class NewMonoBehaviour : MonoBehaviour
     private void Update()
     {
         Enemy test = FindAnyObjectByType<Enemy>();
-        if (Input.GetKey(KeyCode.P) && test == null)
+        if (Input.GetKeyDown(KeyCode.P))
         {
             SpawnWave(wave1, wave1Positions);
         }
@@ -22,7 +22,7 @@ public class NewMonoBehaviour : MonoBehaviour
         int i = 0;
         foreach (GameObject enemy in enemies)
         {
-            Instantiate(enemy, positions[i], Quaternion.identity);
+            Instantiate(enemy, positions[i], Quaternion.Euler(0, -90, 0));
             i++;
         }
     }

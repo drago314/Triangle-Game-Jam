@@ -106,8 +106,6 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= MIN_HEALTH)
         {
-            Debug.Log("died");
-
             this.isDead = true;
             this.currentHealth = MIN_HEALTH;
 

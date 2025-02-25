@@ -5166,7 +5166,6 @@ MonoBehaviour:
   sf: {fileID: 4013648015085924095}
   bloodToSpawn: 3
   blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
-  cs: {fileID: 0}
   shakeAmount: 0.36
 --- !u!114 &617830575843058416
 MonoBehaviour:
@@ -5206,7 +5205,7 @@ MonoBehaviour:
   pa: {fileID: 0}
   textures: []
   renderers: []
-  overrideDimensionSwitch: 0
+  overrideDimensionSwitch: 1
   flipOnStart: 1
 --- !u!1 &5431651642088040029
 GameObject:
