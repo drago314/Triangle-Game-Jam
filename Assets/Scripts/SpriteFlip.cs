@@ -16,9 +16,11 @@ public class SpriteFlip : MonoBehaviour
     public Texture2D[] textures;
     public MeshRenderer[] renderers;
 
+    public bool overrideDimensionSwitch;
+
     private void Start()
     {
-        GameManager.Inst.OnDimensionSwitch += Flip;
+        if (!overrideDimensionSwitch) GameManager.Inst.OnDimensionSwitch += Flip;
     }
 
     private void FixedUpdate()

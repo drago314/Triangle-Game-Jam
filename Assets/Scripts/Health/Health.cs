@@ -15,6 +15,8 @@ public class Health : MonoBehaviour
     private Material[] defaultMaterials;
     public Material playerMat;
     public ParticleSystem ps;
+    public Collider[] collidersToDeactivate;
+    public SpriteFlip sf;
 
     public event Action<Damage> OnHit;
     public event Action OnDeath;
@@ -94,6 +96,10 @@ public class Health : MonoBehaviour
 
             this.isDead = true;
             this.currentHealth = MIN_HEALTH;
+
+            foreach (Collider c in collidersToDeactivate) { c.enabled = false; }
+            if (rb) rb.isKinematic = true;
+            sf.Flip(0);
 
             OnDeath?.Invoke();
             OnHealthChanged?.Invoke();

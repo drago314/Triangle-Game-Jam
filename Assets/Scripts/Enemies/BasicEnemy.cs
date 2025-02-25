@@ -69,6 +69,7 @@ public class BasicEnemy : Enemy
 
     protected void OnDeath()
     {
-        Destroy(gameObject);
+        this.enabled = false;
+        //Destroy(gameObject);
     }
 }
