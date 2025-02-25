@@ -478,7 +478,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 3}
+  m_LocalScale: {x: 80, y: 80, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -16528,6 +16528,22 @@ PrefabInstance:
       propertyPath: screenPoint
       value: 
       objectReference: {fileID: 297339934}
+    - target: {fileID: 8055706014391028508, guid: a212cf6072a00304896e7424259bc329, type: 3}
+      propertyPath: daggerDashSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095432398057119625, guid: a212cf6072a00304896e7424259bc329, type: 3}
+      propertyPath: textures.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095432398057119625, guid: a212cf6072a00304896e7424259bc329, type: 3}
+      propertyPath: textures.Array.data[3]
+      value: 
+      objectReference: {fileID: 2800000, guid: 881165ebb248fc44fb97edeb6543dd72, type: 3}
+    - target: {fileID: 9095432398057119625, guid: a212cf6072a00304896e7424259bc329, type: 3}
+      propertyPath: textures.Array.data[4]
+      value: 
+      objectReference: {fileID: 2800000, guid: acdb0283369c2ab4baaabdd17adb0a98, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

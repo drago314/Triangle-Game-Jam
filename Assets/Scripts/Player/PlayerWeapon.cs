@@ -82,7 +82,13 @@ public class PlayerWeapon : MonoBehaviour
             offset = activeWeapon.range * -flipped;
             goalOffset = activeWeapon.range * flipped;
 
-            weaponTrail.emitting = true;
+            if (activeWeapon.weaponType == Dimension.Openness)
+                weaponTrail.emitting = true;
+            else
+                weaponTrail.emitting = false;
+
+            if (activeWeapon.weaponType == Dimension.Neuroticism)
+                GameManager.Inst.player.StartDaggerDash(new Vector2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z));
 
             activeWeapon.toSpawn.GetComponent<SwordHitbox>().HitAllIntersections(activeWeapon);
         }

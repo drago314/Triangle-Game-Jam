@@ -10,10 +10,10 @@ public class Player : MonoBehaviour
 
     [Header("XZ Input")]
     public float speed;
-    public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq;
-    private float currentSprintMod, dashTimer, dashCooldownTimer, dashGhostTimer;
-    private Vector2 dashDirection;
-    private bool dashing;
+    public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq, daggerDashSpeed, daggerDashTime;
+    private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer;
+    private bool dashing, daggerDashing;
+    private Vector2 daggerDashDirection;
     public GameObject dashGhost;
     public MeshRenderer[] renderers;
     Rigidbody rb;
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     float defaultWeaponOffset;
 
     public Health health;
+
 
     private void Start()
     {
@@ -63,11 +64,10 @@ public class Player : MonoBehaviour
         dashCooldownTimer -= Time.deltaTime;
         if (Input.GetKey(KeyCode.Space) && !dashing && dashCooldownTimer <= 0)
         {
-            dashDirection = input;
             dashTimer = dashTime;
             dashing = true;
             Dimension nextDimension = GameManager.Inst.dimension + 1;
-            if ((int) nextDimension > 2)
+            if ((int) nextDimension > 4)
                 nextDimension = 0;
             GameManager.Inst.SwitchDimension(nextDimension);
         }
@@ -75,6 +75,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        daggerDashTimer -= Time.fixedDeltaTime;
+        dashTimer -= Time.fixedDeltaTime;
+
         // Sets rb velocity
         if (dashing)
         {
@@ -94,7 +97,6 @@ public class Player : MonoBehaviour
                 Destroy(ghost, 0.25f);
             }
 
-            dashTimer -= Time.fixedDeltaTime;
             if (dashTimer < 0)
             {
                 dashing = false;
@@ -106,7 +108,21 @@ public class Player : MonoBehaviour
                 rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
             }
         }
-        if (!dashing)
+
+        if (!dashing && daggerDashing)
+        {
+            if (daggerDashTimer < 0)
+            {
+                daggerDashing = false;
+            }
+            else
+            {
+                Vector2 adjustedVelocity = daggerDashDirection.normalized * daggerDashSpeed;
+                rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
+            }
+        }
+        
+        if (!dashing && !daggerDashing)
         {
             Vector2 adjustedVelocity = input.normalized * speed * currentSprintMod;
             rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
@@ -116,6 +132,13 @@ public class Player : MonoBehaviour
         gyro.eulerAngles = new(0, RotationFromMouse() + 90, 0);
         // Offsets weapon localpos to avoid clipping through torso when weapon faces side to side
         weapon.localPosition = new(0, weapon.localPosition.y, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/4);
+    }
+
+    public void StartDaggerDash(Vector2 direction)
+    {
+        daggerDashDirection = direction;
+        daggerDashTimer = daggerDashTime;
+        daggerDashing = true;
     }
 
     private float RotationFromMouse()

@@ -181,6 +181,7 @@ Transform:
   - {fileID: 1983546523714775153}
   - {fileID: 136048354967559909}
   - {fileID: 7197314212324644871}
+  - {fileID: 1424207094145589310}
   m_Father: {fileID: 3142622314831958653}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!33 &445976266594112183
@@ -5363,6 +5364,74 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &6057348905309906044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1424207094145589310}
+  - component: {fileID: 4130485581401823058}
+  - component: {fileID: 611397229486173675}
+  m_Layer: 0
+  m_Name: Hitbox short (Nueroticism)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1424207094145589310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6057348905309906044}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.288, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8688503239305737084}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4130485581401823058
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6057348905309906044}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.34, z: 1}
+  m_Center: {x: 0, y: 0.34, z: 0}
+--- !u!114 &611397229486173675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6057348905309906044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3fb6d0a42f187478d5911ac3b11547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponBase: {fileID: 4720040935376155319}
+  currentlyIntersecting: []
 --- !u!1 &6406959767406467585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5692,6 +5761,8 @@ MonoBehaviour:
   dashTime: 0.22
   dashCooldown: 0.66
   dashGhostFreq: 0.04
+  daggerDashSpeed: 50
+  daggerDashTime: 0.1
   dashGhost: {fileID: 373274351998128777, guid: 4f8e1e652fe674e4a9abea0277c995f4, type: 3}
   renderers:
   - {fileID: 6798327308327153652}
@@ -5906,6 +5977,26 @@ MonoBehaviour:
     maxClip: 22
     weaponType: 2
     toSpawn: {fileID: 1727951511013852513, guid: 138940ff2db3c4d69a26f77a3a500b3c, type: 3}
+  - damage: 3
+    fireRate: 0.5
+    range: 0
+    reloadTime: 2
+    knockBack: 0
+    reloadTimer: 0
+    fireRateTimer: 0
+    maxClip: 22
+    weaponType: 2
+    toSpawn: {fileID: 1727951511013852513, guid: 138940ff2db3c4d69a26f77a3a500b3c, type: 3}
+  - damage: 1
+    fireRate: 0.2
+    range: 30
+    reloadTime: 0.7
+    knockBack: -800
+    reloadTimer: 0
+    fireRateTimer: 0
+    maxClip: 3
+    weaponType: 4
+    toSpawn: {fileID: 6057348905309906044}
   weaponTip: {fileID: 1983546523714775153}
   weaponMaxRangePoint: {fileID: 5958431781893942192}
   weaponBase: {fileID: 3142622314831958653}
