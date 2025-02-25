@@ -110,4 +110,8 @@ public class Player : MonoBehaviour
         if (rot > 360) { rot -= 360; }
         return rot;
     }
+
+    protected void onDeath(){
+        
+    }
 }
