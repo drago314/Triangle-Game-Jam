@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
     public ParticleSystem ps;
     public Collider[] collidersToDeactivate;
     public SpriteFlip sf;
+    public int bloodToSpawn;
+    public GameObject blood;
 
     public event Action<Damage> OnHit;
     public event Action OnDeath;
@@ -90,6 +92,15 @@ public class Health : MonoBehaviour
             rb.AddForce(damage.knockbackVector);
         }
 
+        if (bloodToSpawn > 0)
+        {
+            for (int i = 0; i < bloodToSpawn; i++)
+            {
+                GameObject b = Instantiate(blood, transform.position, Quaternion.identity);
+                Destroy(b, UnityEngine.Random.Range(5, 7));
+            }
+        }
+
         if (currentHealth <= MIN_HEALTH)
         {
             Debug.Log("died");
@@ -100,6 +111,15 @@ public class Health : MonoBehaviour
             foreach (Collider c in collidersToDeactivate) { c.enabled = false; }
             if (rb) rb.isKinematic = true;
             if (sf) sf.Flip(0);
+
+            if (bloodToSpawn > 0)
+            {
+                for (int i = 0; i < bloodToSpawn*5; i++)
+                {
+                    GameObject b = Instantiate(blood, transform.position, Quaternion.identity);
+                    Destroy(b, UnityEngine.Random.Range(5, 7));
+                }
+            }
 
             OnDeath?.Invoke();
             OnHealthChanged?.Invoke();

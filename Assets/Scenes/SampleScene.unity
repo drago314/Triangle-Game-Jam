@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 615971734}
   - component: {fileID: 615971733}
   - component: {fileID: 615971732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,6 +543,8 @@ MonoBehaviour:
   collidersToDeactivate:
   - {fileID: 727527385}
   sf: {fileID: 1413826345}
+  bloodToSpawn: 3
+  blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
 --- !u!65 &727527385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5623,6 +5625,8 @@ MonoBehaviour:
   collidersToDeactivate:
   - {fileID: 1333817023}
   sf: {fileID: 1870742914}
+  bloodToSpawn: 3
+  blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
 --- !u!65 &1333817023
 BoxCollider:
   m_ObjectHideFlags: 0
