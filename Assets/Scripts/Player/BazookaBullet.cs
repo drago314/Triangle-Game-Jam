@@ -6,6 +6,7 @@ public class BazookaBullet : MonoBehaviour
 {
     public int damage;
     public float velocity, knockBack, explosionRadius, detonationTime;
+    public GameObject particles;
 
     private void Start()
     {
@@ -33,6 +34,8 @@ public class BazookaBullet : MonoBehaviour
                 enemy.GetComponent<Health>().Damage(new Damage(damage, gameObject, enemy.gameObject, knockBack));
             }
         }
+        GameObject go = Instantiate(particles, transform.position, Quaternion.identity);
+        Destroy(go, 4);
         Destroy(gameObject);
     }
 }
