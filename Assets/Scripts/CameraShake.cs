@@ -24,8 +24,8 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    public void Shake(float amount)
+    public void Shake(float amount, float dissipation)
     {
-        if (amount > currentShakeAmount) currentShakeAmount = amount;
+        if (amount > currentShakeAmount) { currentShakeAmount = amount; shakeDissipation = dissipation; }
     }
 }

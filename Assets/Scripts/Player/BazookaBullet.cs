@@ -35,6 +35,7 @@ public class BazookaBullet : MonoBehaviour
             }
         }
         GameObject go = Instantiate(particles, transform.position, Quaternion.identity);
+        GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake(0.5f, 1.5f);
         Destroy(go, 4);
         Destroy(gameObject);
     }

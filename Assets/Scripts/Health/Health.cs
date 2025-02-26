@@ -112,7 +112,7 @@ public class Health : MonoBehaviour
             foreach (Collider c in collidersToDeactivate) { c.enabled = false; }
             if (rb) rb.isKinematic = true;
             if (sf) sf.Flip(0);
-            if (cs) { cs.Shake(shakeAmount); }
+            if (cs) { cs.Shake(shakeAmount,2); }
 
             if (bloodToSpawn > 0)
             {

@@ -5065,10 +5065,10 @@ GameObject:
   m_Component:
   - component: {fileID: 447538623600974640}
   - component: {fileID: 2555401938770838677}
-  - component: {fileID: 1984914524504802340}
   - component: {fileID: 4727214856815896343}
   - component: {fileID: 617830575843058416}
   - component: {fileID: 3931275400291923644}
+  - component: {fileID: 3123051522217608883}
   m_Layer: 3
   m_Name: Basic Enemy
   m_TagString: Enemy
@@ -5120,27 +5120,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &1984914524504802340
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954122529023259777}
-  m_Material: {fileID: 13400000, guid: 010682a6d43bf5548bb1555f48458f0b, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4727214856815896343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5162,7 +5141,7 @@ MonoBehaviour:
   playerMat: []
   ps: {fileID: 3919037581398271530}
   collidersToDeactivate:
-  - {fileID: 1984914524504802340}
+  - {fileID: 3123051522217608883}
   sf: {fileID: 4013648015085924095}
   bloodToSpawn: 3
   blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
@@ -5207,6 +5186,27 @@ MonoBehaviour:
   renderers: []
   overrideDimensionSwitch: 1
   flipOnStart: 1
+--- !u!135 &3123051522217608883
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954122529023259777}
+  m_Material: {fileID: 13400000, guid: 010682a6d43bf5548bb1555f48458f0b, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5431651642088040029
 GameObject:
   m_ObjectHideFlags: 0

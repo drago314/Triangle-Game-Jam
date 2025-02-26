@@ -263,6 +263,7 @@ MonoBehaviour:
   - {fileID: 5940477736427730407}
   - {fileID: 3839214101292335148}
   overrideDimensionSwitch: 0
+  flipOnStart: 0
 --- !u!1 &1838649088523789450
 GameObject:
   m_ObjectHideFlags: 0
@@ -5418,8 +5419,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.34, z: 1}
-  m_Center: {x: 0, y: 0.34, z: 0}
+  m_Size: {x: 1, y: 0.34, z: 0.5}
+  m_Center: {x: 0, y: 0.11, z: 0}
 --- !u!114 &611397229486173675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5529,6 +5530,7 @@ GameObject:
   - component: {fileID: 8052538110477550167}
   - component: {fileID: 8435555837198788559}
   - component: {fileID: 5367272824938745040}
+  - component: {fileID: 4397882528404203837}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5654,6 +5656,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &4397882528404203837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444760871077338284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69043fb154cd3af4c97d79c687e04915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDissipation: 2
 --- !u!1 &7444846770799914773
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,12 +5786,16 @@ MonoBehaviour:
   - {fileID: 1572574970095306}
   - {fileID: 5940477736427730407}
   - {fileID: 3839214101292335148}
+  step: {fileID: 1764683520256672145, guid: 459deb53e7dadfe4ea11b4b08fb0de80, type: 3}
+  stepSpawnFreq: 0.4
   cam: {fileID: 8052538110477550167}
   mousePoint: {fileID: 0}
   screenPoint: {fileID: 0}
   weaponBase: {fileID: 3142622314831958653}
   weapon: {fileID: 8688503239305737084}
   gyro: {fileID: 1159300160139825764}
+  hitOverlay: {fileID: 0}
+  cs: {fileID: 4397882528404203837}
   health: {fileID: 8784603489046091151}
 --- !u!114 &2953136314367074852
 MonoBehaviour:
@@ -5996,7 +6015,7 @@ MonoBehaviour:
     knockBack: -800
     reloadTimer: 0
     fireRateTimer: 0
-    maxClip: 4
+    maxClip: 99
     weaponType: 4
     toSpawn: {fileID: 6057348905309906044}
   weaponTip: {fileID: 1983546523714775153}
@@ -6034,6 +6053,9 @@ MonoBehaviour:
   ps: {fileID: 0}
   collidersToDeactivate: []
   sf: {fileID: 0}
+  bloodToSpawn: 0
+  blood: {fileID: 0}
+  shakeAmount: 0
 --- !u!1 &7517138099603685634
 GameObject:
   m_ObjectHideFlags: 0
@@ -6172,3 +6194,4 @@ MonoBehaviour:
   textures: []
   renderers: []
   overrideDimensionSwitch: 0
+  flipOnStart: 0

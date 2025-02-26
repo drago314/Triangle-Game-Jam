@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     private Vector2 dashDirection, daggerDashDirection;
     public GameObject dashGhost;
     public MeshRenderer[] renderers;
+    public GameObject step;
+    public float stepSpawnFreq;
+    private float stepSpawnTimer;
     Rigidbody rb;
     Vector2 input, lastNonzeroInput;
 
@@ -24,6 +27,9 @@ public class Player : MonoBehaviour
     public Transform mousePoint, screenPoint, weaponBase, weapon, gyro;
     private Vector2 startScreenPos;
     float defaultWeaponOffset;
+
+    public Animator hitOverlay;
+    public CameraShake cs;
 
     public Health health;
 
@@ -46,6 +52,7 @@ public class Player : MonoBehaviour
         currentSprintMod = 1;
 
         health.OnDeath += OnDeath;
+        health.OnHit += OnHit;
     }
 
     private void Update()
@@ -87,6 +94,13 @@ public class Player : MonoBehaviour
     {
         daggerDashTimer -= Time.fixedDeltaTime;
         dashTimer -= Time.fixedDeltaTime;
+        stepSpawnTimer -= Time.fixedDeltaTime * input.magnitude * currentSprintMod;
+        if (stepSpawnTimer < 0)
+        {
+            stepSpawnTimer = stepSpawnFreq;
+            GameObject go = Instantiate(step, new Vector3(transform.position.x, transform.position.y - 0.4f, transform.position.z), Quaternion.identity);
+            Destroy(go, 1);
+        }
 
         // Sets rb velocity
         if (dashing)
@@ -168,5 +182,10 @@ public class Player : MonoBehaviour
     protected void OnDeath()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    protected void OnHit(Damage damage)
+    {
+        hitOverlay.Play("Hit");
+        cs.Shake(0.51f, 1);
     }
 }
