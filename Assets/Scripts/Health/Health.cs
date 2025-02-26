@@ -23,6 +23,9 @@ public class Health : MonoBehaviour
     public float shakeAmount;
     public AudioSource hitSource, deathSource;
 
+    [SerializeField] private float iframes;
+    public float iframeTimer;
+
     public event Action<Damage> OnHit;
     public event Action OnDeath;
     public event Action OnHeal;
@@ -47,6 +50,11 @@ public class Health : MonoBehaviour
             renderer.material.color = Color.white;
         }
         foreach (Material m in playerMat) { m.SetColor("_EmissionColor", Color.black); m.color = Color.white; }
+    }
+
+    private void FixedUpdate()
+    {
+        if (iframeTimer > 0) { iframeTimer -= Time.fixedDeltaTime; }
     }
 
     /// <returns>A boolean of the current deathstate.</returns>
@@ -78,6 +86,10 @@ public class Health : MonoBehaviour
 
     public void Damage(Damage damage)
     {
+        if (iframeTimer > 0) return;
+
+        if (iframes > 0) { iframeTimer = iframes; }
+
         this.currentHealth = Mathf.Clamp(currentHealth - damage.damage, MIN_HEALTH, this.maxHealth);
 
         if (ps) ps.Play();

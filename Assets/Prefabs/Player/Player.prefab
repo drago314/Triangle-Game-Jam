@@ -363,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBase: {fileID: 4720040935376155319}
   currentlyIntersecting: []
+  health: {fileID: 8784603489046091151}
 --- !u!1 &3955672566175843546
 GameObject:
   m_ObjectHideFlags: 0
@@ -5435,6 +5436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBase: {fileID: 4720040935376155319}
   currentlyIntersecting: []
+  health: {fileID: 8784603489046091151}
 --- !u!1 &6406959767406467585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5970,54 +5972,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - damage: 1
-    fireRate: 0
+  - damage: 2
+    fireRate: 0.2
     range: 70
-    reloadTime: 0.5
+    reloadTime: 999
     knockBack: -500
     reloadTimer: 0
     fireRateTimer: 0
-    maxClip: 2
+    maxClip: 12
     weaponType: 0
     toSpawn: {fileID: 2079210134408334033}
   - damage: 1
     fireRate: 0.1
     range: 15
-    reloadTime: 1
+    reloadTime: 999
     knockBack: -250
     reloadTimer: 0
     fireRateTimer: 0
     maxClip: 8
     weaponType: 1
     toSpawn: {fileID: 5460620419312725668, guid: ee636f3dfd3a5fc408f033b4ac64b6db, type: 3}
-  - damage: 3
+  - damage: 1
     fireRate: 0.5
     range: 0
-    reloadTime: 2
+    reloadTime: 999
     knockBack: 0
     reloadTimer: 0
     fireRateTimer: 0
-    maxClip: 22
+    maxClip: 4
     weaponType: 2
     toSpawn: {fileID: 1727951511013852513, guid: 138940ff2db3c4d69a26f77a3a500b3c, type: 3}
   - damage: 2
     fireRate: 0.5
     range: 0
-    reloadTime: 1
+    reloadTime: 999
     knockBack: 0
     reloadTimer: 0
     fireRateTimer: 0
     maxClip: 5
     weaponType: 3
     toSpawn: {fileID: 1727951511013852513, guid: 07a878b16a03745c29d726d465263082, type: 3}
-  - damage: 1
+  - damage: 2
     fireRate: 0
     range: 30
-    reloadTime: 0.7
+    reloadTime: 999
     knockBack: -800
     reloadTimer: 0
     fireRateTimer: 0
-    maxClip: 99
+    maxClip: 20
     weaponType: 4
     toSpawn: {fileID: 6057348905309906044}
   weaponTip: {fileID: 1983546523714775153}
@@ -6026,6 +6028,7 @@ MonoBehaviour:
   offset: 0
   swingSpeed: 700
   weaponTrail: {fileID: 8434824736589535359}
+  ammoText: {fileID: 0}
   gunParticles: {fileID: 2680961167647606721}
   enemy:
     serializedVersion: 2
@@ -6060,6 +6063,8 @@ MonoBehaviour:
   shakeAmount: 0
   hitSource: {fileID: 3725856789577729138}
   deathSource: {fileID: 0}
+  iframes: 0
+  iframeTimer: 0
 --- !u!82 &6074902667744302969
 AudioSource:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class SwordHitbox : MonoBehaviour
 {
     public GameObject weaponBase;
     public List<Health> currentlyIntersecting;
+    public Health health;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,6 +25,7 @@ public class SwordHitbox : MonoBehaviour
 
     public void HitAllIntersections(Weapon weapon)
     {
+        if (currentlyIntersecting.Count > 0) { health.iframeTimer = 0.5f; }
         List<Health> killedThings = new List<Health>();
         foreach (Health health in currentlyIntersecting)
         {

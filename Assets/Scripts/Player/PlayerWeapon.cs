@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public class Weapon
@@ -27,6 +28,8 @@ public class PlayerWeapon : MonoBehaviour
     int flipped = 1;
     public TrailRenderer weaponTrail;
 
+    public TextMeshProUGUI ammoText;
+
     public ParticleSystem gunParticles;
 
     public LayerMask enemy;
@@ -49,7 +52,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // makes weapon go down when reloading
         float goalRot = 0;
-        if (activeWeapon.reloadTimer > 0.3 && activeWeapon.weaponType != Dimension.Openness && activeWeapon.weaponType != Dimension.Neuroticism) goalRot = -35;
+        if (activeWeapon.reloadTimer > 0.3) goalRot = -35;
         weaponBase.eulerAngles = new(Mathf.LerpAngle(weaponBase.eulerAngles.x, goalRot, Time.deltaTime * 8), weaponBase.eulerAngles.y, 0);
 
         // melee
@@ -61,13 +64,17 @@ public class PlayerWeapon : MonoBehaviour
     {
         activeWeapon = weapons[(int)dim];
         clip = activeWeapon.maxClip;
+        activeWeapon.reloadTimer = 0;
+        ammoText.text = "" + clip;
+        ammoText.color = Color.white;
     }
 
     private void TryFire()
     {
         if (activeWeapon.reloadTimer > 0 || clip <= 0 || activeWeapon.fireRateTimer > 0) return;
         clip--;
-        if (clip <= 0) { clip = activeWeapon.maxClip; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
+        ammoText.text = "" + clip;
+        if (clip <= 0) { ammoText.color = Color.red; clip = activeWeapon.maxClip; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
         activeWeapon.fireRateTimer = activeWeapon.fireRate;
 
         Vector3 lineEnd = weaponMaxRangePoint.position;
