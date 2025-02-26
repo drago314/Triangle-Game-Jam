@@ -116,6 +116,7 @@ public class LungeEnemy : Enemy
 
     protected void OnHit(Damage damage)
     {
+        healthBar.gameObject.SetActive(true);
         bufferTimer = bufferTime;
         healthBar.SetHealth(health.GetHealth());
     }
@@ -125,6 +126,8 @@ public class LungeEnemy : Enemy
         healthBar.gameObject.SetActive(false);
         health.enabled = false;
         this.enabled = false;
+        transform.position = new(transform.position.x, transform.localScale.y/2, transform.position.z);
+        la.enabled = false;
         //Destroy(gameObject);
     }
 }
