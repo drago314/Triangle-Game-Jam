@@ -5897,6 +5897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9a027718d544a2891dcb325621d619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triShot: 1
+  homingMissile: 0
   bufferTime: 0.1
   shootCooldown: 0.01
   shootWindupTime: 0.5
@@ -5905,5 +5907,6 @@ MonoBehaviour:
   moveSpeed: 2
   damage: 1
   pa: {fileID: 7932631896517041209}
-  projectile: {fileID: 556406549359789527, guid: 70be46f26847148b9a9aa8c8495b0c48, type: 3}
+  regularProjectile: {fileID: 556406549359789527, guid: 70be46f26847148b9a9aa8c8495b0c48, type: 3}
+  homingProjectile: {fileID: 0}
   healthBar: {fileID: 810258889309521429}

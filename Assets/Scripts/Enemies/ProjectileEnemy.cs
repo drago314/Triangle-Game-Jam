@@ -3,10 +3,11 @@ using System.Collections;
 
 public class ProjectileEnemy : Enemy
 {
+    public bool triShot, homingMissile;
     public float bufferTime, shootCooldown, shootWindupTime, shotTime, shootRange, moveSpeed;
     public int damage;
     public ProjectileAnimator pa;
-    public GameObject projectile;
+    public GameObject regularProjectile, homingProjectile;
     Player player;
     private float bufferTimer, shotTimer, shootWindupTimer, shootCooldownTimer;
     private bool shooting, windingUp, startingWindUp, startingShot;
@@ -60,7 +61,14 @@ public class ProjectileEnemy : Enemy
                 shotDirection.Normalize();
 
                 float shotAngle = Mathf.Atan2(shotDirection.x, shotDirection.z) * 180f / Mathf.PI;
-                Instantiate(projectile, transform.position, Quaternion.Euler(0, shotAngle - 90, 0));
+                if (!triShot && !homingMissile)
+                    Instantiate(regularProjectile, transform.position, Quaternion.Euler(0, shotAngle - 90, 0));
+                else if (triShot)
+                {
+                    Instantiate(regularProjectile, transform.position, Quaternion.Euler(0, shotAngle - 90, 0));
+                    Instantiate(regularProjectile, transform.position, Quaternion.Euler(0, shotAngle - 60, 0));
+                    Instantiate(regularProjectile, transform.position, Quaternion.Euler(0, shotAngle - 120, 0));
+                }
 
                 shotTimer = shotTime;
             }
