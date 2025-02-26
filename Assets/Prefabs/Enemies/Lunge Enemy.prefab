@@ -5397,6 +5397,26 @@ MonoBehaviour:
     - {fileID: 2800000, guid: c1a4ce5565a60496fb936665fd8ac552, type: 3}
     - {fileID: 2800000, guid: 62425087abb514a58a99676a226635a3, type: 3}
     - {fileID: 2800000, guid: 64e4427034df04583ad2d8888cd8111b, type: 3}
+    windUp:
+    - {fileID: 2800000, guid: c1f254ea7252c498c830c68a36b98d94, type: 3}
+    - {fileID: 2800000, guid: b93c3f431a2bf4600a9d15eb9e893813, type: 3}
+    - {fileID: 2800000, guid: a2f353c2eeea24b3697b21d7dfe65543, type: 3}
+    - {fileID: 2800000, guid: 45eb5f20070f9447f91cac1100d36634, type: 3}
+    crouch1:
+    - {fileID: 2800000, guid: 8669fc46e83af4a0b8033d8d5c1f54c2, type: 3}
+    - {fileID: 2800000, guid: fca6238acf9644e8081337e87f0c959f, type: 3}
+    - {fileID: 2800000, guid: 0edf75eafa91a44f6902e88b22a85e08, type: 3}
+    - {fileID: 2800000, guid: 66a4885abc3474ed7b68ce53fa5edb2d, type: 3}
+    crouch2:
+    - {fileID: 2800000, guid: aad428a45197144b7a92098f9f65b271, type: 3}
+    - {fileID: 2800000, guid: 3cb9893196d5b44e88aff20395bdd265, type: 3}
+    - {fileID: 2800000, guid: 79b2adb91bade49dbb757234323aa436, type: 3}
+    - {fileID: 2800000, guid: c3cbc1d0847ce4f03b9f7cab3427c797, type: 3}
+    jump:
+    - {fileID: 2800000, guid: 23778d8a5224f4be8bffd1584eae9c58, type: 3}
+    - {fileID: 2800000, guid: fcda16d6a43a74c71a022c9cd5ae5918, type: 3}
+    - {fileID: 2800000, guid: 4413da941ea3a47ae890d0074a6e1413, type: 3}
+    - {fileID: 2800000, guid: e71a92cca258f408b9452b11e401e711, type: 3}
   currentDirection: 0
   walking: 0
   animationSpeed: 0.16666667
