@@ -55,12 +55,12 @@ public class Health : MonoBehaviour
     }
 
     /// <returns>A float representing the current health.</returns>
-    public float GetHealth()
+    public int GetHealth()
     {
         return this.currentHealth;
     }
 
-    public float GetMaxHealth()
+    public int GetMaxHealth()
     {
         return this.maxHealth;
     }

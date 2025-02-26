@@ -6,6 +6,7 @@ public class BasicEnemy : Enemy
 {
     public float bufferTime, attackCooldown, attackRange, moveSpeed;
     public int damage;
+    public HealthBar healthBar;
 
     Player player;
     private float bufferTimer, attackTimer;
@@ -17,6 +18,8 @@ public class BasicEnemy : Enemy
         health = gameObject.GetComponent<Health>();
         health.OnHit += OnHit;
         health.OnDeath += OnDeath;
+
+        healthBar.SetMaxHealth(health.GetMaxHealth());
     }
 
     private void Update()
@@ -65,11 +68,13 @@ public class BasicEnemy : Enemy
 
     protected void OnHit(Damage damage)
     {
+        healthBar.SetHealth(health.GetHealth());
         bufferTimer = bufferTime;
     }
 
     protected void OnDeath()
     {
+        healthBar.SetHealth(health.GetHealth());
         health.enabled = false;
         this.enabled = false;
         //Destroy(gameObject);

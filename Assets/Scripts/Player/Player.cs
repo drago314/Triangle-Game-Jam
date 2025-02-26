@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public PlayerAnimate pa;
     public PlayerWeapon pw;
 
+    public HealthBar healthBar;
+
     [Header("XZ Input")]
     public float speed;
     public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq, daggerDashSpeed, daggerDashTime;
@@ -53,6 +55,8 @@ public class Player : MonoBehaviour
 
         health.OnDeath += OnDeath;
         health.OnHit += OnHit;
+
+        healthBar.SetMaxHealth(health.GetMaxHealth());
     }
 
     private void Update()
@@ -181,11 +185,13 @@ public class Player : MonoBehaviour
 
     protected void OnDeath()
     {
+        healthBar.SetHealth(health.GetHealth());
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     protected void OnHit(Damage damage)
     {
         hitOverlay.Play("Hit");
+        healthBar.SetHealth(health.GetHealth());
         cs.Shake(0.51f, 1);
     }
 }
