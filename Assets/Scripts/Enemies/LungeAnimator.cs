@@ -14,7 +14,7 @@ public class LungeAnimations
 [System.Serializable]
 public class LungeAnimator : MonoBehaviour
 {
-    public Material myMat;
+    public Renderer myMat;
     public LungeAnimations sprites;
     public int currentDirection;
 
@@ -42,11 +42,11 @@ public class LungeAnimator : MonoBehaviour
         {
             maxStates = 4;
             if (currentState == 0 || currentState == 2)
-                myMat.mainTexture = sprites.walkNeutral[currentDirection];
+                myMat.material.mainTexture = sprites.walkNeutral[currentDirection];
             else if (currentState == 1)
-                myMat.mainTexture = sprites.walk1[currentDirection];
+                myMat.material.mainTexture = sprites.walk1[currentDirection];
             else if (currentState == 3)
-                myMat.mainTexture = sprites.walk2[currentDirection];
+                myMat.material.mainTexture = sprites.walk2[currentDirection];
         }
     }
 

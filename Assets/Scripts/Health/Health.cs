@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
     public GameObject blood;
     private CameraShake cs;
     public float shakeAmount;
+    public AudioSource hitSource, deathSource;
 
     public event Action<Damage> OnHit;
     public event Action OnDeath;
@@ -80,6 +81,7 @@ public class Health : MonoBehaviour
         this.currentHealth = Mathf.Clamp(currentHealth - damage.damage, MIN_HEALTH, this.maxHealth);
 
         if (ps) ps.Play();
+        if (hitSource) { hitSource.Play(); hitSource.pitch += 0.1f; }
 
         // does hit mat thingy
         foreach (Renderer renderer in renderers) { renderer.material.SetColor("_EmissionColor", Color.red * 10); renderer.material.color = Color.red; }
@@ -122,6 +124,8 @@ public class Health : MonoBehaviour
                     Destroy(b, UnityEngine.Random.Range(5, 7));
                 }
             }
+
+            if (deathSource) { deathSource.Play(); }
 
             OnDeath?.Invoke();
             OnHealthChanged?.Invoke();
