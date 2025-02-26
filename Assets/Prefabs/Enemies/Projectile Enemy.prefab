@@ -5395,7 +5395,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f23fd84229304be9b28f05babc2e2f2, type: 2}
+  - {fileID: 2100000, guid: bb105d2dbfb014cb48454465faca9c7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5844,7 +5844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4c3cdf8c6874ec9bad67ef7c1b979a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myMat: {fileID: 0}
+  myMat: {fileID: 6435507758732228521}
   sprites:
     walkNeutral: []
     walk1: []
@@ -5856,7 +5856,7 @@ MonoBehaviour:
   currentDirection: 0
   walking: 0
   animationSpeed: 0.16666667
-  sf: {fileID: 0}
+  sf: {fileID: 5544190345982839477}
 --- !u!114 &616978696899637838
 MonoBehaviour:
   m_ObjectHideFlags: 0
