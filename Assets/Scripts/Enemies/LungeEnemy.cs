@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class LungeEnemy : Enemy
 {
-    public float bufferTime, lungeWindupTime, lungeRange, lungeTime, lungeSpeed, moveSpeed, lungeHeightVelocity;
+    public float bufferTime, lungeCooldown, lungeWindupTime, lungeRange, lungeTime, lungeSpeed, moveSpeed, lungeHeightVelocity;
     public int damage;
     public LungeAnimator la;
     Player player;
-    private float bufferTimer, lungeWindupTimer, lungeTimer;
-    private bool lunging, windingUp;
+    private float bufferTimer, lungeWindupTimer, lungeCooldownTimer, lungeTimer;
+    private bool lunging, windingUp, startingWindUp, startingLunge;
     private Vector3 lungeDirection;
 
     public HealthBar healthBar;
@@ -32,6 +32,9 @@ public class LungeEnemy : Enemy
 
     private void Update()
     {
+        startingWindUp = false;
+        startingLunge = false;
+
         player = GameManager.Inst.player;
 
         bufferTimer -= Time.deltaTime;
@@ -49,8 +52,10 @@ public class LungeEnemy : Enemy
             lungeWindupTimer -= Time.deltaTime;
             if (lungeWindupTimer < 0)
             {
+                startingLunge = true;
                 lunging = true;
                 windingUp = false;
+                startingWindUp = false;
                 rb.velocity += new Vector3(0, lungeHeightVelocity, 0);
                 lungeDirection = player.transform.position - transform.position;
                 lungeDirection.y = 0;
@@ -59,29 +64,34 @@ public class LungeEnemy : Enemy
                 lungeTimer = lungeTime;
             }
         }
-        else if(lunging)
+        else if (lunging)
         {
             lungeTimer -= Time.deltaTime;
+            startingLunge = false;
 
             rb.velocity = new Vector3(lungeDirection.x, rb.velocity.y, lungeDirection.z);
             if (lungeTimer < 0)
             {
+                lungeCooldownTimer = lungeCooldown;
                 lunging = false;
             }
         }
-        else if (distanceToPlayer.magnitude <= lungeRange)
+        else if (distanceToPlayer.magnitude <= lungeRange && lungeCooldownTimer < 0)
         {
             windingUp = true;
+            startingWindUp = true;
             lungeWindupTimer = lungeWindupTime;
         }
         else
         {
+            lungeCooldownTimer -= Time.deltaTime;
             MoveTowardsPlayer();
         }
-        if (rb.velocity.x != 0 || rb.velocity.z != 0)
-            la.UpdateData(Mathf.Atan2(rb.velocity.x, rb.velocity.z) * 180f / Mathf.PI, windingUp, lunging);
+
+        if (!windingUp && !lunging)
+            la.UpdateData(Mathf.Atan2(rb.velocity.x, rb.velocity.z) * 180f / Mathf.PI, windingUp, startingWindUp, lunging, startingLunge);
         else
-            la.UpdateData(windingUp, lunging);
+            la.UpdateData(windingUp, startingWindUp, lunging, startingLunge);
     }
 
     private void MoveTowardsPlayer()

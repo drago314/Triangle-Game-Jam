@@ -9,6 +9,10 @@ public class LungeAnimations
     public Texture2D[] walkNeutral;
     public Texture2D[] walk1;
     public Texture2D[] walk2;
+    public Texture2D[] windUp;
+    public Texture2D[] crouch1;
+    public Texture2D[] crouch2;
+    public Texture2D[] jump;
 }
 
 [System.Serializable]
@@ -38,7 +42,7 @@ public class LungeAnimator : MonoBehaviour
     {
         currentDirection = GetDirection();
 
-        if (true)// walking)
+        if (walking)
         {
             maxStates = 4;
             if (currentState == 0 || currentState == 2)
@@ -47,6 +51,26 @@ public class LungeAnimator : MonoBehaviour
                 myMat.material.mainTexture = sprites.walk1[currentDirection];
             else if (currentState == 3)
                 myMat.material.mainTexture = sprites.walk2[currentDirection];
+        }
+
+        if (lungeWindingUp)
+        {
+            maxStates = 2;
+            if (currentState < 0)
+                myMat.material.mainTexture = sprites.windUp[currentDirection];
+            else if (currentState == 0)
+                myMat.material.mainTexture = sprites.crouch1[currentDirection];
+            else if (currentState == 1)
+                myMat.material.mainTexture = sprites.crouch2[currentDirection];
+        }
+
+        if (lunging)
+        {
+            maxStates = 1;
+            if (currentState < 0)
+                myMat.material.mainTexture = sprites.windUp[currentDirection];
+            else if (currentState == 0)
+                myMat.material.mainTexture = sprites.jump[currentDirection];
         }
     }
 
@@ -59,12 +83,18 @@ public class LungeAnimator : MonoBehaviour
         int sum = 90;
         for (int i = 0; Mathf.Abs(i) < 360; i += sum)
         {
-            if (Mathf.Abs(Mathf.DeltaAngle(-angle, i)) < closestAngle)
+            if (Mathf.Abs(Mathf.DeltaAngle(angle, i)) < closestAngle)
             {
-                closestAngle = Mathf.Abs(Mathf.DeltaAngle(-angle, i));
+                closestAngle = Mathf.Abs(Mathf.DeltaAngle(angle, i));
                 currentDir = Mathf.Abs(i) / 90;
             }
         }
+
+        // Bandaid fix
+        if (currentDir == 2)
+            currentDir = 0;
+        else if (currentDir == 0)
+            currentDir = 2;
 
         return currentDir;
     }
@@ -72,20 +102,31 @@ public class LungeAnimator : MonoBehaviour
     private void ChangeFrame()
     {
         currentState++;
-        currentState %= maxStates;
+        if (currentState == maxStates)
+            currentState = 0;
     }
 
 
-    public void UpdateData(bool lungeWindingUp, bool lunging)
+    public void UpdateData(bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
     {
         this.lungeWindingUp = lungeWindingUp;
         this.lunging = lunging;
+        if (startingWindUp)
+        {
+            currentState = -2;
+        }
+        if (startingLunge)
+        {
+            currentState = -2;
+        }
+
+        if (!lunging && !lungeWindingUp)
+            walking = true;
     }
 
-    public void UpdateData(float movementAngle, bool lungeWindingUp, bool lunging)
+    public void UpdateData(float movementAngle, bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
     {
         this.movementAngle = movementAngle;
-        this.lungeWindingUp = lungeWindingUp;
-        this.lunging = lunging;
+        UpdateData(lungeWindingUp, startingWindUp, lunging, startingLunge);
     }
 }
