@@ -6664,11 +6664,11 @@ MonoBehaviour:
   - {fileID: 1914792044}
   fadeTime: 0.2
   maxVolumes:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
 --- !u!4 &1914792046
 Transform:
   m_ObjectHideFlags: 0

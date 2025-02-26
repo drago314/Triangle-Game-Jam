@@ -75,6 +75,7 @@ public class BasicEnemy : Enemy
     protected void OnDeath()
     {
         healthBar.SetHealth(health.GetHealth());
+        healthBar.gameObject.SetActive(false);
         health.enabled = false;
         this.enabled = false;
         //Destroy(gameObject);

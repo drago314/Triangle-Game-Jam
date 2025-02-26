@@ -5773,6 +5773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pa: {fileID: 2953136314367074852}
   pw: {fileID: 7795942256846434076}
+  healthBar: {fileID: 0}
   speed: 5
   sprintMod: 1.4
   dashSpeed: 30
@@ -6071,7 +6072,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4589c26aa0496f140a8418ad07c5853a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.214
+  m_Volume: 0.12
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
         dashCooldownTimer -= Time.deltaTime;
         if (Input.GetKey(KeyCode.Space) && !dashing && dashCooldownTimer <= 0)
         {
+            GetComponent<AudioSource>().Play();
             dashTimer = dashTime;
             dashing = true;
             if (input != Vector2.zero)
