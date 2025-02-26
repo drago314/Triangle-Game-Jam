@@ -114,7 +114,7 @@ public class PlayerWeapon : MonoBehaviour
             {
                 combo = 0;
                 goalOffset = 0;
-                GameManager.Inst.player.StartDaggerDash(new(-gyro.forward.x, -gyro.forward.z), 2);
+                GameManager.Inst.player.StartDaggerDash(new(-gyro.forward.x, -gyro.forward.z), 3);
                 activeWeapon.toSpawn.GetComponent<SwordHitbox>().active = 0.4f;
                 activeWeapon.fireRateTimer = 0.5f;
                 //weaponTrail.enabled = false;
