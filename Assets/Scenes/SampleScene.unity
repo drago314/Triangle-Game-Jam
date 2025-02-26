@@ -6032,15 +6032,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave1:
-  - {fileID: 1954122529023259777, guid: a6ae6624122e242169063a3eb38eeb6c, type: 3}
-  - {fileID: 1954122529023259777, guid: a6ae6624122e242169063a3eb38eeb6c, type: 3}
-  - {fileID: 1954122529023259777, guid: a6ae6624122e242169063a3eb38eeb6c, type: 3}
-  - {fileID: 1954122529023259777, guid: a6ae6624122e242169063a3eb38eeb6c, type: 3}
+  - {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
+  - {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
+  - {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
+  - {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
+  - {fileID: 8954827461423809958, guid: 01d21d406c63c41e59216255a8ca25c3, type: 3}
   wave1Positions:
   - {x: 0, y: 0.5, z: 0}
   - {x: 0, y: 0.5, z: 2}
   - {x: 2, y: 0.5, z: 0}
   - {x: 2, y: 0.5, z: 2}
+  - {x: 1, y: 0.5, z: 1}
 --- !u!4 &1297676653
 Transform:
   m_ObjectHideFlags: 0

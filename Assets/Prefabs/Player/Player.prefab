@@ -256,7 +256,7 @@ MonoBehaviour:
   textures:
   - {fileID: 2800000, guid: acdb0283369c2ab4baaabdd17adb0a98, type: 3}
   - {fileID: 2800000, guid: 881165ebb248fc44fb97edeb6543dd72, type: 3}
-  - {fileID: 2800000, guid: 881165ebb248fc44fb97edeb6543dd72, type: 3}
+  - {fileID: 2800000, guid: 9760249a8b2264c07877a8295a39ce54, type: 3}
   - {fileID: 2800000, guid: 881165ebb248fc44fb97edeb6543dd72, type: 3}
   - {fileID: 2800000, guid: acdb0283369c2ab4baaabdd17adb0a98, type: 3}
   renderers:
