@@ -68,7 +68,7 @@ public class BasicEnemy : Enemy
 
     protected void OnHit(Damage damage)
     {
-        healthBar.gameObject.SetActive(false);
+        healthBar.gameObject.SetActive(true);
         healthBar.SetHealth(health.GetHealth());
         bufferTimer = bufferTime;
     }
