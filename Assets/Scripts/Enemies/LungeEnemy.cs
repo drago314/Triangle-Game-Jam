@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class LungeEnemy : Enemy
 {
-    public float bufferTime, lungeWindupTime, lungeRange, lungeTime, lungeSpeed, moveSpeed, lungeHeightVelocity;
+    public float bufferTime, lungeCooldown, lungeWindupTime, lungeRange, lungeTime, lungeSpeed, moveSpeed, lungeHeightVelocity;
     public int damage;
     public LungeAnimator la;
     Player player;
-    private float bufferTimer, lungeWindupTimer, lungeTimer;
+    private float bufferTimer, lungeWindupTimer, lungeCooldownTimer, lungeTimer;
     private bool lunging, windingUp, startingWindUp, startingLunge;
     private Vector3 lungeDirection;
 
@@ -66,10 +66,11 @@ public class LungeEnemy : Enemy
             rb.velocity = new Vector3(lungeDirection.x, rb.velocity.y, lungeDirection.z);
             if (lungeTimer < 0)
             {
+                lungeCooldownTimer = lungeCooldown;
                 lunging = false;
             }
         }
-        else if (distanceToPlayer.magnitude <= lungeRange)
+        else if (distanceToPlayer.magnitude <= lungeRange && lungeCooldownTimer < 0)
         {
             windingUp = true;
             startingWindUp = true;
@@ -77,6 +78,7 @@ public class LungeEnemy : Enemy
         }
         else
         {
+            lungeCooldownTimer -= Time.deltaTime;
             MoveTowardsPlayer();
         }
 

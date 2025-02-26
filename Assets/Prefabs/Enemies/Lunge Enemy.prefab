@@ -5288,6 +5288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bufferTime: 0.1
+  lungeCooldown: 0.3
   lungeWindupTime: 0.8
   lungeRange: 3.5
   lungeTime: 0.4
