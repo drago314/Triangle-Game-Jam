@@ -30,6 +30,8 @@ public class PlayerWeapon : MonoBehaviour
     private float lastAttackTimer;
     int combo;
 
+    public AudioSource meleeSource;
+
     public TextMeshProUGUI ammoText;
 
     public ParticleSystem gunParticles;
@@ -87,6 +89,8 @@ public class PlayerWeapon : MonoBehaviour
         // Handles melee weapons
         if (activeWeapon.weaponType == Dimension.Openness || activeWeapon.weaponType == Dimension.Neuroticism)
         {
+            meleeSource.Play();
+
             // melee weapons use the clip as a combo
             // so once you run out of clip you have to "Reload" which is just the cooldonw before starting a new combo
             flipped *= -1;
