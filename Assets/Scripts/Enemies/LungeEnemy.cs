@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class LungeEnemy : Enemy
@@ -12,6 +13,8 @@ public class LungeEnemy : Enemy
     private bool lunging, windingUp;
     private Vector3 lungeDirection;
 
+    public HealthBar healthBar;
+
     Rigidbody rb;
 
     Health health;
@@ -22,6 +25,9 @@ public class LungeEnemy : Enemy
         health = gameObject.GetComponent<Health>();
         health.OnHit += OnHit;
         health.OnDeath += OnDeath;
+
+        healthBar.SetMaxHealth(health.GetHealth());
+        healthBar.SetHealth(health.GetHealth());
     }
 
     private void Update()
@@ -96,10 +102,12 @@ public class LungeEnemy : Enemy
     protected void OnHit(Damage damage)
     {
         bufferTimer = bufferTime;
+        healthBar.SetHealth(health.GetHealth());
     }
 
     protected void OnDeath()
     {
+        healthBar.gameObject.SetActive(false);
         health.enabled = false;
         this.enabled = false;
         //Destroy(gameObject);
