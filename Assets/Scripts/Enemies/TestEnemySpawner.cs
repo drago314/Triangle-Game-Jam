@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class NewMonoBehaviour : MonoBehaviour
+public class TestEnemySpawner : MonoBehaviour
 {
     public List<GameObject> wave1;
     public List<Vector3> wave1Positions;

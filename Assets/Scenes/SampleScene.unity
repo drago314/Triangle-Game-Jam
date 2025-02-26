@@ -845,6 +845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lunge Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -925,6 +929,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535024005}
   m_CullTransparentMesh: 1
+--- !u!1 &582931337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8954827461423809958, guid: 01d21d406c63c41e59216255a8ca25c3, type: 3}
+  m_PrefabInstance: {fileID: 1173768716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &615971731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,6 +1395,10 @@ PrefabInstance:
     - target: {fileID: 8954827461423809958, guid: 01d21d406c63c41e59216255a8ca25c3, type: 3}
       propertyPath: m_Name
       value: Lunge Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954827461423809958, guid: 01d21d406c63c41e59216255a8ca25c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6378,6 +6391,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1295085495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
+  m_PrefabInstance: {fileID: 453996659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1297676651
 GameObject:
   m_ObjectHideFlags: 0
@@ -6387,7 +6405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1297676653}
-  - component: {fileID: 1297676652}
+  - component: {fileID: 1297676654}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -6395,30 +6413,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1297676652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297676651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c477670d2374d55954d373a73b01ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wave1:
-  - {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
-  - {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
-  - {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
-  - {fileID: 8954827461423809958, guid: 4737e41d38c514f9485237da5140abd9, type: 3}
-  - {fileID: 8954827461423809958, guid: 01d21d406c63c41e59216255a8ca25c3, type: 3}
-  wave1Positions:
-  - {x: 0, y: 0.5, z: 0}
-  - {x: 0, y: 0.5, z: 2}
-  - {x: 2, y: 0.5, z: 0}
-  - {x: 2, y: 0.5, z: 2}
-  - {x: 1, y: 0.5, z: 1}
 --- !u!4 &1297676653
 Transform:
   m_ObjectHideFlags: 0
@@ -6434,6 +6428,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297676654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297676651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d04a71f231a4c7aa9e2f8a8c39c214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave1:
+  - {fileID: 1295085495}
+  - {fileID: 1295085495}
+  - {fileID: 1295085495}
+  - {fileID: 1295085495}
+  - {fileID: 582931337}
+  wave1Positions:
+  - {x: 0, y: 1, z: 0}
+  - {x: 2, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2}
+  - {x: 2, y: 1, z: 2}
+  - {x: 1, y: 1, z: 1}
 --- !u!1 &1321266839
 GameObject:
   m_ObjectHideFlags: 0
