@@ -140,7 +140,7 @@ TrailRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.58
+  m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 0
@@ -347,7 +347,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.7318489, z: 1}
+  m_Size: {x: 0.44, y: 0.7318489, z: 1}
   m_Center: {x: 0, y: 0.13407575, z: 0}
 --- !u!114 &1025328838637988293
 MonoBehaviour:
@@ -364,6 +364,18 @@ MonoBehaviour:
   weaponBase: {fileID: 4720040935376155319}
   currentlyIntersecting: []
   health: {fileID: 8784603489046091151}
+  active: 0
+  weapon:
+    damage: 0
+    fireRate: 0
+    range: 0
+    reloadTime: 0
+    knockBack: 0
+    reloadTimer: 0
+    fireRateTimer: 0
+    maxClip: 0
+    weaponType: 0
+    toSpawn: {fileID: 0}
 --- !u!1 &3955672566175843546
 GameObject:
   m_ObjectHideFlags: 0
@@ -5420,7 +5432,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.34, z: 0.5}
+  m_Size: {x: 0.44, y: 0.34, z: 0.5}
   m_Center: {x: 0, y: 0.11, z: 0}
 --- !u!114 &611397229486173675
 MonoBehaviour:
@@ -5437,6 +5449,18 @@ MonoBehaviour:
   weaponBase: {fileID: 4720040935376155319}
   currentlyIntersecting: []
   health: {fileID: 8784603489046091151}
+  active: 0
+  weapon:
+    damage: 0
+    fireRate: 0
+    range: 0
+    reloadTime: 0
+    knockBack: 0
+    reloadTimer: 0
+    fireRateTimer: 0
+    maxClip: 0
+    weaponType: 0
+    toSpawn: {fileID: 0}
 --- !u!1 &6406959767406467585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5973,8 +5997,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - damage: 2
-    fireRate: 0.2
-    range: 70
+    fireRate: 0
+    range: 110
     reloadTime: 999
     knockBack: -500
     reloadTimer: 0
@@ -6025,8 +6049,9 @@ MonoBehaviour:
   weaponTip: {fileID: 1983546523714775153}
   weaponMaxRangePoint: {fileID: 5958431781893942192}
   weaponBase: {fileID: 3142622314831958653}
+  gyro: {fileID: 1159300160139825764}
   offset: 0
-  swingSpeed: 700
+  swingSpeed: 900
   weaponTrail: {fileID: 8434824736589535359}
   ammoText: {fileID: 0}
   gunParticles: {fileID: 2680961167647606721}

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [Header("XZ Input")]
     public float speed;
     public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq, daggerDashSpeed, daggerDashTime;
-    private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer;
+    private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer, daggerDashMult;
     private bool dashing, daggerDashing;
     private Vector2 dashDirection, daggerDashDirection;
     public GameObject dashGhost;
@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Vector2 adjustedVelocity = daggerDashDirection.normalized * daggerDashSpeed;
+                Vector2 adjustedVelocity = daggerDashDirection.normalized * daggerDashSpeed * daggerDashMult;
                 rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
             }
         }
@@ -163,11 +163,12 @@ public class Player : MonoBehaviour
         weapon.localPosition = new(0, weapon.localPosition.y, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/4);
     }
 
-    public void StartDaggerDash(Vector2 direction)
+    public void StartDaggerDash(Vector2 direction, float mult = 1)
     {
         daggerDashDirection = direction;
         daggerDashTimer = daggerDashTime;
         daggerDashing = true;
+        daggerDashMult = mult;
     }
 
     private float RotationFromMouse()

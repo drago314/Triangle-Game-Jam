@@ -7,12 +7,19 @@ public class SwordHitbox : MonoBehaviour
     public GameObject weaponBase;
     public List<Health> currentlyIntersecting;
     public Health health;
+    public float active;
+    public Weapon weapon;
+
+    private void Update()
+    {
+        if (active > 0) active -= Time.deltaTime;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            if (!currentlyIntersecting.Contains(other.GetComponent<Health>())) { currentlyIntersecting.Add(other.GetComponent<Health>()); }
+            if (!currentlyIntersecting.Contains(other.GetComponent<Health>())) { currentlyIntersecting.Add(other.GetComponent<Health>()); if (active > 0) { HitAllIntersections(weapon); } }
         }
     }
     private void OnTriggerExit(Collider other)

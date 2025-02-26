@@ -7620,6 +7620,10 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 221038312}
+    - target: {fileID: 7795942256846434076, guid: a212cf6072a00304896e7424259bc329, type: 3}
+      propertyPath: weapons.Array.data[0].maxClip
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8055706014391028508, guid: a212cf6072a00304896e7424259bc329, type: 3}
       propertyPath: healthBar
       value: 

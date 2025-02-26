@@ -20,13 +20,15 @@ public class PlayerWeapon : MonoBehaviour
     Weapon activeWeapon;
     public Weapon[] weapons;
 
-    public Transform weaponTip, weaponMaxRangePoint, weaponBase;
+    public Transform weaponTip, weaponMaxRangePoint, weaponBase, gyro;
 
     // melee
     public float offset, swingSpeed;
     private float goalOffset;
     int flipped = 1;
     public TrailRenderer weaponTrail;
+    private float lastAttackTimer;
+    int combo;
 
     public TextMeshProUGUI ammoText;
 
@@ -43,6 +45,8 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Update()
     {
+        if (lastAttackTimer > 0) { lastAttackTimer -= Time.deltaTime; }
+
         foreach (Weapon w in weapons)
         {
             if (w.reloadTimer > 0) w.reloadTimer -= Time.deltaTime;
@@ -57,7 +61,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // melee
         offset = Mathf.MoveTowards(offset, goalOffset, Time.deltaTime * swingSpeed);
-        if (Mathf.Abs(offset - goalOffset) < 7 && Mathf.Abs(offset) > 5) { goalOffset = 0; weaponTrail.emitting = false; }
+        if (Mathf.Abs(offset - goalOffset) < 7) { goalOffset = 0; weaponTrail.emitting = false; }
     }
 
     public void SwitchWeapon(Dimension dim)
@@ -72,6 +76,7 @@ public class PlayerWeapon : MonoBehaviour
     private void TryFire()
     {
         if (activeWeapon.reloadTimer > 0 || clip <= 0 || activeWeapon.fireRateTimer > 0) return;
+
         clip--;
         ammoText.text = "" + clip;
         if (clip <= 0) { ammoText.color = Color.red; clip = activeWeapon.maxClip; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
@@ -89,14 +94,33 @@ public class PlayerWeapon : MonoBehaviour
             offset = activeWeapon.range * -flipped;
             goalOffset = activeWeapon.range * flipped;
 
+            if (lastAttackTimer <= 0) combo = 0;
+            lastAttackTimer = 0.4f;
+            combo++;
+
+            weaponBase.localEulerAngles = new(45, weaponBase.localEulerAngles.y, 0);
+
             if (activeWeapon.weaponType == Dimension.Openness)
                 weaponTrail.emitting = true;
             else
                 weaponTrail.emitting = false;
 
+            // dagger dash
             if (activeWeapon.weaponType == Dimension.Neuroticism)
                 GameManager.Inst.player.StartDaggerDash(new Vector2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z));
 
+            // sword combo thing
+            if (activeWeapon.weaponType == Dimension.Openness && combo > 2)
+            {
+                combo = 0;
+                goalOffset = 0;
+                GameManager.Inst.player.StartDaggerDash(new(-gyro.forward.x, -gyro.forward.z), 2);
+                activeWeapon.toSpawn.GetComponent<SwordHitbox>().active = 0.4f;
+                activeWeapon.fireRateTimer = 0.5f;
+                //weaponTrail.enabled = false;
+            }
+
+            activeWeapon.toSpawn.GetComponent<SwordHitbox>().weapon = activeWeapon;
             activeWeapon.toSpawn.GetComponent<SwordHitbox>().HitAllIntersections(activeWeapon);
         }
 
