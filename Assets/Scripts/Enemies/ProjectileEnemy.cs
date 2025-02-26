@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ProjectileEnemy : MonoBehaviour
+public class ProjectileEnemy : Enemy
 {
     public float bufferTime, shootCooldown, shootWindupTime, shotTime, shootRange, moveSpeed;
     public int damage;
