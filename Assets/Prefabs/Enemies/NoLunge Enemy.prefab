@@ -5135,7 +5135,7 @@ GameObject:
   - component: {fileID: 81065003065323688}
   - component: {fileID: 7649057798375747273}
   - component: {fileID: 810258889309521429}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5269,7 +5269,7 @@ GameObject:
   - component: {fileID: 3682733095078510643}
   - component: {fileID: 4394531165081464606}
   - component: {fileID: 6337866853682469319}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5429,7 +5429,7 @@ GameObject:
   - component: {fileID: 1710727321135426595}
   - component: {fileID: 712312080150078190}
   - component: {fileID: 6925434593592642054}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: EnemyHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5530,7 +5530,7 @@ GameObject:
   - component: {fileID: 6985578025441146134}
   - component: {fileID: 217856856286298959}
   - component: {fileID: 8996709349094799604}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5610,7 +5610,7 @@ GameObject:
   - component: {fileID: 5966746817629241485}
   - component: {fileID: 6247506732785847360}
   - component: {fileID: 2558669696629344761}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NoLunge Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

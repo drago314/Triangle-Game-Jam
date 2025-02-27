@@ -140,6 +140,7 @@ public class PlayerWeapon : MonoBehaviour
             float range = (weaponMaxRangePoint.position - weaponTip.position).magnitude;
             if (Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range))
             {
+                Debug.Log("here");
                 lineEnd = TryHit(hit);
             }
             else
@@ -147,11 +148,12 @@ public class PlayerWeapon : MonoBehaviour
                 // second one from cursor
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit2;
-                Enemy enemy;
-                if (Physics.Raycast(ray, out hit2) && hit2.collider.TryGetComponent<Enemy>(out enemy))
+                if (Physics.Raycast(ray, out hit2, Mathf.Infinity, 3) && hit2.collider.transform.root.TryGetComponent(out Enemy enemy))
                 {
                     lineEnd = TryHit(hit2);
+                    Debug.Log(hit2.collider.gameObject.name);
                 }
+                Debug.Log("there");
             }
 
             // draws bullet line
