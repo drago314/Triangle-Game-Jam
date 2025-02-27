@@ -22,7 +22,7 @@ public class ProjectileAnimator : MonoBehaviour
     public LungeAnimations sprites;
     public int currentDirection;
 
-    public bool walking;
+    public bool walking, outOfRange;
 
     private int currentState = 0;
     private int maxStates = 2;
@@ -44,7 +44,10 @@ public class ProjectileAnimator : MonoBehaviour
 
         if (walking)
         {
-            maxStates = 4;
+            if (outOfRange)
+                maxStates = 1;
+            else
+                maxStates = 4;
             if (currentState == 0 || currentState == 2)
                 myMat.material.mainTexture = sprites.walkNeutral[currentDirection];
             else if (currentState == 1)
@@ -107,8 +110,9 @@ public class ProjectileAnimator : MonoBehaviour
     }
 
 
-    public void UpdateData(bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
+    public void UpdateData(bool lungeWindingUp, bool outOfRange, bool startingWindUp, bool lunging, bool startingLunge)
     {
+        this.outOfRange = outOfRange;
         this.lungeWindingUp = lungeWindingUp;
         this.lunging = lunging;
         if (startingWindUp)
@@ -124,9 +128,9 @@ public class ProjectileAnimator : MonoBehaviour
             walking = true;
     }
 
-    public void UpdateData(float movementAngle, bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
+    public void UpdateData(float movementAngle, bool outOfRange, bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
     {
         this.movementAngle = movementAngle;
-        UpdateData(lungeWindingUp, startingWindUp, lunging, startingLunge);
+        UpdateData(outOfRange, lungeWindingUp, startingWindUp, lunging, startingLunge);
     }
 }
