@@ -16,6 +16,10 @@ public class Damage
     {
         this.damage = damage;
         knockbackVector = source.transform.forward * knockbackAmount;
+        if (GameManager.Inst.dimension == Dimension.Openness)
+            knockbackVector.y /= 3.5f;
+        else
+            knockbackVector.y /= 5;
     }
 
     public Damage(int damage, Vector2 knockbackVector)
