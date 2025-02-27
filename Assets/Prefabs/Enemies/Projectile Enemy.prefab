@@ -5883,6 +5883,7 @@ MonoBehaviour:
     - {fileID: 2800000, guid: e71a92cca258f408b9452b11e401e711, type: 3}
   currentDirection: 0
   walking: 0
+  outOfRange: 0
   animationSpeed: 0.16666667
   sf: {fileID: 5544190345982839477}
 --- !u!114 &616978696899637838
@@ -5905,6 +5906,7 @@ MonoBehaviour:
   shotTime: 1
   shootRange: 4
   moveSpeed: 2
+  playerSeeDistance: 10
   damage: 1
   pa: {fileID: 7932631896517041209}
   regularProjectile: {fileID: 556406549359789527, guid: 70be46f26847148b9a9aa8c8495b0c48, type: 3}

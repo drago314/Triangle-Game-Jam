@@ -4,13 +4,13 @@ using System.Collections;
 public class ProjectileEnemy : Enemy
 {
     public bool triShot, homingMissile;
-    public float bufferTime, shootCooldown, shootWindupTime, shotTime, shootRange, moveSpeed;
+    public float bufferTime, shootCooldown, shootWindupTime, shotTime, shootRange, moveSpeed, playerSeeDistance;
     public int damage;
     public ProjectileAnimator pa;
     public GameObject regularProjectile, homingProjectile;
     Player player;
     private float bufferTimer, shotTimer, shootWindupTimer, shootCooldownTimer;
-    private bool shooting, windingUp, startingWindUp, startingShot;
+    private bool shooting, windingUp, startingWindUp, startingShot, outOfRange;
     private Vector3 shotDirection;
 
     public HealthBar healthBar;
@@ -94,13 +94,25 @@ public class ProjectileEnemy : Enemy
         else
         {
             shootCooldownTimer -= Time.deltaTime;
-            MoveTowardsPlayer();
+            Vector3 direction = player.transform.position - transform.position;
+            direction.y = 0;
+
+            if (direction.magnitude > playerSeeDistance)
+            {
+                outOfRange = true;
+                rb.velocity += new Vector3(0, rb.velocity.y, 0);
+            }
+            else
+            {
+                MoveTowardsPlayer();
+                outOfRange = false;
+            }
         }
 
         if (!windingUp && !shooting)
-            pa.UpdateData(Mathf.Atan2(rb.velocity.x, rb.velocity.z) * 180f / Mathf.PI, windingUp, startingWindUp, shooting, startingShot);
+            pa.UpdateData(Mathf.Atan2(rb.velocity.x, rb.velocity.z) * 180f / Mathf.PI, outOfRange, windingUp, startingWindUp, shooting, startingShot);
         else
-            pa.UpdateData(windingUp, startingWindUp, shooting, startingShot);
+            pa.UpdateData(outOfRange, windingUp, startingWindUp, shooting, startingShot);
     }
 
     private void MoveTowardsPlayer()

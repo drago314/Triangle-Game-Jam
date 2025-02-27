@@ -5682,6 +5682,7 @@ MonoBehaviour:
   lungeSpeed: 8
   moveSpeed: 2
   lungeHeightVelocity: 5
+  playerSeeDistance: 8
   damage: 2
   la: {fileID: 6247506732785847360}
   healthBar: {fileID: 810258889309521429}
@@ -5713,6 +5714,8 @@ MonoBehaviour:
   shakeAmount: 0.36
   hitSource: {fileID: 2558669696629344761}
   deathSource: {fileID: 6184874495233468308}
+  iframes: 0
+  iframeTimer: 0
 --- !u!114 &1706810794037630070
 MonoBehaviour:
   m_ObjectHideFlags: 0
