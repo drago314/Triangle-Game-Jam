@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
 
         health.OnDeath += OnDeath;
         health.OnHit += OnHit;
+        health.OnHeal += OnHeal;
 
         healthBar.SetMaxHealth(health.GetMaxHealth());
     }
@@ -207,5 +208,9 @@ public class Player : MonoBehaviour
         hitOverlay.Play("Hit");
         healthBar.SetHealth(health.GetHealth());
         cs.Shake(0.51f, 1);
+    }
+    protected void OnHeal()
+    {
+        healthBar.SetHealth(health.GetHealth());
     }
 }

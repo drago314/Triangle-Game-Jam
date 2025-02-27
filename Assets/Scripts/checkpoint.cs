@@ -21,6 +21,7 @@ public class checkpoint : MonoBehaviour
             PlayerPrefs.SetFloat("CheckpointX",transform.position.x);
             PlayerPrefs.SetFloat("CheckpointZ",transform.position.z);
             Debug.Log("Saved Position");
+            GameManager.Inst.player.health.Heal(100);
         }
     }
 }
