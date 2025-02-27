@@ -6308,8 +6308,8 @@ MonoBehaviour:
   - colorFilter: {r: 1, g: 1, b: 1, a: 1}
     hueShift: -2.63
     saturation: 262.5
-    contrast: 58.7
-    postExposure: 1.12
+    contrast: 0
+    postExposure: 0.3
   - colorFilter: {r: 1, g: 1, b: 1, a: 1}
     hueShift: 0
     saturation: 29.2
