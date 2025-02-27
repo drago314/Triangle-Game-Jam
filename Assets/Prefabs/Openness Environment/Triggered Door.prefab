@@ -155,8 +155,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.95, y: 3.77, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5, y: 0.96, z: 1}
+  m_Center: {x: 0, y: -0.18, z: 0}
 --- !u!54 &7993930711150635152
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -513,7 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3974a0b2620694c8c841a165c4a80fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 2334838977313429272}
+  doors:
+  - {fileID: 2334838977313429272}
 --- !u!1 &8059329916796939673
 GameObject:
   m_ObjectHideFlags: 0

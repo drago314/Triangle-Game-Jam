@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class DoorTriggerer : MonoBehaviour
 {
-    public TriggeredDoor door;
+    public List<TriggeredDoor> doors;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == GameManager.Inst.player.gameObject)
-            door.Close();
+        {
+            foreach(var door in doors)
+                door.Close();
+        }
     }
 }
