@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public HealthBar healthBar;
 
     [Header("XZ Input")]
+    public bool TUTORIAL_MODE = false;
     public float speed;
     public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq, daggerDashSpeed, daggerDashTime;
     private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer, daggerDashMult;
@@ -92,10 +93,14 @@ public class Player : MonoBehaviour
                 dashDirection = input;
             else
                 dashDirection = lastNonzeroInput;
-            Dimension nextDimension = GameManager.Inst.dimension + 1;
-            if ((int) nextDimension > 4)
-                nextDimension = 0;
-            GameManager.Inst.SwitchDimension(nextDimension);
+
+            if (!TUTORIAL_MODE)
+            {
+                Dimension nextDimension = GameManager.Inst.dimension + 1;
+                if ((int)nextDimension > 4)
+                    nextDimension = 0;
+                GameManager.Inst.SwitchDimension(nextDimension);
+            }
         }
     }
 

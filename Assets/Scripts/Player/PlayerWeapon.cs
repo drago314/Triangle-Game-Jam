@@ -79,7 +79,8 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (activeWeapon.reloadTimer > 0 || clip <= 0 || activeWeapon.fireRateTimer > 0) return;
 
-        clip--;
+        if (!GameManager.Inst.player.TUTORIAL_MODE)
+            clip--;
         ammoText.text = "" + clip;
         if (clip <= 0) { ammoText.color = Color.red; clip = activeWeapon.maxClip; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
         activeWeapon.fireRateTimer = activeWeapon.fireRate;
