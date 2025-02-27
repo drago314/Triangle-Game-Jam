@@ -25,6 +25,8 @@ public class EnemyLockedDoor : MonoBehaviour
     {
         if (count == 0)
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, yGoal, downSpeed), transform.position.z);
+        if (transform.position.y <= yGoal + 0.05)
+            Destroy(this.gameObject);
     }
 
     void OnDeath()
