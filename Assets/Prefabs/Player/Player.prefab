@@ -6315,9 +6315,9 @@ MonoBehaviour:
     saturation: 29.2
     contrast: 32.4
     postExposure: 1.2
-  - colorFilter: {r: 0.64716977, g: 0.7509787, b: 1, a: 1}
+  - colorFilter: {r: 0.4951868, g: 0.5410814, b: 0.90188676, a: 1}
     hueShift: 0
-    saturation: 14
+    saturation: 135.6
     contrast: 31
     postExposure: 0.14
   - colorFilter: {r: 1, g: 1, b: 1, a: 1}
@@ -6325,10 +6325,10 @@ MonoBehaviour:
     saturation: 0
     contrast: 0
     postExposure: 0.14
-  - colorFilter: {r: 1, g: 0.3226415, b: 0.3226415, a: 1}
+  - colorFilter: {r: 1, g: 0.5943396, b: 0.5943396, a: 1}
     hueShift: 0
-    saturation: 45.2
-    contrast: 62.2
+    saturation: 377.1
+    contrast: -37.52
     postExposure: -0.5
   v: {fileID: 0}
   lerpSpeed: 3
