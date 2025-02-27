@@ -31,7 +31,7 @@ public class LungeAnimator : MonoBehaviour
     public SpriteFlip sf;
 
     private float movementAngle;
-    private bool lungeWindingUp, lunging;
+    private bool lungeWindingUp, lunging, outOfRange;
 
     private void Start()
     {
@@ -44,7 +44,11 @@ public class LungeAnimator : MonoBehaviour
 
         if (walking)
         {
-            maxStates = 4;
+            if (outOfRange)
+                maxStates = 1;
+            else
+                maxStates = 4;
+
             if (currentState == 0 || currentState == 2)
                 myMat.material.mainTexture = sprites.walkNeutral[currentDirection];
             else if (currentState == 1)
@@ -107,8 +111,9 @@ public class LungeAnimator : MonoBehaviour
     }
 
 
-    public void UpdateData(bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
+    public void UpdateData(bool outOfRange, bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
     {
+        this.outOfRange = outOfRange;
         this.lungeWindingUp = lungeWindingUp;
         this.lunging = lunging;
         if (startingWindUp)
@@ -124,9 +129,9 @@ public class LungeAnimator : MonoBehaviour
             walking = true;
     }
 
-    public void UpdateData(float movementAngle, bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
+    public void UpdateData(float movementAngle, bool outOfRange, bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
     {
         this.movementAngle = movementAngle;
-        UpdateData(lungeWindingUp, startingWindUp, lunging, startingLunge);
+        UpdateData(outOfRange, lungeWindingUp, startingWindUp, lunging, startingLunge);
     }
 }

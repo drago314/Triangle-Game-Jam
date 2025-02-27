@@ -5,14 +5,13 @@ using UnityEngine.UI;
 
 public class LungeEnemy : Enemy
 {
-    public float bufferTime, lungeCooldown, lungeWindupTime, lungeRange, lungeTime, lungeSpeed, moveSpeed, lungeHeightVelocity;
+    public float bufferTime, lungeCooldown, lungeWindupTime, lungeRange, lungeTime, lungeSpeed, moveSpeed, lungeHeightVelocity, playerSeeDistance;
     public int damage;
     public LungeAnimator la;
     Player player;
     private float bufferTimer, lungeWindupTimer, lungeCooldownTimer, lungeTimer;
-    private bool lunging, windingUp, startingWindUp, startingLunge;
+    private bool lunging, windingUp, startingWindUp, startingLunge, outOfRange;
     private Vector3 lungeDirection;
-
     public HealthBar healthBar;
 
     Rigidbody rb;
@@ -84,14 +83,26 @@ public class LungeEnemy : Enemy
         }
         else
         {
+            Vector3 direction = player.transform.position - transform.position;
+            direction.y = 0;
+
+            if (direction.magnitude > playerSeeDistance)
+            {
+                outOfRange = true;
+                rb.velocity += new Vector3(0, rb.velocity.y, 0);
+            }
+            else
+            {
+                MoveTowardsPlayer();
+                outOfRange = false;
+            }
             lungeCooldownTimer -= Time.deltaTime;
-            MoveTowardsPlayer();
         }
 
-        if (!windingUp && !lunging)
-            la.UpdateData(Mathf.Atan2(rb.velocity.x, rb.velocity.z) * 180f / Mathf.PI, windingUp, startingWindUp, lunging, startingLunge);
+        if (!windingUp && !lunging && !outOfRange)
+            la.UpdateData(Mathf.Atan2(rb.velocity.x, rb.velocity.z) * 180f / Mathf.PI, outOfRange, windingUp, startingWindUp, lunging, startingLunge);
         else
-            la.UpdateData(windingUp, startingWindUp, lunging, startingLunge);
+            la.UpdateData(outOfRange, windingUp, startingWindUp, lunging, startingLunge);
     }
 
     private void MoveTowardsPlayer()
