@@ -289,7 +289,7 @@ Transform:
   m_GameObject: {fileID: 1838649088523789450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5802,12 +5802,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3659078111387612317}
   - component: {fileID: 3914362108844301505}
-  - component: {fileID: 4927152447809870214}
   - component: {fileID: 8055706014391028508}
   - component: {fileID: 2953136314367074852}
   - component: {fileID: 7795942256846434076}
   - component: {fileID: 8784603489046091151}
   - component: {fileID: 6074902667744302969}
+  - component: {fileID: 526153572244658528}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5858,30 +5858,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!65 &4927152447809870214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7444846770799914773}
-  m_Material: {fileID: 13400000, guid: 010682a6d43bf5548bb1555f48458f0b, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.23, y: 1, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_CollisionDetection: 1
 --- !u!114 &8055706014391028508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5919,6 +5898,10 @@ MonoBehaviour:
   weaponBase: {fileID: 3142622314831958653}
   weapon: {fileID: 8688503239305737084}
   gyro: {fileID: 1159300160139825764}
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  foot: {fileID: 1159300160139825764}
   hitOverlay: {fileID: 0}
   cs: {fileID: 4397882528404203837}
   health: {fileID: 8784603489046091151}
@@ -6284,6 +6267,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &526153572244658528
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444846770799914773}
+  m_Material: {fileID: 13400000, guid: 010682a6d43bf5548bb1555f48458f0b, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.07
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7517138099603685634
 GameObject:
   m_ObjectHideFlags: 0

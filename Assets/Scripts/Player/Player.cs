@@ -30,6 +30,10 @@ public class Player : MonoBehaviour
     private Vector2 startScreenPos;
     float defaultWeaponOffset;
 
+    public LayerMask ground;
+    public Transform foot;
+    bool grounded;
+
     public Animator hitOverlay;
     public CameraShake cs;
 
@@ -97,6 +101,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        grounded = Physics.OverlapSphere(foot.position, 0.1f, ground).Length > 0;
+        if (grounded) { transform.position = new(transform.position.x, 0.5f, transform.position.z); }
+
         daggerDashTimer -= Time.fixedDeltaTime;
         dashTimer -= Time.fixedDeltaTime;
         stepSpawnTimer -= Time.fixedDeltaTime * input.magnitude * currentSprintMod;
