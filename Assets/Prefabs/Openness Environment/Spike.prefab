@@ -558,6 +558,6 @@ MonoBehaviour:
   lerpSpeed: 6
   spikesUpTime: 0.5
   cooldownTime: 0.2
-  upYAmount: 0.8
+  upYAmount: 0.07
   damage: 1
   thingsToDamage: []
