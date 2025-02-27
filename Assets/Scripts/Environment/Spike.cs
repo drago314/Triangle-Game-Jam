@@ -62,7 +62,7 @@ public class Spike : MonoBehaviour
             }
         }
 
-        transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, goalY, lerpSpeed), transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, goalY, lerpSpeed * Time.deltaTime), transform.position.z);
     }
     private void OnTriggerEnter(Collider other)
     {
