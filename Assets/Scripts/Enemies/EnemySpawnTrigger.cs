@@ -17,6 +17,8 @@ public class EnemySpawnTrigger : MonoBehaviour
         if (!other.TryGetComponent<Player>(out p))
             return;
 
+        if (GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play(); }
+
         beenTriggered = true;
         foreach (GameObject enemy in enemies)
         {

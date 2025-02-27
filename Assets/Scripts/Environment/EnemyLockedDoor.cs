@@ -10,6 +10,8 @@ public class EnemyLockedDoor : MonoBehaviour
     int count;
     float yGoal;
 
+    bool played;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +26,12 @@ public class EnemyLockedDoor : MonoBehaviour
     private void Update()
     {
         if (count == 0)
+        {
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, yGoal, downSpeed * Time.deltaTime), transform.position.z);
+            if (GetComponent<AudioSource>() && !played) { GetComponent<AudioSource>().Play(); played = true; }
+        }
         if (transform.position.y <= yGoal + 0.05)
-            Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     void OnDeath()

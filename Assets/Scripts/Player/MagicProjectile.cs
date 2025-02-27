@@ -27,6 +27,7 @@ public class MagicProjectile : MonoBehaviour
 
     private void Detonate()
     { 
+        //GameObject go = Instantiate(particles);
         Destroy(gameObject);
     }
 }
