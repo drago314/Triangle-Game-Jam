@@ -45,6 +45,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         SwitchWeapon(Dimension.Openness);
         GameManager.Inst.OnDimensionSwitch += SwitchWeapon;
+        if (!GameManager.Inst.player.TUTORIAL_MODE) ammoText.gameObject.SetActive(true);
     }
 
     private void Update()
