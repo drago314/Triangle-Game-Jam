@@ -5808,6 +5808,7 @@ GameObject:
   - component: {fileID: 8784603489046091151}
   - component: {fileID: 6074902667744302969}
   - component: {fileID: 526153572244658528}
+  - component: {fileID: -6280334854119187639}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6290,6 +6291,46 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6280334854119187639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444846770799914773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54f484eebac2874ba575b3e6b405ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infos:
+  - colorFilter: {r: 0.948408, g: 1, b: 0.6698113, a: 1}
+    hueShift: -0.78
+    saturation: 262.5
+    contrast: 30.4
+    postExposure: 0
+  - colorFilter: {r: 1, g: 1, b: 1, a: 1}
+    hueShift: 0
+    saturation: 29.2
+    contrast: 32.4
+    postExposure: 1.2
+  - colorFilter: {r: 0.64716977, g: 0.7509787, b: 1, a: 1}
+    hueShift: 0
+    saturation: 14
+    contrast: 31
+    postExposure: 0.14
+  - colorFilter: {r: 1, g: 1, b: 1, a: 1}
+    hueShift: 0
+    saturation: 0
+    contrast: 0
+    postExposure: 0.14
+  - colorFilter: {r: 1, g: 0.3226415, b: 0.3226415, a: 1}
+    hueShift: 0
+    saturation: 45.2
+    contrast: 62.2
+    postExposure: 0.38
+  v: {fileID: 0}
+  lerpSpeed: 3
 --- !u!1 &7517138099603685634
 GameObject:
   m_ObjectHideFlags: 0
