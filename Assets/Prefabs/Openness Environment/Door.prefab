@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   downSpeed: 0.005
-  yDown: 0
+  yDown: 1
 --- !u!1 &4632766249458544431
 GameObject:
   m_ObjectHideFlags: 0
