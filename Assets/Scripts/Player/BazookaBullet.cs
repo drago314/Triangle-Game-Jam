@@ -18,9 +18,11 @@ public class BazookaBullet : MonoBehaviour
         transform.position += transform.right.normalized * velocity * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject != GameManager.Inst.player.gameObject)
+        Debug.Log(other.gameObject.name);
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Wall")
             Detonate();
     }
 
