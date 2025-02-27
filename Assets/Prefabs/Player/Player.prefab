@@ -6315,7 +6315,7 @@ MonoBehaviour:
     saturation: 29.2
     contrast: 32.4
     postExposure: 1.2
-  - colorFilter: {r: 0.4951868, g: 0.5410814, b: 0.90188676, a: 1}
+  - colorFilter: {r: 0.74390167, g: 0.76561403, b: 0.93207544, a: 1}
     hueShift: 0
     saturation: 135.6
     contrast: 31
