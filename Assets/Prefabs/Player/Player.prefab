@@ -6304,11 +6304,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infos:
-  - colorFilter: {r: 0.948408, g: 1, b: 0.6698113, a: 1}
-    hueShift: -0.78
+  - colorFilter: {r: 1, g: 1, b: 1, a: 1}
+    hueShift: -2.63
     saturation: 262.5
-    contrast: 30.4
-    postExposure: 0
+    contrast: 58.7
+    postExposure: 1.12
   - colorFilter: {r: 1, g: 1, b: 1, a: 1}
     hueShift: 0
     saturation: 29.2
@@ -6328,7 +6328,7 @@ MonoBehaviour:
     hueShift: 0
     saturation: 45.2
     contrast: 62.2
-    postExposure: 0.38
+    postExposure: -0.5
   v: {fileID: 0}
   lerpSpeed: 3
 --- !u!1 &7517138099603685634

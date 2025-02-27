@@ -21,12 +21,19 @@ public class PlayerPostProcessing : MonoBehaviour
 
     private void Start()
     {
+        currentInfo = infos[0];
         v.profile.TryGet(out colorAdjustments);
+        colorAdjustments.hueShift.value = currentInfo.hueShift;
+        colorAdjustments.saturation.value = currentInfo.saturation;
+        colorAdjustments.contrast.value = currentInfo.contrast;
+        colorAdjustments.postExposure.value = currentInfo.postExposure;
+        colorAdjustments.colorFilter.value = currentInfo.colorFilter;
         GameManager.Inst.OnDimensionSwitch += SwitchDim;
     }
 
     private void Update()
     {
+        if (!colorAdjustments) return;
         colorAdjustments.hueShift.value = Mathf.Lerp(colorAdjustments.hueShift.value, currentInfo.hueShift, lerpSpeed * Time.deltaTime);
         colorAdjustments.saturation.value = Mathf.Lerp(colorAdjustments.saturation.value, currentInfo.saturation, lerpSpeed * Time.deltaTime);
         colorAdjustments.contrast.value = Mathf.Lerp(colorAdjustments.contrast.value, currentInfo.contrast, lerpSpeed * Time.deltaTime);
