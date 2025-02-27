@@ -34,6 +34,8 @@ public class PlayerWeapon : MonoBehaviour
 
     public TextMeshProUGUI ammoText;
 
+    public ReloadText reloadText; 
+
     public ParticleSystem gunParticles;
 
     public LayerMask enemy;
@@ -71,6 +73,7 @@ public class PlayerWeapon : MonoBehaviour
         activeWeapon = weapons[(int)dim];
         clip = activeWeapon.maxClip;
         activeWeapon.reloadTimer = 0;
+        reloadText.UpdateWarning(clip);
         ammoText.text = "" + clip;
         ammoText.color = Color.white;
     }
@@ -82,7 +85,7 @@ public class PlayerWeapon : MonoBehaviour
         if (!GameManager.Inst.player.TUTORIAL_MODE)
             clip--;
         ammoText.text = "" + clip;
-        if (clip <= 0) { ammoText.color = Color.red; clip = activeWeapon.maxClip; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
+        if (clip <= 0) { reloadText.UpdateWarning(clip); ammoText.color = Color.red; clip = activeWeapon.maxClip; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
         activeWeapon.fireRateTimer = activeWeapon.fireRate;
 
         Vector3 lineEnd = weaponMaxRangePoint.position;
