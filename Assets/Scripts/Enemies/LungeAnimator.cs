@@ -106,7 +106,7 @@ public class LungeAnimator : MonoBehaviour
     private void ChangeFrame()
     {
         currentState++;
-        if (currentState == maxStates)
+        if (currentState >= maxStates)
             currentState = 0;
     }
 
