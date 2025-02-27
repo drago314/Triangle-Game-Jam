@@ -6,11 +6,12 @@ public class TriggeredDoor : MonoBehaviour
 {
     public float downSpeed, yDown;
 
-    float yGoal, yNow;
+    float yGoal, yNow, yStart;
 
     // Start is called before the first frame update
     void Start()
     {
+        yStart = transform.position.y;
         yGoal = transform.position.y - yDown;
         yNow = transform.position.y;
     }
@@ -19,6 +20,11 @@ public class TriggeredDoor : MonoBehaviour
     {
         if (GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play();}
         yNow = yGoal;
+    }
+
+    public void Open()
+    {
+        yNow = yStart;
     }
 
     private void Update()
