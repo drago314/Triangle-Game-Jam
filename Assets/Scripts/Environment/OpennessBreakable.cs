@@ -31,7 +31,8 @@ public class OpennessBreakable : MonoBehaviour
 
     private void OnDeath()
     {
-        door.RemoveObject();
+        if (door != null)
+            door.RemoveObject();
         Destroy(this.gameObject);
     }
 }
