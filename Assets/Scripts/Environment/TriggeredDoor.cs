@@ -6,7 +6,7 @@ public class TriggeredDoor : MonoBehaviour
 {
     public float downSpeed, yDown;
 
-    public List<OpennessBreakable> thingsNeededToBreak;
+    public int thingsNeededToBreak = 0;
 
     float yGoal, yNow, yStart;
 
@@ -18,11 +18,11 @@ public class TriggeredDoor : MonoBehaviour
         yNow = transform.position.y;
     }
 
-    public void RemoveObject(OpennessBreakable thing)
+    public void RemoveObject()
     {
-        thingsNeededToBreak.Remove(thing);
-        if (thingsNeededToBreak.Count == 0)
-            Open();
+        thingsNeededToBreak--;
+        if (thingsNeededToBreak == 0)
+            Close();
     }
 
 

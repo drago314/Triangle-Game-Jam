@@ -188,6 +188,14 @@ public class PlayerWeapon : MonoBehaviour
             Health health = enemy.GetComponent<Health>();
             health.Damage(new Damage(activeWeapon.damage, weaponBase.gameObject, enemy.gameObject, activeWeapon.knockBack));
         }
+        OpennessBreakable thing;
+        if(hit.collider.TryGetComponent<OpennessBreakable>(out thing))
+        {
+            thing.GetComponent<Health>().Damage(new Damage(activeWeapon.damage));
+        }
+
+
+
         return hit.point;
     }
 }
