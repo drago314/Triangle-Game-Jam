@@ -6,6 +6,8 @@ public class TriggeredDoor : MonoBehaviour
 {
     public float downSpeed, yDown;
 
+    public List<OpennessBreakable> thingsNeededToBreak;
+
     float yGoal, yNow, yStart;
 
     // Start is called before the first frame update
@@ -15,6 +17,14 @@ public class TriggeredDoor : MonoBehaviour
         yGoal = transform.position.y - yDown;
         yNow = transform.position.y;
     }
+
+    public void RemoveObject(OpennessBreakable thing)
+    {
+        thingsNeededToBreak.Remove(thing);
+        if (thingsNeededToBreak.Count == 0)
+            Open();
+    }
+
 
     public void Close()
     {
