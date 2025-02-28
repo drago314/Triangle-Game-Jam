@@ -5058,7 +5058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6652206166146300447
 Transform:
   m_ObjectHideFlags: 0
@@ -5848,9 +5848,9 @@ MonoBehaviour:
   windUpTime: 0.5
   jumpTime: 2
   moveSpeed: 0
-  jumpHeightVelocity: 3
   damageRange: 3
   damage: 1
+  amountOfJumps: 0
   oa: {fileID: 4246382922108115753}
   healthBar: {fileID: 810258889309521429}
 --- !u!114 &4246382922108115753

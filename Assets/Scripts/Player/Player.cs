@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer, daggerDashMult;
     private bool dashing, daggerDashing;
     private Vector2 dashDirection, daggerDashDirection;
+    Vector3 adjustedInput;
     public GameObject dashGhost;
     public MeshRenderer[] renderers;
     public GameObject step;
@@ -79,6 +80,8 @@ public class Player : MonoBehaviour
         if (input != Vector2.zero)
             lastNonzeroInput = input;
 
+        adjustedInput = transform.right * input.x + transform.forward * input.y;
+
         pa.walking = input != Vector2.zero;
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { currentSprintMod = sprintMod; }
@@ -91,7 +94,7 @@ public class Player : MonoBehaviour
             dashTimer = dashTime;
             dashing = true;
             if (input != Vector2.zero)
-                dashDirection = input;
+                dashDirection = new(adjustedInput.x, adjustedInput.z);
             else
                 dashDirection = lastNonzeroInput;
 
@@ -166,12 +169,12 @@ public class Player : MonoBehaviour
         
         if (!dashing && !daggerDashing)
         {
-            Vector2 adjustedVelocity = input.normalized * speed * currentSprintMod;
+            Vector2 adjustedVelocity = new Vector2(adjustedInput.x, adjustedInput.z).normalized * speed * currentSprintMod;
             rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
         }
         // Sets rotation
-        weaponBase.eulerAngles = new(weaponBase.eulerAngles.x, RotationFromMouse() + 90 + pw.offset, 0);
-        gyro.eulerAngles = new(0, RotationFromMouse() + 90, 0);
+        weaponBase.localEulerAngles = new(weaponBase.eulerAngles.x, RotationFromMouse() + 90 + pw.offset, 0);
+        gyro.localEulerAngles = new(0, RotationFromMouse() + 90, 0);
         // Offsets weapon localpos to avoid clipping through torso when weapon faces side to side
         weapon.localPosition = new(0, weapon.localPosition.y, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/4);
     }
