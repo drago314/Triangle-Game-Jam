@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         health = GetComponent<Health>();
 
         SwitchDim();
-        Invoke("SwitchDim", 0.1f);
+        Invoke("SwitchDim", 0.3f);
 
         Debug.Log(PlayerPrefs.GetFloat("CheckpointX") + ", " + PlayerPrefs.GetFloat("CheckpointZ"));
         if (PlayerPrefs.GetFloat("CheckpointX") != 0 && PlayerPrefs.GetFloat("CheckpointZ") != 0)
@@ -136,7 +136,12 @@ public class Player : MonoBehaviour
                     nextDimension = 0;
                 GameManager.Inst.SwitchDimension(nextDimension);
             }
-            else { GameManager.Inst.SwitchDimension(GameManager.Inst.dimension); }
+            else {
+                Dimension nextDimension = GameManager.Inst.dimension + 1;
+                if ((int)nextDimension > lockedToDim)
+                    nextDimension = 0;
+                GameManager.Inst.SwitchDimension(nextDimension);
+            }
         }
     }
 

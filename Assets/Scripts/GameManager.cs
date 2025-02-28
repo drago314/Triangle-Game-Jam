@@ -32,7 +32,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SwitchDimension(Dimension.Openness);
+        Dimension switchDim = Dimension.Openness;
+        if (player.lockedToDim != -1) switchDim = (Dimension)player.lockedToDim;
+        SwitchDimension(switchDim);
     }
 
     public void SwitchDimension(Dimension newDimension)
