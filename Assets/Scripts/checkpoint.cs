@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class checkpoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public MeshRenderer myMat;
+    public Texture sprite1, sprite2;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        myMat.material.mainTexture = sprite1;
     }
 
     private void OnTriggerEnter(Collider other){
@@ -22,6 +18,8 @@ public class checkpoint : MonoBehaviour
             PlayerPrefs.SetFloat("CheckpointZ",transform.position.z);
             Debug.Log("Saved Position");
             GameManager.Inst.player.health.Heal(100);
+
+            myMat.material.mainTexture = sprite2;
         }
     }
 }
