@@ -148,7 +148,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f59bf3106b1ef45cfbbbd9ee996e409d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You're worthless
+  m_text: I'm broken inside
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b2e4fb1d1ea37f44c86c2959d678c314, type: 2}
   m_sharedMaterial: {fileID: -6896958978548369156, guid: b2e4fb1d1ea37f44c86c2959d678c314, type: 2}
