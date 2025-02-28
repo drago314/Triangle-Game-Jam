@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        ReCheckpoint();
+        //ReCheckpoint();
     }
 
     private void Start()
@@ -60,12 +60,13 @@ public class Player : MonoBehaviour
         defaultWeaponOffset = weapon.localPosition.z;
         health = GetComponent<Health>();
 
-        if (lockedToDim != -1) GameManager.Inst.SwitchDimension((Dimension)lockedToDim);
+        SwitchDim();
+        Invoke("SwitchDim", 0.1f);
 
         Debug.Log(PlayerPrefs.GetFloat("CheckpointX") + ", " + PlayerPrefs.GetFloat("CheckpointZ"));
         if (PlayerPrefs.GetFloat("CheckpointX") != 0 && PlayerPrefs.GetFloat("CheckpointZ") != 0)
         {
-           // rb.MovePosition(new Vector3(PlayerPrefs.GetFloat("CheckpointX"), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ")));
+            //rb.MovePosition(new Vector3(PlayerPrefs.GetFloat("CheckpointX"), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ")));
             Debug.Log(transform.position);
         }
 
@@ -91,6 +92,8 @@ public class Player : MonoBehaviour
             Debug.Log(transform.position);
         }
     }
+
+    private void SwitchDim() { if (lockedToDim != -1) GameManager.Inst.SwitchDimension((Dimension)lockedToDim); }
 
     private void Update()
     {
@@ -163,7 +166,7 @@ public class Player : MonoBehaviour
                 GameObject ghost = Instantiate(dashGhost, transform.position, Quaternion.identity);
                 ghost.transform.GetChild(0).localEulerAngles = weaponBase.localEulerAngles;
                 DashGhost dg = ghost.GetComponent<DashGhost>();
-                for(int i = 0; i < dg.renderers.Length; i++)
+                for (int i = 0; i < dg.renderers.Length; i++)
                 {
                     //dg.renderers[i].material.mainTexture = renderers[i].material.mainTexture;
                     dg.renderers[i].material.color = new Color(0, 1, 1);
@@ -195,7 +198,7 @@ public class Player : MonoBehaviour
                 rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
             }
         }
-        
+
         if (!dashing && !daggerDashing)
         {
             Vector2 adjustedVelocity = new Vector2(adjustedInput.x, adjustedInput.z).normalized * speed * currentSprintMod;
@@ -205,7 +208,7 @@ public class Player : MonoBehaviour
         weaponBase.localEulerAngles = new(weaponBase.eulerAngles.x, RotationFromMouse() + 90 + pw.offset, 0);
         gyro.localEulerAngles = new(0, RotationFromMouse() + 90, 0);
         // Offsets weapon localpos to avoid clipping through torso when weapon faces side to side
-        weapon.localPosition = new(0, weapon.localPosition.y, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad))/4);
+        weapon.localPosition = new(0, weapon.localPosition.y, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad)) / 4);
     }
 
     public void StartDaggerDash(Vector2 direction, float mult = 1)
