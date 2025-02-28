@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Switch Dimensions To Reload
+  m_text: Dash To Reload
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5cad3a8cb36807b40920ded68b48ea92, type: 2}
   m_sharedMaterial: {fileID: -1366360880120654892, guid: 5cad3a8cb36807b40920ded68b48ea92, type: 2}

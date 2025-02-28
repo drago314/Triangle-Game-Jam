@@ -1,0 +1,34 @@
+using UnityEngine;
+using System.Collections;
+
+public class OpennessBreakable : MonoBehaviour
+{
+    public Renderer myMat;
+    public Texture2D[] sprites;
+    public TriggeredDoor door;
+
+    Health health;
+    private int count = 0;
+
+
+    private void Start()
+    {
+        health = gameObject.GetComponent<Health>();
+        health.OnHit += OnHit;
+        health.OnDeath += OnDeath;
+        myMat.material.mainTexture = sprites[count];
+    }
+
+    private void OnHit(Damage damage)
+    {
+        count ++;
+        if (count < sprites.Length)
+            myMat.material.mainTexture = sprites[count];
+    }
+
+    private void OnDeath()
+    {
+        door.Open();
+        Destroy(this.gameObject);
+    }
+}
