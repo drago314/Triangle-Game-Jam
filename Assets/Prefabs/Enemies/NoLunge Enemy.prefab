@@ -5604,12 +5604,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5646892109591262776}
   - component: {fileID: 6039327725251393948}
-  - component: {fileID: 3442459416248509010}
   - component: {fileID: 1057769005203111579}
   - component: {fileID: 1706810794037630070}
   - component: {fileID: 5966746817629241485}
-  - component: {fileID: 6247506732785847360}
   - component: {fileID: 2558669696629344761}
+  - component: {fileID: 6920543192064439315}
+  - component: {fileID: 4841501942961245238}
   m_Layer: 3
   m_Name: NoLunge Enemy
   m_TagString: Enemy
@@ -5662,30 +5662,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3442459416248509010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8954827461423809958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 139e25131f6574e1daef17a0041a7273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bufferTime: 0.1
-  lungeCooldown: 0.3
-  lungeWindupTime: 0.8
-  lungeRange: -1
-  lungeTime: 0.4
-  lungeSpeed: 8
-  moveSpeed: 2
-  lungeHeightVelocity: 5
-  playerSeeDistance: 8
-  damage: 2
-  la: {fileID: 6247506732785847360}
-  healthBar: {fileID: 810258889309521429}
 --- !u!114 &1057769005203111579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5760,59 +5736,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6247506732785847360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8954827461423809958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9f020d1391bf4e8ca353d2c5d0c5805, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myMat: {fileID: 6435507758732228521}
-  sprites:
-    walkNeutral:
-    - {fileID: 2800000, guid: 8be78d88933b7426798f93a3506680c5, type: 3}
-    - {fileID: 2800000, guid: d29001fc3c898461c9c6194fa575e10a, type: 3}
-    - {fileID: 2800000, guid: ee177e8d6735b40bd96907543f3fc83f, type: 3}
-    - {fileID: 2800000, guid: a13268f25c6864bbb81bd43a1def9954, type: 3}
-    walk1:
-    - {fileID: 2800000, guid: 37aafbf734cac45e8bc16a30a572911e, type: 3}
-    - {fileID: 2800000, guid: cf1b2da24da3e4d9aa66bdbb75ad3935, type: 3}
-    - {fileID: 2800000, guid: 2f570758efdec4cec94be57c6d2d2916, type: 3}
-    - {fileID: 2800000, guid: 5832e5d79e5c34e1dae46524960a330a, type: 3}
-    walk2:
-    - {fileID: 2800000, guid: c8c2082dae00c49cdac53e5c2b21f926, type: 3}
-    - {fileID: 2800000, guid: c1a4ce5565a60496fb936665fd8ac552, type: 3}
-    - {fileID: 2800000, guid: 62425087abb514a58a99676a226635a3, type: 3}
-    - {fileID: 2800000, guid: 64e4427034df04583ad2d8888cd8111b, type: 3}
-    windUp:
-    - {fileID: 2800000, guid: c1f254ea7252c498c830c68a36b98d94, type: 3}
-    - {fileID: 2800000, guid: b93c3f431a2bf4600a9d15eb9e893813, type: 3}
-    - {fileID: 2800000, guid: a2f353c2eeea24b3697b21d7dfe65543, type: 3}
-    - {fileID: 2800000, guid: 45eb5f20070f9447f91cac1100d36634, type: 3}
-    crouch1:
-    - {fileID: 2800000, guid: 8669fc46e83af4a0b8033d8d5c1f54c2, type: 3}
-    - {fileID: 2800000, guid: fca6238acf9644e8081337e87f0c959f, type: 3}
-    - {fileID: 2800000, guid: 0edf75eafa91a44f6902e88b22a85e08, type: 3}
-    - {fileID: 2800000, guid: 66a4885abc3474ed7b68ce53fa5edb2d, type: 3}
-    crouch2:
-    - {fileID: 2800000, guid: aad428a45197144b7a92098f9f65b271, type: 3}
-    - {fileID: 2800000, guid: 3cb9893196d5b44e88aff20395bdd265, type: 3}
-    - {fileID: 2800000, guid: 79b2adb91bade49dbb757234323aa436, type: 3}
-    - {fileID: 2800000, guid: c3cbc1d0847ce4f03b9f7cab3427c797, type: 3}
-    jump:
-    - {fileID: 2800000, guid: 23778d8a5224f4be8bffd1584eae9c58, type: 3}
-    - {fileID: 2800000, guid: fcda16d6a43a74c71a022c9cd5ae5918, type: 3}
-    - {fileID: 2800000, guid: 4413da941ea3a47ae890d0074a6e1413, type: 3}
-    - {fileID: 2800000, guid: e71a92cca258f408b9452b11e401e711, type: 3}
-  currentDirection: 0
-  walking: 0
-  animationSpeed: 0.16666667
-  sf: {fileID: 5544190345982839477}
 --- !u!82 &2558669696629344761
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5909,3 +5832,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6920543192064439315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954827461423809958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1df0828c233425db2130303c8edba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bufferTime: 0.1
+  moveSpeed: 2
+  playerSeeDistance: 8
+  damage: 1
+  wa: {fileID: 4841501942961245238}
+  healthBar: {fileID: 810258889309521429}
+--- !u!114 &4841501942961245238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954827461423809958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b927ff1878fb148dfb5ab3c75099b84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMat: {fileID: 6435507758732228521}
+  sprites:
+    walkNeutral:
+    - {fileID: 2800000, guid: 46cf384b4556746859b45a711185ca97, type: 3}
+    - {fileID: 2800000, guid: e3a94884f88a04069bad2e8cdedd9382, type: 3}
+    - {fileID: 2800000, guid: 8744c6a7d78774c69a64e714db20d997, type: 3}
+    - {fileID: 2800000, guid: ea89f2fe483ab4798a269705e9b50efb, type: 3}
+    walk1:
+    - {fileID: 2800000, guid: 5bb33a5d2a89d4f24b7f295624304210, type: 3}
+    - {fileID: 2800000, guid: 2b806c4fc586f402690ecaedc3988598, type: 3}
+    - {fileID: 2800000, guid: 202466883c0644bb69061daeeae1e793, type: 3}
+    - {fileID: 2800000, guid: 36a60acf8d90740088c5580af93d27db, type: 3}
+  currentDirection: 0
+  walking: 0
+  animationSpeed: 0.16666667
+  sf: {fileID: 5544190345982839477}
