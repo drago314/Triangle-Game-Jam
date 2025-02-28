@@ -10708,6 +10708,8 @@ MonoBehaviour:
   pa: {fileID: 2953136314367074852}
   pw: {fileID: 7795942256846434076}
   healthBar: {fileID: 0}
+  lockedToDim: 0
+  dashSpriteFlip: {fileID: 0}
   TUTORIAL_MODE: 0
   speed: 5
   sprintMod: 1.4
