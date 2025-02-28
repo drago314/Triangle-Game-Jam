@@ -11005,7 +11005,7 @@ MonoBehaviour:
   shakeAmount: 0
   hitSource: {fileID: 3725856789577729138}
   deathSource: {fileID: 0}
-  iframes: 0
+  iframes: 1
   iframeTimer: 0
 --- !u!82 &6074902667744302969
 AudioSource:

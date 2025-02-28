@@ -129,7 +129,7 @@ public class ProjectileEnemy : Enemy
         rb.velocity = new Vector3(direction.x, rb.velocity.y, direction.z);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject == GameManager.Inst.player.gameObject)
             GameManager.Inst.player.health.Damage(new Damage(damage));
