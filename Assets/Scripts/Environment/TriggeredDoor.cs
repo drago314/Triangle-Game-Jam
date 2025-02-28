@@ -8,6 +8,8 @@ public class TriggeredDoor : MonoBehaviour
 
     public int thingsNeededToBreak = 0;
 
+    bool played;
+
     float yGoal, yNow, yStart;
 
     // Start is called before the first frame update
@@ -28,7 +30,8 @@ public class TriggeredDoor : MonoBehaviour
 
     public void Close()
     {
-        if (GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play();}
+        if (!played && GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play();}
+        played = true;
         yNow = yGoal;
     }
 
