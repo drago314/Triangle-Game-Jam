@@ -97,8 +97,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(transform.position);
-
         // XZ input
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) { input.x = -1; }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) { input.x = 1; }

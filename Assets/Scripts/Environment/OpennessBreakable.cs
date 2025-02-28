@@ -16,7 +16,7 @@ public class OpennessBreakable : MonoBehaviour
         health = gameObject.GetComponent<Health>();
         health.OnHit += OnHit;
         health.OnDeath += OnDeath;
-        myMat.material.mainTexture = sprites[count];
+        door.thingsNeededToBreak++;
     }
 
     private void OnHit(Damage damage)
@@ -28,7 +28,7 @@ public class OpennessBreakable : MonoBehaviour
 
     private void OnDeath()
     {
-        door.RemoveObject(this);
+        door.RemoveObject();
         Destroy(this.gameObject);
     }
 }

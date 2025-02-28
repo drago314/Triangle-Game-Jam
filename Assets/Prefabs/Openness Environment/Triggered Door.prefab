@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   downSpeed: 3
   yDown: -1
+  thingsNeededToBreak: 0
 --- !u!1 &4632766249458544431
 GameObject:
   m_ObjectHideFlags: 0
