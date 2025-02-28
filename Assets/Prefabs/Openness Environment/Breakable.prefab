@@ -195,8 +195,6 @@ GameObject:
   - component: {fileID: 8314393715063303108}
   - component: {fileID: 620578914229383118}
   - component: {fileID: 1867638368693087245}
-  - component: {fileID: 4419625093481679274}
-  - component: {fileID: 7302443304097257479}
   m_Layer: 3
   m_Name: Back
   m_TagString: Untagged
@@ -290,45 +288,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.85, y: 1, z: 0.43}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4419625093481679274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559540576577203838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002790fae0e86413b8dcc719dcb1b2a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myMat: {fileID: 0}
-  sprites: []
-  door: {fileID: 0}
---- !u!114 &7302443304097257479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559540576577203838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a9cd737ca8ae4292a40afcaf266ef14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 3
-  renderers: []
-  hitMaterial: {fileID: 0}
-  playerMat: []
-  ps: {fileID: 0}
-  collidersToDeactivate: []
-  sf: {fileID: 0}
-  bloodToSpawn: 0
-  blood: {fileID: 0}
-  shakeAmount: 0
-  hitSource: {fileID: 0}
-  deathSource: {fileID: 0}
-  iframes: 0
-  iframeTimer: 0
