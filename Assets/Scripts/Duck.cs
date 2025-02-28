@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Duck : MonoBehaviour
+public class Duck : Enemy
 {
     public Vector3 startPoint;
     public Vector3 endPoint;
@@ -34,6 +34,11 @@ public class Duck : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("Quad clicked: " + gameObject.name);
     }
 
     void onDeath(){
