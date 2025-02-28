@@ -63,8 +63,10 @@ public class Player : MonoBehaviour
         SwitchDim();
         Invoke("SwitchDim", 0.3f);
 
-        Debug.Log(PlayerPrefs.GetFloat("CheckpointX") + ", " + PlayerPrefs.GetFloat("CheckpointZ"));
-        if (PlayerPrefs.GetFloat("CheckpointX") != 0 && PlayerPrefs.GetFloat("CheckpointZ") != 0)
+        Scene scene = SceneManager.GetActiveScene();
+        string thing = scene.buildIndex.ToString();
+
+        if (PlayerPrefs.GetFloat("CheckpointX" + thing) != 0 && PlayerPrefs.GetFloat("CheckpointZ" + thing) != 0)
         {
             // rb.MovePosition(new Vector3(PlayerPrefs.GetFloat("CheckpointX"), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ")));
             Debug.Log(transform.position);

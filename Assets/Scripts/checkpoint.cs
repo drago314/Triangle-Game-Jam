@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class checkpoint : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
-            PlayerPrefs.SetFloat("CheckpointX",transform.position.x);
-            PlayerPrefs.SetFloat("CheckpointZ",transform.position.z);
+            Scene scene = SceneManager.GetActiveScene();
+            string thing = scene.buildIndex.ToString();
+            PlayerPrefs.SetFloat("CheckpointX" + thing, transform.position.x);
+            PlayerPrefs.SetFloat("CheckpointZ" + thing, transform.position.z);
             Debug.Log("Saved Position");
             GameManager.Inst.player.health.Heal(100);
 
