@@ -10,19 +10,19 @@ public class ProjectileAnimations
     public Texture2D[] walk1;
     public Texture2D[] walk2;
     public Texture2D[] windUp;
-    public Texture2D[] crouch1;
-    public Texture2D[] crouch2;
-    public Texture2D[] jump;
+    public Texture2D[] windUp2;
+    public Texture2D[] windUp3;
+    public Texture2D[] crouch;
 }
 
 [System.Serializable]
 public class ProjectileAnimator : MonoBehaviour
 {
     public Renderer myMat;
-    public LungeAnimations sprites;
+    public ProjectileAnimations sprites;
     public int currentDirection;
 
-    public bool walking, outOfRange;
+    public bool windingUp, walking, shooting, outOfRange;
 
     private int currentState = 0;
     private int maxStates = 2;
@@ -48,6 +48,7 @@ public class ProjectileAnimator : MonoBehaviour
                 maxStates = 1;
             else
                 maxStates = 4;
+
             if (currentState == 0 || currentState == 2)
                 myMat.material.mainTexture = sprites.walkNeutral[currentDirection];
             else if (currentState == 1)
@@ -56,24 +57,27 @@ public class ProjectileAnimator : MonoBehaviour
                 myMat.material.mainTexture = sprites.walk2[currentDirection];
         }
 
-        if (lungeWindingUp)
+        if (windingUp)
         {
-            maxStates = 2;
-            if (currentState < 0)
+            maxStates = 1;
+
+            if (currentState == -3)
                 myMat.material.mainTexture = sprites.windUp[currentDirection];
-            else if (currentState == 0)
-                myMat.material.mainTexture = sprites.crouch1[currentDirection];
-            else if (currentState == 1)
-                myMat.material.mainTexture = sprites.crouch2[currentDirection];
+            else if (currentState == -2)
+                myMat.material.mainTexture = sprites.windUp2[currentDirection];
+            else if (currentState == -1)
+                myMat.material.mainTexture = sprites.windUp3[currentDirection];
+            else
+                myMat.material.mainTexture = sprites.crouch[currentDirection];
         }
 
-        if (lunging)
+        if (shooting)
         {
             maxStates = 1;
             if (currentState < 0)
-                myMat.material.mainTexture = sprites.windUp[currentDirection];
-            else if (currentState == 0)
-                myMat.material.mainTexture = sprites.jump[currentDirection];
+                myMat.material.mainTexture = sprites.windUp2[currentDirection];
+            else
+                myMat.material.mainTexture = sprites.walkNeutral[currentDirection];
         }
     }
 
@@ -83,23 +87,19 @@ public class ProjectileAnimator : MonoBehaviour
         float closestAngle = 360;
         float angle = movementAngle;
 
-        int sum = 90;
-        for (int i = 0; Mathf.Abs(i) < 360; i += sum)
+        int sum = 60;
+        int j = 0;
+        for (int i = -150; Mathf.Abs(i) < 160; i += sum)
         {
             if (Mathf.Abs(Mathf.DeltaAngle(angle, i)) < closestAngle)
             {
                 closestAngle = Mathf.Abs(Mathf.DeltaAngle(angle, i));
-                currentDir = Mathf.Abs(i) / 90;
+                currentDir = j;
             }
+            j++;
         }
 
-        // Bandaid fix
-        if (currentDir == 2)
-            currentDir = 0;
-        else if (currentDir == 0)
-            currentDir = 2;
-
-        return currentDir;
+        return 5 - currentDir;
     }
 
     private void ChangeFrame()
@@ -110,27 +110,27 @@ public class ProjectileAnimator : MonoBehaviour
     }
 
 
-    public void UpdateData(bool lungeWindingUp, bool outOfRange, bool startingWindUp, bool lunging, bool startingLunge)
+    public void UpdateData(bool outOfRange, bool windingUp, bool startingWindUp, bool shooting, bool startingShot)
     {
         this.outOfRange = outOfRange;
-        this.lungeWindingUp = lungeWindingUp;
-        this.lunging = lunging;
+        this.windingUp = windingUp;
+        this.shooting = shooting;
         if (startingWindUp)
         {
-            currentState = -2;
+            currentState = -3;
         }
-        if (startingLunge)
+        if (startingShot)
         {
-            currentState = -2;
+            currentState = -1;
         }
 
-        if (!lunging && !lungeWindingUp)
+        if (!windingUp && !shooting)
             walking = true;
     }
 
-    public void UpdateData(float movementAngle, bool outOfRange, bool lungeWindingUp, bool startingWindUp, bool lunging, bool startingLunge)
+    public void UpdateData(float movementAngle, bool outOfRange, bool windingUp, bool startingWindUp, bool shooting, bool startingShot)
     {
         this.movementAngle = movementAngle;
-        UpdateData(outOfRange, lungeWindingUp, startingWindUp, lunging, startingLunge);
+        UpdateData(outOfRange, windingUp, startingWindUp, shooting, startingShot);
     }
 }
