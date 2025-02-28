@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     public HealthBar healthBar;
 
+    public int lockedToDim;
+    public SpriteFlip dashSpriteFlip;
     [Header("XZ Input")]
     public bool TUTORIAL_MODE = false;
     public float speed;
@@ -46,6 +48,11 @@ public class Player : MonoBehaviour
     {
     }
 
+    private void Awake()
+    {
+        ReCheckpoint();
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,9 +60,18 @@ public class Player : MonoBehaviour
         defaultWeaponOffset = weapon.localPosition.z;
         health = GetComponent<Health>();
 
-        if(PlayerPrefs.GetFloat("CheckpointX")!=0&&PlayerPrefs.GetFloat("CheckpointZ")!=0)
-            transform.position = new Vector3(PlayerPrefs.GetFloat("CheckpointX"),transform.position.y,PlayerPrefs.GetFloat("CheckpointZ"));
+        if (lockedToDim != -1) GameManager.Inst.SwitchDimension((Dimension)lockedToDim);
 
+        Debug.Log(PlayerPrefs.GetFloat("CheckpointX") + ", " + PlayerPrefs.GetFloat("CheckpointZ"));
+        if (PlayerPrefs.GetFloat("CheckpointX") != 0 && PlayerPrefs.GetFloat("CheckpointZ") != 0)
+        {
+            rb.MovePosition(new Vector3(PlayerPrefs.GetFloat("CheckpointX"), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ")));
+            Debug.Log(transform.position);
+        }
+
+        //Invoke("ReCheckpoint", 0.2f);
+        //Invoke("ReCheckpoint", 0.3f);
+        //Invoke("ReCheckpoint", 0.4f);
 
         currentSprintMod = 1;
 
@@ -66,8 +82,20 @@ public class Player : MonoBehaviour
         healthBar.SetMaxHealth(health.GetMaxHealth());
     }
 
+    private void ReCheckpoint()
+    {
+        Debug.Log(PlayerPrefs.GetFloat("CheckpointX") + ", " + PlayerPrefs.GetFloat("CheckpointZ"));
+        if (PlayerPrefs.GetFloat("CheckpointX") != 0 && PlayerPrefs.GetFloat("CheckpointZ") != 0)
+        {
+            transform.position = new Vector3(PlayerPrefs.GetFloat("CheckpointX"), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ"));
+            Debug.Log(transform.position);
+        }
+    }
+
     private void Update()
     {
+        Debug.Log(transform.position);
+
         // XZ input
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) { input.x = -1; }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) { input.x = 1; }
@@ -98,13 +126,14 @@ public class Player : MonoBehaviour
             else
                 dashDirection = lastNonzeroInput;
 
-            if (!TUTORIAL_MODE)
+            if (!TUTORIAL_MODE && lockedToDim == -1)
             {
                 Dimension nextDimension = GameManager.Inst.dimension + 1;
                 if ((int)nextDimension > 4)
                     nextDimension = 0;
                 GameManager.Inst.SwitchDimension(nextDimension);
             }
+            else { GameManager.Inst.SwitchDimension(GameManager.Inst.dimension); }
         }
     }
 

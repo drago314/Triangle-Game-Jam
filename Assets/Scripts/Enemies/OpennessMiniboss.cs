@@ -88,7 +88,7 @@ public class OpennessMiniboss : Enemy
             }
         }
 
-        Debug.Log(rb.velocity.y);
+        //Debug.Log(rb.velocity.y);
 
         oa.UpdateData(windingUp, startingWindUp, jumping, startingJump);
     }
