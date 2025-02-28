@@ -6,6 +6,7 @@ public class OpennessBreakable : MonoBehaviour
     public Renderer myMat;
     public Texture2D[] sprites;
     public TriggeredDoor door;
+    public AudioSource audioSource;
 
     Health health;
     private int count = 0;
@@ -21,6 +22,8 @@ public class OpennessBreakable : MonoBehaviour
 
     private void OnHit(Damage damage)
     {
+        if (count == 0)
+            audioSource.Play();
         count ++;
         if (count < sprites.Length)
             myMat.material.mainTexture = sprites[count];
