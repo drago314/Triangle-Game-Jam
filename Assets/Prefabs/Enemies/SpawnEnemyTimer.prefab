@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 8954827461423809958, guid: 9d4d2bad5dc434edfb212e613d53e048, type: 3}
-  time: 2
+  time: 4
