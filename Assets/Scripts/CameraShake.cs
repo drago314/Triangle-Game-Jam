@@ -11,7 +11,7 @@ public class CameraShake : MonoBehaviour
 
     public bool introAnim;
     public float lerpSpeed, standardFov;
-    float realLerpSpeed;
+    [HideInInspector] public float realLerpSpeed;
     public Vector3 standardPos, standardRot;
     bool chill;
     public GameObject[] toEnable;
@@ -22,9 +22,9 @@ public class CameraShake : MonoBehaviour
     private void Start()
     {
         startPos = transform.localPosition;
+        cam = GetComponent<Camera>();
         if (introAnim) 
         {
-            cam = GetComponent<Camera>();
             startPos = standardPos; 
             Invoke("Anim", 3);
             Invoke("Chill", 4.5f);

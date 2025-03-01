@@ -258,4 +258,16 @@ public class Player : MonoBehaviour
     {
         healthBar.SetHealth(health.GetHealth());
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Set Camera"))
+        {
+            cs.introAnim = true;
+            cs.standardFov = cam.fieldOfView;
+            cs.standardPos = other.transform.GetChild(0).localPosition;
+            cs.standardRot = other.transform.GetChild(0).localEulerAngles;
+            cs.realLerpSpeed = 3;
+        }
+    }
 }
