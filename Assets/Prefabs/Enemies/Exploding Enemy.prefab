@@ -5869,15 +5869,15 @@ MonoBehaviour:
   myMat: {fileID: 6435507758732228521}
   sprites:
     walkNeutral:
-    - {fileID: 2800000, guid: 46cf384b4556746859b45a711185ca97, type: 3}
-    - {fileID: 2800000, guid: e3a94884f88a04069bad2e8cdedd9382, type: 3}
-    - {fileID: 2800000, guid: 8744c6a7d78774c69a64e714db20d997, type: 3}
-    - {fileID: 2800000, guid: ea89f2fe483ab4798a269705e9b50efb, type: 3}
+    - {fileID: 2800000, guid: e8181d2162dc24111a99affa4d6e362d, type: 3}
+    - {fileID: 2800000, guid: ca53c010c73334cb0b8066c2aa25a575, type: 3}
+    - {fileID: 2800000, guid: 617248aa826604b0ab67191a57309b00, type: 3}
+    - {fileID: 2800000, guid: 9a3a0e44c2a654412971ba4683f4952b, type: 3}
     walk1:
-    - {fileID: 2800000, guid: 5bb33a5d2a89d4f24b7f295624304210, type: 3}
-    - {fileID: 2800000, guid: 2b806c4fc586f402690ecaedc3988598, type: 3}
-    - {fileID: 2800000, guid: 202466883c0644bb69061daeeae1e793, type: 3}
-    - {fileID: 2800000, guid: 36a60acf8d90740088c5580af93d27db, type: 3}
+    - {fileID: 2800000, guid: ef31cfdf5498c4dcf9d9b0ac1125946b, type: 3}
+    - {fileID: 2800000, guid: b12b608f958a9492483856d471b0edd7, type: 3}
+    - {fileID: 2800000, guid: 641ee03b569dc4edb8f5f88d7c6a2e6f, type: 3}
+    - {fileID: 2800000, guid: 0ef88c874cd7f48f9a94ee22b20161da, type: 3}
   currentDirection: 0
   walking: 0
   animationSpeed: 0.16666667
