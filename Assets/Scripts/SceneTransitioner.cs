@@ -10,6 +10,8 @@ public class SceneTransitioner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.TryGetComponent<Player>(out Player _))
+            return;
         eyelid1.SetActive(true);
         eyelid2.SetActive(true);
 
