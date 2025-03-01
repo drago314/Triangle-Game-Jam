@@ -147,8 +147,6 @@ public class PlayerWeapon : MonoBehaviour
             float range = (weaponMaxRangePoint.position - weaponTip.position).magnitude;
             if (Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range) && hit.collider.TryGetComponent(out Health health))
             {
-                Debug.Log("here");
-                Debug.Log(hit.collider.gameObject);
                 lineEnd = TryHit(hit);
             }
             else
