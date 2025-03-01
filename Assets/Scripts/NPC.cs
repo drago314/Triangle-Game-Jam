@@ -54,7 +54,7 @@ public class NPC : MonoBehaviour
         text.text = lines[currentLine];
         if (source) 
         {
-            if (randomPitch) source.pitch = Random.Range(0.7f, 1.3f);
+            if (randomPitch) source.pitch = Random.Range(1f, 1.6f);
             source.clip = clips[currentLine];
             source.Play(); 
         }

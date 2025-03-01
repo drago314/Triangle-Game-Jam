@@ -36,6 +36,7 @@ public class RhythmGame : MonoBehaviour
         {
             cam.localPosition = Vector3.Lerp(cam.localPosition, new(cam.localPosition.x, cam.localPosition.y, camPos), lerpSpeed * Time.fixedDeltaTime);
             cam.localEulerAngles = Vector3.Lerp(cam.localEulerAngles, new(camRot, cam.localEulerAngles.y, cam.localEulerAngles.z), lerpSpeed * Time.fixedDeltaTime);
+            avgSpawnPerArrow = Mathf.Clamp(avgSpawnPerArrow - Time.fixedDeltaTime / 50, 0.2f, avgSpawnPerArrow);
         }
 
         if (alpha < 1 && entered && score < scoreToWin) 

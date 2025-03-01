@@ -106,7 +106,7 @@ public class Health : MonoBehaviour
         this.currentHealth = Mathf.Clamp(currentHealth - damage.damage, MIN_HEALTH, this.maxHealth);
 
         if (ps) ps.Play();
-        if (hitSource) { hitSource.Play(); hitSource.pitch += 0.1f; }
+        if (hitSource) { hitSource.Play(); hitSource.pitch += 0.25f * damage.damage; }
 
         // does hit mat thingy
         FlashRed(0.14f);
