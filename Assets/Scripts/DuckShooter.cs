@@ -7,6 +7,7 @@ public class DuckShooter : MonoBehaviour
     public GameObject duck;
     public Transform[] DuckSpawnPoints;
     public Transform[] DuckEndPoints;
+    public PlayerWeapon pw;
     public float avgSpawnTime; // Same average spawn time for all spawners
 
 
@@ -27,6 +28,7 @@ public class DuckShooter : MonoBehaviour
             GameObject go = Instantiate(duck, spawnPoint.position, spawnPoint.rotation);
             go.GetComponent<Duck>().startPoint = spawnPoint.position;
             go.GetComponent<Duck>().endPoint = endPoint.position;
+            go.GetComponent<Duck>().pw = pw;
             
             float spawnInterval = Random.Range(avgSpawnTime * 0.5f, avgSpawnTime * 1.5f);
             yield return new WaitForSeconds(spawnInterval);

@@ -16,7 +16,7 @@ public class Weapon
 
 public class PlayerWeapon : MonoBehaviour
 {
-    int clip;
+    public int clip;
     Weapon activeWeapon;
     public Weapon[] weapons;
 
@@ -88,7 +88,7 @@ public class PlayerWeapon : MonoBehaviour
         if (!GameManager.Inst.player.TUTORIAL_MODE)
             clip--;
         ammoText.text = "" + clip;
-        if (clip <= 0) { reloadText.UpdateWarning(clip); ammoText.color = Color.red; clip = activeWeapon.maxClip; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
+        if (clip <= 0) { reloadText.UpdateWarning(clip); ammoText.color = Color.red; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
         activeWeapon.fireRateTimer = activeWeapon.fireRate;
 
         Vector3 lineEnd = weaponMaxRangePoint.position;

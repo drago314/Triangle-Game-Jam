@@ -8,6 +8,7 @@ public class Duck : Enemy
     public float speed = 2f;
     public float bobAmount = 0.5f;
     public float bobSpeed = 2f;
+    public PlayerWeapon pw;
 
     private float startTime;
     private float journeyLength;
@@ -18,6 +19,7 @@ public class Duck : Enemy
     {
         startTime = Time.time;
         journeyLength = Vector3.Distance(startPoint, endPoint);
+        transform.localScale = new Vector3( startPoint.x < endPoint.x ? 1 : -1, 1, 1);
         health.OnDeath += onDeath;
     }
 
@@ -38,7 +40,9 @@ public class Duck : Enemy
 
     void OnMouseDown()
     {
-        Destroy(gameObject);
+        Debug.Log(pw.clip);
+        if(pw.clip>0 && GameManager.Inst.dimension == Dimension.Conscientiousness)
+            Destroy(gameObject);
     }
 
     void onDeath(){
