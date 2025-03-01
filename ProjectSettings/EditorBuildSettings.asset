@@ -6,9 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: feebb31a4b989774f9cd4da28725c34e
+  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: e6baf7d35d430dc44a388259f7187d88
   - enabled: 1
     path: Assets/Scenes/Opennenss.unity
     guid: 234c9267de43e43ada62ea23517b14a7
+  - enabled: 1
+    path: Assets/Scenes/OtoC.unity
+    guid: 56caa803a267d404fa66241eeaa4bb54
+  - enabled: 1
+    path: Assets/Scenes/Conscientiousness.unity
+    guid: 3322a0d8aaaf57e4bac224370e1dc159
+  - enabled: 1
+    path: Assets/Scenes/CtoE.unity
+    guid: 0420f8acb8130474b8cf53afdcd1b6fe
+  - enabled: 1
+    path: Assets/Scenes/Extraversion.unity
+    guid: f1df07dbba5923843b50922e621319f9
   m_configObjects: {}
