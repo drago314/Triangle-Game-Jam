@@ -145,9 +145,10 @@ public class PlayerWeapon : MonoBehaviour
             // first one from bullet tip
             RaycastHit hit;
             float range = (weaponMaxRangePoint.position - weaponTip.position).magnitude;
-            if (Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range))
+            if (Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range) && hit.collider.TryGetComponent(out Health health))
             {
                 Debug.Log("here");
+                Debug.Log(hit.collider.gameObject);
                 lineEnd = TryHit(hit);
             }
             else
@@ -155,12 +156,11 @@ public class PlayerWeapon : MonoBehaviour
                 // second one from cursor
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit2;
-                if (Physics.Raycast(ray, out hit2, Mathf.Infinity, 3) && hit2.collider.transform.root.TryGetComponent(out Enemy enemy))
+                if (Physics.Raycast(ray, out hit2, Mathf.Infinity, LayerMask.GetMask("Enemy")) && hit2.collider.TryGetComponent(out Health enemy) && !hit2.collider.transform.root.TryGetComponent(out Player player))
                 {
-                    lineEnd = TryHit(hit2);
-                    Debug.Log(hit2.collider.gameObject.name);
+                    if (Vector3.Distance(hit2.collider.gameObject.transform.position, GameManager.Inst.player.transform.position) < range || hit2.collider.TryGetComponent(out Duck duck))
+                        lineEnd = TryHit(hit2);
                 }
-                Debug.Log("there");
             }
 
             // draws bullet line
@@ -196,13 +196,19 @@ public class PlayerWeapon : MonoBehaviour
         // hits enemy
         if (enemy != null)
         {
-            Health health = enemy.GetComponent<Health>();
-            health.Damage(new Damage(activeWeapon.damage, weaponBase.gameObject, enemy.gameObject, activeWeapon.knockBack));
+            Health health1 = enemy.GetComponent<Health>();
+            health1.Damage(new Damage(activeWeapon.damage, weaponBase.gameObject, enemy.gameObject, activeWeapon.knockBack));
         }
         OpennessBreakable thing;
         if(hit.collider.TryGetComponent<OpennessBreakable>(out thing))
         {
             thing.GetComponent<Health>().Damage(new Damage(activeWeapon.damage));
+        }
+
+        Health health;
+        if (hit.collider.TryGetComponent<Health>(out health) && !hit.collider.TryGetComponent(out Player _))
+        {
+            health.Damage(new Damage(activeWeapon.damage));
         }
 
 
