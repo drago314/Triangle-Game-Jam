@@ -7,8 +7,8 @@ public class BackgroundMusic : MonoBehaviour
     public float fadeTime;
     public float[] maxVolumes;
 
-    int lastDimension = 0;
-    int dimension = 0;
+    int lastDimension = -1;
+    int dimension = -1;
 
     // Use this for initialization
     private void Start()
@@ -19,9 +19,9 @@ public class BackgroundMusic : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (sources[lastDimension].volume > 0)
+        if (lastDimension != -1 && sources[lastDimension].volume > 0)
             sources[lastDimension].volume -= (Time.fixedDeltaTime / fadeTime) * maxVolumes[lastDimension];
-        if (sources[dimension].volume < maxVolumes[dimension])
+        if (dimension != -1 && sources[dimension].volume < maxVolumes[dimension])
             sources[dimension].volume += (Time.fixedDeltaTime / fadeTime) * maxVolumes[dimension];
     }
 
