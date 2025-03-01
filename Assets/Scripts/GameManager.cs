@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI statusText;
 
+    public bool musicOff = false;
+
     void Awake()
     {
         if (Inst != null)

@@ -30,6 +30,9 @@ public class WalkingEnemy : Enemy
 
     private void Update()
     {
+        if (GameManager.Inst.musicOff)
+            Destroy(this.gameObject);
+
         player = GameManager.Inst.player;
 
         bufferTimer -= Time.deltaTime;

@@ -7,7 +7,12 @@ public class OpennessBreakable : MonoBehaviour
     public Texture2D[] sprites;
     public SpriteFlip sf;
     public TriggeredDoor door;
-    public AudioSource audioSource;
+    public AudioClip audioClip, audioClip1, audioClip2;
+
+    public GameObject deathParticles;
+    public GameObject audioThing;
+
+    public bool BIG_GUY = false;
 
     Health health;
     private int count = 0;
@@ -24,8 +29,28 @@ public class OpennessBreakable : MonoBehaviour
 
     private void OnHit(Damage damage)
     {
+        if (BIG_GUY)
+        {
+            if (count == 3)
+            {
+                GameObject currentAudio = Instantiate(audioThing, transform.position, transform.rotation);
+                currentAudio.GetComponent<AudioSource>().clip = audioClip1;
+                currentAudio.GetComponent<AudioSource>().PlayOneShot(audioClip1);
+            }
+            if (count == 6)
+            {
+                GameObject currentAudio = Instantiate(audioThing, transform.position, transform.rotation);
+                currentAudio.GetComponent<AudioSource>().clip = audioClip2;
+                currentAudio.GetComponent<AudioSource>().PlayOneShot(audioClip2);
+            }
+        }
+
         if (count == 0)
-            audioSource.PlayOneShot(audioSource.clip);
+        {
+            GameObject currentAudio = Instantiate(audioThing, transform.position, transform.rotation);
+            currentAudio.GetComponent<AudioSource>().clip = audioClip;
+            currentAudio.GetComponent<AudioSource>().PlayOneShot(audioClip);
+        }
         count ++;
         if (count < sprites.Length)
             myMat.material.mainTexture = sprites[count];
@@ -35,7 +60,9 @@ public class OpennessBreakable : MonoBehaviour
     {
         if (door != null)
             door.RemoveObject();
-        sf.Flip(0);
-        GetComponent<BoxCollider>().enabled = false;
+        if (BIG_GUY)
+            GameManager.Inst.musicOff = true;
+        Instantiate(deathParticles, transform.position, transform.rotation);
+        Destroy(this.gameObject);
     }
 }
