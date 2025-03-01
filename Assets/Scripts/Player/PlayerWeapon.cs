@@ -177,6 +177,14 @@ public class PlayerWeapon : MonoBehaviour
             float angle = Mathf.Atan2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z);
             Quaternion rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 90, 0);
             Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+
+            if (activeWeapon.weaponType == Dimension.Agreeableness)
+            {
+                rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 60, 0);
+                Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+                rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 120, 0);
+                Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+            }
         }
     }
 
