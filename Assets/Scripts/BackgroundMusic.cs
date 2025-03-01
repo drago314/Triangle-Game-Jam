@@ -19,6 +19,9 @@ public class BackgroundMusic : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Inst.musicOff == true)
+            Destroy(gameObject);
+
         if (lastDimension != -1 && sources[lastDimension].volume > 0)
             sources[lastDimension].volume -= (Time.fixedDeltaTime / fadeTime) * maxVolumes[lastDimension];
         if (dimension != -1 && sources[dimension].volume < maxVolumes[dimension])

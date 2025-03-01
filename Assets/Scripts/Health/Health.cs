@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
     public GameObject blood;
     private CameraShake cs;
     public float shakeAmount;
+    public float dissipation = 2f;
     public AudioSource hitSource, deathSource;
 
     [SerializeField] private float iframes;
@@ -136,7 +137,7 @@ public class Health : MonoBehaviour
             foreach (Collider c in collidersToDeactivate) { c.enabled = false; }
             if (rb) rb.isKinematic = true;
             if (sf) sf.Flip(0);
-            if (cs) { cs.Shake(shakeAmount,2); }
+            if (cs) { cs.Shake(shakeAmount, dissipation); }
 
             if (bloodToSpawn > 0)
             {

@@ -31,6 +31,9 @@ public class LungeEnemy : Enemy
 
     private void Update()
     {
+        if (GameManager.Inst.musicOff)
+            Destroy(this.gameObject);
+
         startingWindUp = false;
         startingLunge = false;
 
