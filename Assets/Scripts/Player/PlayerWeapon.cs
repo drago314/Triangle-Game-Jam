@@ -28,7 +28,7 @@ public class PlayerWeapon : MonoBehaviour
     int flipped = 1;
     public TrailRenderer weaponTrail;
     private float lastAttackTimer;
-    int combo;
+    public int combo;
 
     public AudioSource meleeSource;
 
