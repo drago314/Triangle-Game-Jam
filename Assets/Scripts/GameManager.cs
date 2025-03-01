@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum Dimension
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour
     public event Action<Dimension> OnDimensionSwitch;
     public Dimension dimension;
 
+    public TextMeshProUGUI statusText;
+
     void Awake()
     {
         if (Inst != null)
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour
         Inst = this;
 
         player = FindObjectOfType<Player>();
+        statusText = GameObject.Find("Status text").GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -41,5 +45,11 @@ public class GameManager : MonoBehaviour
     {
         dimension = newDimension;
         OnDimensionSwitch?.Invoke(dimension);
+    }
+
+    public void PushStatus(string text)
+    {
+        statusText.text = text;
+        statusText.GetComponent<Animator>().Play("Fade");
     }
 }
