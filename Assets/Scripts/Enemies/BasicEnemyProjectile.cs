@@ -23,6 +23,7 @@ public class BasicEnemyProjectile : MonoBehaviour
         if (other.gameObject.TryGetComponent(out Player player))
         {
             player.GetComponent<Health>().Damage(new Damage(damage, gameObject, gameObject, knockBack));
+            Detonate();
         }
     }
 

@@ -69,6 +69,10 @@ public class ProjectileEnemy : Enemy
                     Instantiate(regularProjectile, transform.position, Quaternion.Euler(0, shotAngle - 60, 0));
                     Instantiate(regularProjectile, transform.position, Quaternion.Euler(0, shotAngle - 120, 0));
                 }
+                else if (homingMissile)
+                {
+                    Instantiate(homingProjectile, transform.position, Quaternion.Euler(0, shotAngle - 90, 0));
+                }
 
                 shotTimer = shotTime;
             }
