@@ -7,6 +7,7 @@ public class checkpoint : MonoBehaviour
 {
     public MeshRenderer myMat;
     public Texture sprite1, sprite2;
+    public ParticleSystem ps;
 
     private void Start()
     {
@@ -20,7 +21,10 @@ public class checkpoint : MonoBehaviour
             PlayerPrefs.SetFloat("CheckpointX" + thing, transform.position.x);
             PlayerPrefs.SetFloat("CheckpointZ" + thing, transform.position.z);
             Debug.Log("Saved Position");
+            GetComponent<AudioSource>().Play();
+            ps.Play();
             GameManager.Inst.player.health.Heal(100);
+            GameManager.Inst.PushStatus("Checkpoint!");
 
             myMat.material.mainTexture = sprite2;
         }

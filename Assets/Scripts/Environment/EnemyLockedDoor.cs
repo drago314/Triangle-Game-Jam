@@ -28,7 +28,12 @@ public class EnemyLockedDoor : MonoBehaviour
         if (count == 0)
         {
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, yGoal, downSpeed * Time.deltaTime), transform.position.z);
-            if (GetComponent<AudioSource>() && !played) { Debug.Log("Played"); GetComponent<AudioSource>().Play(); played = true; }
+            if (GetComponent<AudioSource>() && !played) 
+            {
+                Debug.Log("Played"); GetComponent<AudioSource>().Play(); 
+                played = true;
+                GameManager.Inst.PushStatus("Door unlocked!");
+            }
         }
         if (transform.position.y <= yGoal + 0.05)
         Destroy(this.gameObject);

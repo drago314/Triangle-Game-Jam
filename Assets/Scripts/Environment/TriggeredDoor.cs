@@ -30,7 +30,7 @@ public class TriggeredDoor : MonoBehaviour
 
     public void Close()
     {
-        if (!played && GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play();}
+        if (!played && GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play(); GameManager.Inst.PushStatus("Door unlocked!"); }
         played = true;
         yNow = yGoal;
     }
