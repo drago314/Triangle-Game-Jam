@@ -885,7 +885,7 @@ MonoBehaviour:
   activationRange: 1
   player: {fileID: 1043805892}
   activateOnEnd: {fileID: 2048524019}
-  loadScene: 2
+  loadScene: Openness
 --- !u!114 &1043805895
 MonoBehaviour:
   m_ObjectHideFlags: 0

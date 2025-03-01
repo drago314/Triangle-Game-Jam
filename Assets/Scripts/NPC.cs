@@ -18,7 +18,7 @@ public class NPC : MonoBehaviour
     bool activated;
 
     public GameObject activateOnEnd;
-    public int loadScene;
+    public string loadScene;
 
     private void Start()
     {
@@ -54,6 +54,6 @@ public class NPC : MonoBehaviour
     private void ActivateObject()
     {
         activateOnEnd.SetActive(true);
-        if (loadScene != 0) { Invoke("LoadScene", 3); }
+        if (loadScene != "") { Invoke("LoadScene", 3); }
     }
 }
