@@ -17,7 +17,8 @@ public class OpennessBreakable : MonoBehaviour
         health = gameObject.GetComponent<Health>();
         health.OnHit += OnHit;
         health.OnDeath += OnDeath;
-        door.thingsNeededToBreak++;
+        if (door != null)
+            door.thingsNeededToBreak++;
     }
 
     private void OnHit(Damage damage)

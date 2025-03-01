@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
         else { currentSprintMod = 1; }
 
         dashCooldownTimer -= Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && !dashing && dashCooldownTimer <= 0 && !disableInput)
+        if (Input.GetKeyDown(KeyCode.Space) && !dashing && dashCooldownTimer <= 0 && !disableInput)
         {
             GetComponent<AudioSource>().Play();
             dashTimer = dashTime;
