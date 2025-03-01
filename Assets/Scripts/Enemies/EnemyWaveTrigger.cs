@@ -50,11 +50,15 @@ public class EnemyWaveTrigger : MonoBehaviour
 
         beenTriggered = true;
 
+        count = 0;
         foreach (var enemy in waves[0])
         {
-            enemy.GetComponent<Health>().OnDeath += OnDeath;
+            if (TryGetComponent(out Health health))
+            {
+                health.OnDeath += OnDeath;
+                count++;
+            }
         }
-        count = waves[0].Count;
         yGoal = transform.position.y - yDown;
 
         foreach (GameObject enemy in waves[0])
