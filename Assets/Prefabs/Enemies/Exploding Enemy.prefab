@@ -5848,7 +5848,7 @@ MonoBehaviour:
   flashTime: 0.2
   range: 2.5
   moveSpeed: 4
-  playerSeeDistance: 12
+  playerSeeDistance: 8
   explosionRadius: 4
   damage: 2
   ea: {fileID: 7456656977158041981}

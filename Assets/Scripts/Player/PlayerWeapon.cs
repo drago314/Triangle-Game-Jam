@@ -128,6 +128,7 @@ public class PlayerWeapon : MonoBehaviour
                 GameManager.Inst.player.StartDaggerDash(new(-gyro.forward.x, -gyro.forward.z), 3);
                 activeWeapon.toSpawn.GetComponent<SwordHitbox>().active = 0.4f;
                 activeWeapon.fireRateTimer = 0.5f;
+                GetComponent<Health>().SetIFrames(1f);
                 //weaponTrail.enabled = false;
             }
 

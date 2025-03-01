@@ -92,6 +92,11 @@ public class Health : MonoBehaviour
         Invoke("ResetMats", time);
     }
 
+    public void SetIFrames(float time)
+    {
+        iframeTimer = time;
+    }
+
     public void Damage(Damage damage)
     {
         if (iframeTimer > 0) return;

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1123564564663340911}
+  - component: {fileID: 4057957177190716378}
   - component: {fileID: 7159253287631584581}
   - component: {fileID: 482897875508807757}
   - component: {fileID: 7993930711150635152}
-  - component: {fileID: 4057957177190716378}
   m_Layer: 0
   m_Name: Wave Triggered Door
   m_TagString: Untagged
@@ -40,6 +40,26 @@ Transform:
   - {fileID: 6356833290665464330}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4057957177190716378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3858384736904977488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e34737a7954be0a0d734e1e23e40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave1: []
+  wave2: []
+  wave3: []
+  wave4: []
+  wave5: []
+  yGoal: 3
+  yDown: -1
+  downSpeed: 0
 --- !u!82 &7159253287631584581
 AudioSource:
   m_ObjectHideFlags: 0
@@ -184,21 +204,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4057957177190716378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3858384736904977488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e6e34737a7954be0a0d734e1e23e40f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yGoal: 3
-  yDown: -1
-  downSpeed: 0
 --- !u!1 &4632766249458544431
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,8 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3974a0b2620694c8c841a165c4a80fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doors:
-  - {fileID: 0}
+  doors: []
 --- !u!1 &8059329916796939673
 GameObject:
   m_ObjectHideFlags: 0
