@@ -13,6 +13,7 @@ public class NPC : MonoBehaviour
     public AudioClip[] clips;
     public float[] lengths;
     AudioSource source;
+    public bool randomPitch;
     public float activationRange;
     public Transform player;
     bool activated;
@@ -22,6 +23,7 @@ public class NPC : MonoBehaviour
 
     public GameObject activateOnEnd;
     public string loadScene;
+    public Animator anim;
 
     private void Start()
     {
@@ -50,7 +52,13 @@ public class NPC : MonoBehaviour
     private void PlayLine()
     {
         text.text = lines[currentLine];
-        if (source) { source.clip = clips[currentLine]; source.Play(); }
+        if (source) 
+        {
+            if (randomPitch) source.pitch = Random.Range(0.7f, 1.3f);
+            source.clip = clips[currentLine];
+            source.Play(); 
+        }
+        if (anim) anim.Play("Jump");
         if (currentLine < lines.Length-1) { Invoke("PlayLine", lengths[currentLine]); currentLine++; }
         else if (activateOnEnd) { Invoke("ActivateObject", lengths[currentLine]); }
     }
