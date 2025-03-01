@@ -38,7 +38,7 @@ public class Duck : Enemy
 
     void OnMouseDown()
     {
-        Debug.Log("Quad clicked: " + gameObject.name);
+        Destroy(gameObject);
     }
 
     void onDeath(){
