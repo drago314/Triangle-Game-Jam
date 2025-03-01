@@ -28,7 +28,7 @@ public class PlayerWeapon : MonoBehaviour
     int flipped = 1;
     public TrailRenderer weaponTrail;
     private float lastAttackTimer;
-    int combo;
+    public int combo;
 
     public AudioSource meleeSource;
 
@@ -52,6 +52,8 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Inst.player.DUCK_MODE) ammoText.gameObject.SetActive(false);
+
         if (lastAttackTimer > 0) { lastAttackTimer -= Time.deltaTime; }
 
         foreach (Weapon w in weapons)
@@ -85,7 +87,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (activeWeapon.reloadTimer > 0 || clip <= 0 || activeWeapon.fireRateTimer > 0 || disableInput) return;
 
-        if (!GameManager.Inst.player.TUTORIAL_MODE)
+        if (!GameManager.Inst.player.TUTORIAL_MODE && !GameManager.Inst.player.DUCK_MODE)
             clip--;
         ammoText.text = "" + clip;
         if (clip <= 0) { reloadText.UpdateWarning(clip); ammoText.color = Color.red; activeWeapon.reloadTimer = activeWeapon.reloadTime; }
@@ -156,7 +158,7 @@ public class PlayerWeapon : MonoBehaviour
                 RaycastHit hit2;
                 if (Physics.Raycast(ray, out hit2, Mathf.Infinity, LayerMask.GetMask("Enemy")) && hit2.collider.TryGetComponent(out Health enemy) && !hit2.collider.transform.root.TryGetComponent(out Player player))
                 {
-                    if (Vector3.Distance(hit2.collider.gameObject.transform.position, GameManager.Inst.player.transform.position) < range || hit2.collider.TryGetComponent(out Duck duck))
+                    if (Vector3.Distance(hit2.collider.gameObject.transform.position, GameManager.Inst.player.transform.position) < range || GameManager.Inst.player.DUCK_MODE)
                         lineEnd = TryHit(hit2);
                 }
             }

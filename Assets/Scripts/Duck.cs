@@ -9,6 +9,7 @@ public class Duck : Enemy
     public float bobAmount = 0.5f;
     public float bobSpeed = 2f;
     public PlayerWeapon pw;
+    public DuckShooter ds;
 
     private float startTime;
     private float journeyLength;
@@ -38,14 +39,8 @@ public class Duck : Enemy
         }
     }
 
-    void OnMouseDown()
-    {
-        Debug.Log(pw.clip);
-        if(pw.clip>0 && GameManager.Inst.dimension == Dimension.Conscientiousness)
-            Destroy(gameObject);
-    }
-
     void onDeath(){
+        ds.ducksKilled += 1;
         Destroy(gameObject);
     }
 } 

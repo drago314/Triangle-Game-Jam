@@ -37,6 +37,9 @@ public class SwordHitbox : MonoBehaviour
         List<Health> killedThings = new List<Health>();
         foreach (Health health in currentlyIntersecting)
         {
+            //float knockback = weapon.knockBack;
+            //if (GameManager.Inst.dimension == Dimension.Openness && GameManager.Inst.player.pw.combo == 3 && GameManager.Inst.player.daggerDashing)
+            //    weapon.knockBack *= 3;
             if (!health.IsDead())
                 health.Damage(new Damage(weapon.damage, weaponBase, health.gameObject, weapon.knockBack));
             else

@@ -14,10 +14,11 @@ public class Player : MonoBehaviour
     public SpriteFlip dashSpriteFlip;
     [Header("XZ Input")]
     public bool TUTORIAL_MODE = false;
+    public bool DUCK_MODE = false;
     public float speed;
     public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq, daggerDashSpeed, daggerDashTime;
     private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer, daggerDashMult;
-    private bool dashing, daggerDashing;
+    public  bool dashing, daggerDashing;
     private Vector2 dashDirection, daggerDashDirection;
     Vector3 adjustedInput;
     public GameObject dashGhost;
