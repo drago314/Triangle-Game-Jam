@@ -17,12 +17,16 @@ public class NPC : MonoBehaviour
     public Transform player;
     bool activated;
 
+    public BasicShake[] guys;
+    public AudioSource guySource;
+
     public GameObject activateOnEnd;
     public string loadScene;
 
     private void Start()
     {
         TryGetComponent(out source);
+        if (guySource != null) { Invoke("Split", lengths[0] + 6); }
     }
 
     private void FixedUpdate()
@@ -57,4 +61,10 @@ public class NPC : MonoBehaviour
         if (loadScene != "") { Invoke("LoadScene", 3); }
     }
     private void LoadScene() { SceneManager.LoadScene(loadScene); }
+
+    private void Split()
+    {
+        foreach (BasicShake bs in guys) { bs.lerping = true; }
+        guySource.Play();
+    }
 }
