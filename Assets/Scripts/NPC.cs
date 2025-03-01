@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour
 {
     int currentLine;
     public TextMeshProUGUI text;
+    [TextArea]
     public string[] lines;
     public AudioClip[] clips;
     public float[] lengths;
@@ -14,6 +16,9 @@ public class NPC : MonoBehaviour
     public float activationRange;
     public Transform player;
     bool activated;
+
+    public GameObject activateOnEnd;
+    public int loadScene;
 
     private void Start()
     {
@@ -43,5 +48,12 @@ public class NPC : MonoBehaviour
         text.text = lines[currentLine];
         if (source) { source.clip = clips[currentLine]; source.Play(); }
         if (currentLine < lines.Length-1) { Invoke("PlayLine", lengths[currentLine]); currentLine++; }
+        else if (activateOnEnd) { Invoke("ActivateObject", lengths[currentLine]); }
+    }
+
+    private void ActivateObject()
+    {
+        activateOnEnd.SetActive(true);
+        if (loadScene != 0) { Invoke("LoadScene", 3); }
     }
 }
