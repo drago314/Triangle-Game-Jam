@@ -37,7 +37,7 @@ public class DuckShooter : MonoBehaviour
             duck1.startPoint = spawnPoint.position;
             duck1.endPoint = endPoint.position;
             duck1.pw = pw;
-            duck1.speed += ducksKilled * 0.15f;
+            duck1.speed += ducksKilled * 0.2f;
             duck1.ds = this;
             
             float spawnInterval = Random.Range(avgSpawnTime * 0.5f, avgSpawnTime * 1.5f);

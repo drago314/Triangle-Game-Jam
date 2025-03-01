@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8706643675907935538}
   - component: {fileID: 92565267667475458}
   - component: {fileID: 64404016119910255}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 3824832140529347228}
   - component: {fileID: 107281862765900249}
   - component: {fileID: 4089730704839152294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Openness Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 1916478784757376473}
   - component: {fileID: 1533667370527177576}
   - component: {fileID: 6394234069459346209}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 4322891012993102989}
   - component: {fileID: 657687874703576078}
   - component: {fileID: 480379806579122709}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 3526471251784867559}
   - component: {fileID: 3047274083045166952}
   - component: {fileID: 1277402663825387138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Openness Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 8187090168019000344}
   - component: {fileID: 8288768851652220942}
   - component: {fileID: 6235355477591528784}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Openness Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 6969993449476201362}
   - component: {fileID: 4235843085356497759}
   - component: {fileID: 5286929714813626530}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Openness Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 3847731031003872444}
   - component: {fileID: 7008326561894294180}
   - component: {fileID: 5569994714905641959}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Openness Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}

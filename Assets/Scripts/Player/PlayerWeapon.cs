@@ -147,7 +147,7 @@ public class PlayerWeapon : MonoBehaviour
             // first one from bullet tip
             RaycastHit hit;
             float range = (weaponMaxRangePoint.position - weaponTip.position).magnitude;
-            if (Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range) && hit.collider.TryGetComponent(out Health health))
+            if (!GameManager.Inst.player.DUCK_MODE && Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range) && hit.collider.TryGetComponent(out Health health))
             {
                 lineEnd = TryHit(hit);
             }
@@ -160,6 +160,10 @@ public class PlayerWeapon : MonoBehaviour
                 {
                     if (Vector3.Distance(hit2.collider.gameObject.transform.position, GameManager.Inst.player.transform.position) < range || GameManager.Inst.player.DUCK_MODE)
                         lineEnd = TryHit(hit2);
+                }
+                if (GameManager.Inst.player.DUCK_MODE && Physics.Raycast(ray, out hit2, Mathf.Infinity, LayerMask.GetMask("DuckWall")))
+                {
+                    lineEnd = TryHit(hit2);
                 }
             }
 
