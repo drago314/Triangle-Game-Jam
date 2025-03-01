@@ -56,4 +56,5 @@ public class NPC : MonoBehaviour
         activateOnEnd.SetActive(true);
         if (loadScene != "") { Invoke("LoadScene", 3); }
     }
+    private void LoadScene() { SceneManager.LoadScene(loadScene); }
 }

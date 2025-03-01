@@ -5,6 +5,7 @@ public class OpennessBreakable : MonoBehaviour
 {
     public Renderer myMat;
     public Texture2D[] sprites;
+    public SpriteFlip sf;
     public TriggeredDoor door;
     public AudioSource audioSource;
 
@@ -24,7 +25,7 @@ public class OpennessBreakable : MonoBehaviour
     private void OnHit(Damage damage)
     {
         if (count == 0)
-            audioSource.Play();
+            audioSource.PlayOneShot(audioSource.clip);
         count ++;
         if (count < sprites.Length)
             myMat.material.mainTexture = sprites[count];
@@ -34,6 +35,7 @@ public class OpennessBreakable : MonoBehaviour
     {
         if (door != null)
             door.RemoveObject();
-        Destroy(this.gameObject);
+        sf.Flip(0);
+        GetComponent<BoxCollider>().enabled = false;
     }
 }

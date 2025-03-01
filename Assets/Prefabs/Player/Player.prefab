@@ -180,8 +180,6 @@ Transform:
   - {fileID: 3984313696805276421}
   - {fileID: 1983546523714775153}
   - {fileID: 136048354967559909}
-  - {fileID: 7197314212324644871}
-  - {fileID: 1424207094145589310}
   m_Father: {fileID: 3142622314831958653}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!33 &445976266594112183
@@ -292,7 +290,9 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7197314212324644871}
+  - {fileID: 1424207094145589310}
   m_Father: {fileID: 3659078111387612317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2079210134408334033
@@ -321,12 +321,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079210134408334033}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.288, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0.66999996, z: -0.89199996}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8688503239305737084}
+  m_Father: {fileID: 1159300160139825764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7556895932056234119
 BoxCollider:
@@ -347,8 +347,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.44, y: 0.7318489, z: 1}
-  m_Center: {x: 0, y: 0.13407575, z: 0}
+  m_Size: {x: 0.86, y: 0.82923305, z: 1}
+  m_Center: {x: 0, y: 0.085383736, z: 0}
 --- !u!114 &1025328838637988293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10333,12 +10333,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6057348905309906044}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.288, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0.66999996, z: -0.89199996}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8688503239305737084}
+  m_Father: {fileID: 1159300160139825764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4130485581401823058
 BoxCollider:
@@ -10359,7 +10359,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.44, y: 0.34, z: 0.5}
+  m_Size: {x: 0.86, y: 0.34, z: 0.5}
   m_Center: {x: 0, y: 0.11, z: 0}
 --- !u!114 &611397229486173675
 MonoBehaviour:
@@ -10733,6 +10733,7 @@ MonoBehaviour:
   weaponBase: {fileID: 3142622314831958653}
   weapon: {fileID: 8688503239305737084}
   gyro: {fileID: 1159300160139825764}
+  disableInput: 0
   ground:
     serializedVersion: 2
     m_Bits: 64
@@ -10910,6 +10911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ff44ea106d0fe48bfec75e1e2cc78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: 0
   weapons:
   - damage: 2
     fireRate: 0
@@ -10976,6 +10978,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   cam: {fileID: 8052538110477550167}
+  disableInput: 0
 --- !u!114 &8784603489046091151
 MonoBehaviour:
   m_ObjectHideFlags: 0

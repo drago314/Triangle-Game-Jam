@@ -773,7 +773,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.184
+  m_Volume: 0.644
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -876,16 +876,16 @@ MonoBehaviour:
   - You'll have to clear the blockages in your brain before we can move on.
   clips:
   - {fileID: 8300000, guid: 7d2a49b6579630e468c1818b31fdf343, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 06f44170f195b1c4aa84eb3df22e0b46, type: 3}
+  - {fileID: 8300000, guid: d20940341f531054d8d2fb90223852ae, type: 3}
   lengths:
   - 6
-  - 5
+  - 4
   - 6
   activationRange: 1
   player: {fileID: 1043805892}
   activateOnEnd: {fileID: 2048524019}
-  loadScene: Openness
+  loadScene: Opennenss
 --- !u!114 &1043805895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,7 +1043,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5508dcb522af8ae43befd0f6d5c82670, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.221
+  m_Volume: 0.391
   m_Pitch: 1
   Loop: 0
   Mute: 0

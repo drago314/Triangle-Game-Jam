@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     [Header("Rotation")]
     public Camera cam;
     public Transform mousePoint, screenPoint, weaponBase, weapon, gyro;
-    private Vector2 startScreenPos;
+    [HideInInspector] public Vector2 startScreenPos;
     float defaultWeaponOffset;
 
     public bool disableInput;

@@ -32,6 +32,7 @@ public class SwordHitbox : MonoBehaviour
 
     public void HitAllIntersections(Weapon weapon)
     {
+        Debug.Log(currentlyIntersecting);
         if (currentlyIntersecting.Count > 0) { health.iframeTimer = 0.5f; }
         List<Health> killedThings = new List<Health>();
         foreach (Health health in currentlyIntersecting)
