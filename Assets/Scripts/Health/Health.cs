@@ -84,6 +84,14 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void FlashRed(float time)
+    {
+        foreach (Renderer renderer in renderers) { renderer.material.SetColor("_EmissionColor", Color.red * 10); renderer.material.color = Color.red; }
+        foreach (Material m in playerMat) { m.SetColor("_EmissionColor", Color.red); m.color = Color.red; }
+        CancelInvoke("ResetMats");
+        Invoke("ResetMats", time);
+    }
+
     public void Damage(Damage damage)
     {
         if (iframeTimer > 0) return;
@@ -96,10 +104,7 @@ public class Health : MonoBehaviour
         if (hitSource) { hitSource.Play(); hitSource.pitch += 0.1f; }
 
         // does hit mat thingy
-        foreach (Renderer renderer in renderers) { renderer.material.SetColor("_EmissionColor", Color.red * 10); renderer.material.color = Color.red; }
-        foreach (Material m in playerMat) { m.SetColor("_EmissionColor", Color.red); m.color = Color.red; }
-        CancelInvoke("ResetMats");
-        Invoke("ResetMats", 0.14f);
+        FlashRed(0.14f);
 
         // knockback
         Rigidbody rb;
