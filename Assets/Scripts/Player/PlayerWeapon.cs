@@ -181,7 +181,11 @@ public class PlayerWeapon : MonoBehaviour
         {
             float angle = Mathf.Atan2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z);
             Quaternion rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 90, 0);
-            Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+            GameObject go = Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+
+            BazookaBullet bb = null;
+            go.TryGetComponent(out bb);
+            if (bb) bb.damage = activeWeapon.damage;
 
             if (activeWeapon.weaponType == Dimension.Agreeableness)
             {
@@ -202,11 +206,13 @@ public class PlayerWeapon : MonoBehaviour
         {
             Health health1 = enemy.GetComponent<Health>();
             health1.Damage(new Damage(activeWeapon.damage, weaponBase.gameObject, enemy.gameObject, activeWeapon.knockBack));
+            return hit.point;
         }
         OpennessBreakable thing;
         if(hit.collider.TryGetComponent<OpennessBreakable>(out thing))
         {
             thing.GetComponent<Health>().Damage(new Damage(activeWeapon.damage));
+            return hit.point;
         }
 
         Health health;

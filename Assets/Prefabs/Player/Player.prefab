@@ -10622,6 +10622,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeDissipation: 2
+  introAnim: 0
+  lerpSpeed: 0
+  standardFov: 0
+  realLerpSpeed: 0
+  standardPos: {x: 0, y: 0, z: 0}
+  standardRot: {x: 0, y: 0, z: 0}
+  toEnable: []
+  player: {fileID: 0}
 --- !u!1 &7444846770799914773
 GameObject:
   m_ObjectHideFlags: 0
@@ -10711,6 +10719,7 @@ MonoBehaviour:
   lockedToDim: 0
   dashSpriteFlip: {fileID: 0}
   TUTORIAL_MODE: 0
+  DUCK_MODE: 0
   speed: 5
   sprintMod: 1.4
   dashSpeed: 30
@@ -10719,6 +10728,8 @@ MonoBehaviour:
   dashGhostFreq: 0.04
   daggerDashSpeed: 15
   daggerDashTime: 0.05
+  dashing: 0
+  daggerDashing: 0
   dashGhost: {fileID: 373274351998128777, guid: 4f8e1e652fe674e4a9abea0277c995f4, type: 3}
   renderers:
   - {fileID: 6798327308327153652}
@@ -10733,6 +10744,7 @@ MonoBehaviour:
   weaponBase: {fileID: 3142622314831958653}
   weapon: {fileID: 8688503239305737084}
   gyro: {fileID: 1159300160139825764}
+  startScreenPos: {x: 0, y: 0}
   disableInput: 0
   ground:
     serializedVersion: 2
@@ -10917,7 +10929,7 @@ MonoBehaviour:
     fireRate: 0
     range: 110
     reloadTime: 999
-    knockBack: -500
+    knockBack: -750
     reloadTimer: 0
     fireRateTimer: 0
     maxClip: 12
@@ -10970,6 +10982,7 @@ MonoBehaviour:
   offset: 0
   swingSpeed: 900
   weaponTrail: {fileID: 8434824736589535359}
+  combo: 0
   meleeSource: {fileID: 9203479725190811640}
   ammoText: {fileID: 0}
   reloadText: {fileID: 0}

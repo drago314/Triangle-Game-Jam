@@ -22,7 +22,8 @@ public class RhythmGame : MonoBehaviour
     public Transform[] arrowSpawns, inputs;
     public float avgSpawnPerArrow;
     public AudioSource[] sources;
-    public AudioSource victory;
+    public AudioSource victory, defeat;
+    bool defeated;
 
     private Animator[] anims;
     private SpriteFlip[] flips;
@@ -50,6 +51,7 @@ public class RhythmGame : MonoBehaviour
 
         if (score >= scoreToWin && alpha > 0)
         {
+            if (!defeated) { defeated = true; Invoke("Defeat", 3); }
             alpha = Mathf.Clamp(alpha - Time.fixedDeltaTime, 0, 1);
             foreach (Image i in uiImages)
             {
@@ -110,4 +112,7 @@ public class RhythmGame : MonoBehaviour
         sources[id].pitch = 1 - (dis / 100);
         sources[id].Play();
     }
+
+    private void Defeat() { defeat.Play(); InvokeRepeating("RandomJump", 0.1f, 0.1f); }
+    private void RandomJump() { anims[Random.Range(0, anims.Length)].Play("Jump"); }
 }
