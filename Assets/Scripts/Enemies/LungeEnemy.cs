@@ -49,7 +49,12 @@ public class LungeEnemy : Enemy
         if (windingUp)
         {
             lungeWindupTimer -= Time.deltaTime;
-            if (lungeWindupTimer < 0)
+            if (distanceToPlayer.magnitude > lungeRange + 2)
+            {
+                windingUp = false;
+                lungeCooldownTimer = lungeCooldown;
+            }
+            else if (lungeWindupTimer < 0)
             {
                 startingLunge = true;
                 lunging = true;
@@ -123,6 +128,15 @@ public class LungeEnemy : Enemy
     {
         if (collision.gameObject == GameManager.Inst.player.gameObject)
             GameManager.Inst.player.health.Damage(new Damage(damage));
+        else
+            return;
+
+        if (lunging)
+        {
+            lunging = false;
+            lungeCooldownTimer = lungeCooldown;
+
+        }
     }
 
     protected void OnHit(Damage damage)

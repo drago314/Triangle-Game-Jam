@@ -5607,9 +5607,9 @@ GameObject:
   - component: {fileID: 3442459416248509010}
   - component: {fileID: 1057769005203111579}
   - component: {fileID: 1706810794037630070}
-  - component: {fileID: 5966746817629241485}
   - component: {fileID: 6247506732785847360}
   - component: {fileID: 2558669696629344761}
+  - component: {fileID: 6838642437697830115}
   m_Layer: 3
   m_Name: Lunge Enemy
   m_TagString: Enemy
@@ -5675,13 +5675,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bufferTime: 0.1
-  lungeCooldown: 0.3
+  lungeCooldown: 0.6
   lungeWindupTime: 0.8
-  lungeRange: 3.5
-  lungeTime: 0.4
+  lungeRange: 4
+  lungeTime: 0.5
   lungeSpeed: 8
   moveSpeed: 2
-  lungeHeightVelocity: 5
+  lungeHeightVelocity: 4
   playerSeeDistance: 8
   damage: 2
   la: {fileID: 6247506732785847360}
@@ -5707,7 +5707,7 @@ MonoBehaviour:
   playerMat: []
   ps: {fileID: 1614119400191953848}
   collidersToDeactivate:
-  - {fileID: 5966746817629241485}
+  - {fileID: 6838642437697830115}
   sf: {fileID: 5544190345982839477}
   bloodToSpawn: 3
   blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
@@ -5739,27 +5739,6 @@ MonoBehaviour:
   renderers: []
   overrideDimensionSwitch: 1
   flipOnStart: 1
---- !u!135 &5966746817629241485
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8954827461423809958}
-  m_Material: {fileID: 13400000, guid: 010682a6d43bf5548bb1555f48458f0b, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6247506732785847360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5909,3 +5888,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &6838642437697830115
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954827461423809958}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.94
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
