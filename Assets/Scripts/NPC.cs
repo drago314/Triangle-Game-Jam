@@ -16,7 +16,7 @@ public class NPC : MonoBehaviour
     public bool randomPitch;
     public float activationRange;
     public Transform player;
-    bool activated;
+    bool activated, canEnd;
 
     public BasicShake[] guys;
     public AudioSource guySource;
@@ -39,8 +39,9 @@ public class NPC : MonoBehaviour
             activated = true;
             PlayLine();
         }
-        else if (dis >= activationRange && activated)
+        else if (dis >= activationRange && canEnd)
         {
+            canEnd = false;
             activated = false;
             if (source) source.Stop();
             text.text = "";
@@ -61,6 +62,8 @@ public class NPC : MonoBehaviour
         if (anim) anim.Play("Jump");
         if (currentLine < lines.Length-1) { Invoke("PlayLine", lengths[currentLine]); currentLine++; }
         else if (activateOnEnd) { Invoke("ActivateObject", lengths[currentLine]); }
+        else { Invoke("EndDialogue", lengths[currentLine]); }
+
     }
 
     private void ActivateObject()
@@ -74,5 +77,10 @@ public class NPC : MonoBehaviour
     {
         foreach (BasicShake bs in guys) { bs.lerping = true; }
         guySource.Play();
+    }
+
+    private void EndDialogue()
+    {
+        canEnd = true;
     }
 }

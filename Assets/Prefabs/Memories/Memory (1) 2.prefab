@@ -166,5 +166,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   liftSpeed: 1
-  maxY: 20
-  minY: -10
+  maxY: 14
+  minY: -7
