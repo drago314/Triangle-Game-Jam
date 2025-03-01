@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     private Vector2 startScreenPos;
     float defaultWeaponOffset;
 
+    public bool disableInput;
+
     public LayerMask ground;
     public Transform foot;
     bool grounded;
@@ -63,8 +65,10 @@ public class Player : MonoBehaviour
         SwitchDim();
         Invoke("SwitchDim", 0.3f);
 
-        Debug.Log(PlayerPrefs.GetFloat("CheckpointX") + ", " + PlayerPrefs.GetFloat("CheckpointZ"));
-        if (PlayerPrefs.GetFloat("CheckpointX") != 0 && PlayerPrefs.GetFloat("CheckpointZ") != 0)
+        Scene scene = SceneManager.GetActiveScene();
+        string thing = scene.buildIndex.ToString();
+
+        if (PlayerPrefs.GetFloat("CheckpointX" + thing) != 0 && PlayerPrefs.GetFloat("CheckpointZ" + thing) != 0)
         {
             // rb.MovePosition(new Vector3(PlayerPrefs.GetFloat("CheckpointX"), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ")));
             Debug.Log(transform.position);
@@ -106,6 +110,8 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) { input.y = -1; }
         else { input.y = 0; }
 
+        if (disableInput) input = Vector2.zero;
+
         if (input != Vector2.zero)
             lastNonzeroInput = input;
 
@@ -117,7 +123,7 @@ public class Player : MonoBehaviour
         else { currentSprintMod = 1; }
 
         dashCooldownTimer -= Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && !dashing && dashCooldownTimer <= 0)
+        if (Input.GetKey(KeyCode.Space) && !dashing && dashCooldownTimer <= 0 && !disableInput)
         {
             GetComponent<AudioSource>().Play();
             dashTimer = dashTime;

@@ -41,6 +41,8 @@ public class PlayerWeapon : MonoBehaviour
     public LayerMask enemy;
     public Camera cam;
 
+    public bool disableInput;
+
     private void Start()
     {
         SwitchWeapon(Dimension.Openness);
@@ -81,7 +83,7 @@ public class PlayerWeapon : MonoBehaviour
 
     private void TryFire()
     {
-        if (activeWeapon.reloadTimer > 0 || clip <= 0 || activeWeapon.fireRateTimer > 0) return;
+        if (activeWeapon.reloadTimer > 0 || clip <= 0 || activeWeapon.fireRateTimer > 0 || disableInput) return;
 
         if (!GameManager.Inst.player.TUTORIAL_MODE)
             clip--;

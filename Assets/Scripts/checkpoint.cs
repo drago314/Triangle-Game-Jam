@@ -1,27 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class checkpoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public MeshRenderer myMat;
+    public Texture sprite1, sprite2;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        myMat.material.mainTexture = sprite1;
     }
 
     private void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
-            PlayerPrefs.SetFloat("CheckpointX",transform.position.x);
-            PlayerPrefs.SetFloat("CheckpointZ",transform.position.z);
+            Scene scene = SceneManager.GetActiveScene();
+            string thing = scene.buildIndex.ToString();
+            PlayerPrefs.SetFloat("CheckpointX" + thing, transform.position.x);
+            PlayerPrefs.SetFloat("CheckpointZ" + thing, transform.position.z);
             Debug.Log("Saved Position");
             GameManager.Inst.player.health.Heal(100);
+
+            myMat.material.mainTexture = sprite2;
         }
     }
 }
