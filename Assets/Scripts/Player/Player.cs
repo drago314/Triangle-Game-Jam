@@ -66,7 +66,8 @@ public class Player : MonoBehaviour
         Invoke("SwitchDim", 0.3f);
 
         Scene scene = SceneManager.GetActiveScene();
-        string thing = scene.buildIndex.ToString();
+        int thing = scene.buildIndex;
+        PlayerPrefs.SetInt("Scene", thing);
 
         if (PlayerPrefs.GetFloat("CheckpointX" + thing) != 0 && PlayerPrefs.GetFloat("CheckpointZ" + thing) != 0)
         {
