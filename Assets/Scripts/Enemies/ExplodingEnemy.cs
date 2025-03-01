@@ -138,6 +138,8 @@ public class ExplodingEnemy : Enemy
         }
         GameObject go = Instantiate(particles, transform.position, Quaternion.identity);
         GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake(0.5f, 1.5f);
+
+        health.Damage(new Damage(1000));
         Destroy(go, 4);
         Destroy(gameObject);
     }
