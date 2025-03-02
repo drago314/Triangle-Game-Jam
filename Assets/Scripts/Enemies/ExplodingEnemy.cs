@@ -31,6 +31,8 @@ public class ExplodingEnemy : Enemy
 
     private void Update()
     {
+        if (GameManager.Inst.killEnemies)
+            Destroy(this.gameObject);
         if (health.IsDead())
             return;
 

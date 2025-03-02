@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
 
     public bool musicOff = false;
+    public bool killEnemies = false;
 
     void Awake()
     {
