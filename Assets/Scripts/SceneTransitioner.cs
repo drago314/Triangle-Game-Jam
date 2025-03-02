@@ -15,7 +15,7 @@ public class SceneTransitioner : MonoBehaviour
         eyelid1.SetActive(true);
         eyelid2.SetActive(true);
 
-        Invoke("LoadS", 5f);
+        Invoke("LoadS", 1.5f);
     }
 
     public void LoadS()
