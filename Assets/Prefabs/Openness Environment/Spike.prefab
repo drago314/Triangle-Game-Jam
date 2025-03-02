@@ -558,6 +558,8 @@ MonoBehaviour:
   lerpSpeed: 6
   spikesUpTime: 0.5
   cooldownTime: 0.2
+  shakeTime: 0.03
+  shakeAmount: 0.1
   upYAmount: 0.07
   damage: 1
   thingsToDamage: []

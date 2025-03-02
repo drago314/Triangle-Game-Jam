@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
-    public float windupTime, lerpSpeed, spikesUpTime, cooldownTime;
+    public float windupTime, lerpSpeed, spikesUpTime, cooldownTime, shakeTime, shakeAmount;
     public float upYAmount;
     public int damage;
 
     public List<GameObject> thingsToDamage;
     private List<GameObject> damaged;
     private float upY, downY;
-    private float windupTimer, spikesUpTimer, cooldownTimer, goalY;
+    private float windupTimer, spikesUpTimer, cooldownTimer, goalY, shakeTimer;
     private bool windingUp, goingUp, Up;
+    private float originalX;
 
     private void Start()
     {
         downY = transform.localPosition.y;
         upY = downY + upYAmount;
+        originalX = transform.position.x;
     }
 
     private void Update()
@@ -26,7 +28,13 @@ public class Spike : MonoBehaviour
 
         if (windingUp)
         {
+            shakeTimer -= Time.deltaTime;
             windupTimer -= Time.deltaTime;
+            if (shakeTimer < 0)
+            {
+                shakeTimer = shakeTime;
+                gameObject.transform.position = new Vector3(originalX + Random.Range(-shakeAmount, shakeAmount), transform.position.y, transform.position.z);
+            }
             if (windupTimer < 0)
             {
                 windingUp = false;
