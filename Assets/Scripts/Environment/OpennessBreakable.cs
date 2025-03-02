@@ -29,7 +29,6 @@ public class OpennessBreakable : MonoBehaviour
 
     private void OnHit(Damage damage)
     {
-        Debug.Log("hit");
         if (BIG_GUY)
         {
             if (count == 3)

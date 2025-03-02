@@ -28,7 +28,7 @@ public class CameraShake : MonoBehaviour
             startPos = standardPos; 
             Invoke("Anim", 3);
             Invoke("Chill", 4.5f);
-            // if (PlayerPrefs.GetFloat("CheckpointX" + SceneManager.GetActiveScene().buildIndex) != 0) Chill();
+            if (PlayerPrefs.GetFloat("CheckpointX" + SceneManager.GetActiveScene().buildIndex) != 0) Chill();
         }
     }
 
