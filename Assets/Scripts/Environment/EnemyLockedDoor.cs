@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EnemyLockedDoor : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyLockedDoor : MonoBehaviour
     float yGoal;
 
     bool played;
+
+    public bool destroyWithProgress;
 
     public TextMeshProUGUI toBreakText;
 
@@ -25,6 +28,11 @@ public class EnemyLockedDoor : MonoBehaviour
         count = enemies.Count;
         yGoal = transform.position.y - yDown;
         if (toBreakText) toBreakText.text = count + "";
+
+        if (destroyWithProgress)
+        {
+            if (PlayerPrefs.GetFloat("CheckpointZ" + SceneManager.GetActiveScene().buildIndex) > transform.position.z) Destroy(gameObject);
+        }
     }
 
     private void Update()
