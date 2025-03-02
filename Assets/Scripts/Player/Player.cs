@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         deathAnim = GameObject.Find("Death");
         deathAnim.SetActive(false);
 
-        defaultFov = cam.fieldOfView;
+        defaultFov = 57;
 
         SwitchDim();
         Invoke("SwitchDim", 0.3f);
