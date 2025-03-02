@@ -17,6 +17,8 @@ public class CameraShake : MonoBehaviour
     public GameObject[] toEnable;
     public Player player;
 
+    public float customFov;
+
     Camera cam;
 
     private void Start()
@@ -47,6 +49,11 @@ public class CameraShake : MonoBehaviour
             transform.localPosition = Vector3.Lerp(transform.localPosition, standardPos, realLerpSpeed * Time.deltaTime);
             transform.localEulerAngles = new Vector3(Mathf.LerpAngle(transform.localEulerAngles.x, standardRot.x, realLerpSpeed * Time.deltaTime), Mathf.LerpAngle(transform.localEulerAngles.y, standardRot.y, realLerpSpeed * Time.deltaTime), Mathf.LerpAngle(transform.localEulerAngles.z, standardRot.z, realLerpSpeed * Time.deltaTime));
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, standardFov, realLerpSpeed * Time.deltaTime * 3);
+        }
+
+        if (customFov != 0 && (!introAnim || chill))
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, customFov, Time.deltaTime * 5);
         }
     }
 

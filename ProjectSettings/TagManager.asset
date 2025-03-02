@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Arrow
   - Set Camera
+  - Folder1
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: lamp
+    uniqueID: 4197277397
     locked: 0

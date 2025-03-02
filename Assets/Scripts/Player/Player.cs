@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
 
     public GameObject extraSongThing, backgroundMusic, duckCounter;
 
+    float defaultFov;
+
 
     private void OnEnable()
     {
@@ -66,6 +68,8 @@ public class Player : MonoBehaviour
         startScreenPos = cam.WorldToScreenPoint(transform.position);
         defaultWeaponOffset = weapon.localPosition.z;
         health = GetComponent<Health>();
+
+        defaultFov = cam.fieldOfView;
 
         SwitchDim();
         Invoke("SwitchDim", 0.3f);
@@ -125,8 +129,8 @@ public class Player : MonoBehaviour
 
         pa.walking = input != Vector2.zero;
 
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { currentSprintMod = sprintMod; }
-        else { currentSprintMod = 1; }
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { currentSprintMod = sprintMod; cs.customFov = defaultFov + 10; }
+        else { currentSprintMod = 1; cs.customFov = defaultFov; }
 
         dashCooldownTimer -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Space) && !dashing && dashCooldownTimer <= 0 && !disableInput)
@@ -276,7 +280,7 @@ public class Player : MonoBehaviour
 
             if (extraSongThing) extraSongThing.SetActive(true);
             if (backgroundMusic) backgroundMusic.SetActive(false);
-            if (duckCounter) duckCounter.SetActive(true);
+            if (duckCounter) { duckCounter.SetActive(true); GameManager.Inst.SwitchDimension(Dimension.Conscientiousness); }
         }
     }
 }

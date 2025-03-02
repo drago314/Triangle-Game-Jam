@@ -65,6 +65,7 @@ public class SpriteFlip : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (GameManager.Inst == null) return;
         GameManager.Inst.OnDimensionSwitch -= Flip;
     }
 }
