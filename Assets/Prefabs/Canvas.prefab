@@ -243,8 +243,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.9892578, y: 2.6523132}
-  m_SizeDelta: {x: -3.9785, y: -5.3046}
+  m_AnchoredPosition: {x: -0.47260284, y: -0.054800034}
+  m_SizeDelta: {x: -7.0119, y: -5.9741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5781215763626095112
 CanvasRenderer:
@@ -1006,9 +1006,9 @@ MonoBehaviour:
   slider: {fileID: 519587512137500550}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 0.916842, g: 1, b: 0, a: 1}
-    key2: {r: 0, g: 1, b: 0.1805582, a: 0}
+    key0: {r: 0.83396226, g: 0.16207187, b: 0.16207187, a: 1}
+    key1: {r: 0.82641506, g: 0.75287896, b: 0.22921322, a: 1}
+    key2: {r: 0.2671057, g: 0.7735849, b: 0.35847062, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
