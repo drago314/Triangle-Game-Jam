@@ -9,6 +9,8 @@ public class DuckShooter : MonoBehaviour
     public Transform[] DuckEndPoints;
     public PlayerWeapon pw;
     public float avgSpawnTime; // Same average spawn time for all spawners
+    public SceneTransitioner st;
+    public bool loaded = false;
 
     public int ducksKilled;
 
@@ -22,8 +24,11 @@ public class DuckShooter : MonoBehaviour
 
     private void Update()
     {
-        if (ducksKilled == 20)
-            Debug.Log("Scene Over");
+        if (ducksKilled == 20 && !loaded)
+        {
+            loaded = true;
+            st.NextScene();
+        }
     }
 
     IEnumerator SpawnDucks(int index)
@@ -37,7 +42,7 @@ public class DuckShooter : MonoBehaviour
             duck1.startPoint = spawnPoint.position;
             duck1.endPoint = endPoint.position;
             duck1.pw = pw;
-            duck1.speed += ducksKilled * 0.2f;
+            duck1.speed += ducksKilled * 0.24f;
             duck1.ds = this;
             
             float spawnInterval = Random.Range(avgSpawnTime * 0.5f, avgSpawnTime * 1.5f);
