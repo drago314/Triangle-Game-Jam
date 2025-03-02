@@ -100,6 +100,9 @@ public class Health : MonoBehaviour
 
     public void Damage(Damage damage)
     {
+        if (IsDead())
+            return;
+
         if (iframeTimer > 0) return;
 
         if (iframes > 0) { iframeTimer = iframes; }
