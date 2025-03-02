@@ -95,6 +95,7 @@ public class Health : MonoBehaviour
 
     public void SetIFrames(float time)
     {
+        if (iframeTimer > time) return;
         iframeTimer = time;
     }
 

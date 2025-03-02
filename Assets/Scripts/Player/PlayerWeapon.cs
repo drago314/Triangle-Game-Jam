@@ -36,7 +36,7 @@ public class PlayerWeapon : MonoBehaviour
 
     public ReloadText reloadText; 
 
-    public ParticleSystem gunParticles;
+    public ParticleSystem gunParticles, swordParticles;
 
     public LayerMask enemy;
     public Camera cam;
@@ -122,6 +122,7 @@ public class PlayerWeapon : MonoBehaviour
             if (activeWeapon.weaponType == Dimension.Neuroticism)
                 GameManager.Inst.player.StartDaggerDash(new Vector2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z));
 
+            weaponTrail.startColor = Color.white;
             // sword combo thing
             if (activeWeapon.weaponType == Dimension.Openness && combo > 2)
             {
@@ -129,8 +130,11 @@ public class PlayerWeapon : MonoBehaviour
                 goalOffset = 0;
                 GameManager.Inst.player.StartDaggerDash(new(-gyro.forward.x, -gyro.forward.z), 3);
                 activeWeapon.toSpawn.GetComponent<SwordHitbox>().active = 0.4f;
+                activeWeapon.toSpawn.GetComponent<SwordHitbox>().doubleDamage = 0.5f;
                 activeWeapon.fireRateTimer = 0.5f;
                 GetComponent<Health>().SetIFrames(1f);
+                weaponTrail.startColor = Color.red;
+                swordParticles.Play();
                 //weaponTrail.enabled = false;
             }
 

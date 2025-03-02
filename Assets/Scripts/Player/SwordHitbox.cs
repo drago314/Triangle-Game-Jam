@@ -7,12 +7,14 @@ public class SwordHitbox : MonoBehaviour
     public GameObject weaponBase;
     public List<Health> currentlyIntersecting;
     public Health health;
-    public float active;
+    public float active, doubleDamage;
     public Weapon weapon;
+    public Player p;
 
     private void Update()
     {
         if (active > 0) active -= Time.deltaTime;
+        if (doubleDamage > 0) doubleDamage -= Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,7 +34,7 @@ public class SwordHitbox : MonoBehaviour
 
     public void HitAllIntersections(Weapon weapon)
     {
-        if (currentlyIntersecting.Count > 0) { health.iframeTimer = 0.5f; }
+        if (currentlyIntersecting.Count > 0) { health.SetIFrames(0.6f); }
         List<Health> killedThings = new List<Health>();
         foreach (Health health in currentlyIntersecting)
         {
@@ -40,7 +42,11 @@ public class SwordHitbox : MonoBehaviour
             //if (GameManager.Inst.dimension == Dimension.Openness && GameManager.Inst.player.pw.combo == 3 && GameManager.Inst.player.daggerDashing)
             //    weapon.knockBack *= 3;
             if (!health.IsDead())
-                health.Damage(new Damage(weapon.damage, weaponBase, health.gameObject, weapon.knockBack));
+            {
+                int damage = weapon.damage;
+                if (doubleDamage > 0) damage *= 2;
+                health.Damage(new Damage(damage, weaponBase, health.gameObject, weapon.knockBack));
+            }
             else
                 killedThings.Add(health);
         }

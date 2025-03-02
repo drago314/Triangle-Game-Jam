@@ -17,8 +17,9 @@ public class Player : MonoBehaviour
     public bool DUCK_MODE = false;
     public float speed;
     public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq, daggerDashSpeed, daggerDashTime;
-    private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer, daggerDashMult;
-    public  bool dashing, daggerDashing;
+    private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer;
+    [HideInInspector] public float daggerDashMult;
+    public bool dashing, daggerDashing;
     private Vector2 dashDirection, daggerDashDirection;
     Vector3 adjustedInput;
     public GameObject dashGhost;
@@ -174,8 +175,7 @@ public class Player : MonoBehaviour
             Destroy(go, 1);
         }
 
-        // Sets rb velocity
-        if (dashing)
+        if (dashing || (daggerDashing && daggerDashMult > 2.9f))
         {
             // Spawns dash ghosts
             dashGhostTimer -= Time.fixedDeltaTime;
@@ -192,7 +192,11 @@ public class Player : MonoBehaviour
                 }
                 Destroy(ghost, 0.25f);
             }
+        }
 
+        // Sets rb velocity
+        if (dashing)
+        {
             if (dashTimer < 0)
             {
                 dashing = false;
