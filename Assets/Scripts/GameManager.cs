@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI statusText;
 
+    public bool paused;
+    public GameObject pauseMenu;
+
     public bool musicOff = false;
 
     void Awake()
@@ -34,6 +37,12 @@ public class GameManager : MonoBehaviour
 
         player = FindObjectOfType<Player>();
         statusText = GameObject.Find("Status text").GetComponent<TextMeshProUGUI>();
+
+        pauseMenu = GameObject.Find("pause menu");
+        pauseMenu.SetActive(false);
+
+        paused = false;
+        Time.timeScale = 1;
     }
 
     private void Start()
@@ -41,6 +50,11 @@ public class GameManager : MonoBehaviour
         Dimension switchDim = Dimension.Openness;
         if (player.lockedToDim != -1) switchDim = (Dimension)player.lockedToDim;
         SwitchDimension(switchDim);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) TogglePause();
     }
 
     public void SwitchDimension(Dimension newDimension)
@@ -53,5 +67,12 @@ public class GameManager : MonoBehaviour
     {
         statusText.text = text;
         statusText.GetComponent<Animator>().Play("Fade");
+    }
+
+    public void TogglePause()
+    {
+        paused = !paused;
+        pauseMenu.SetActive(paused);
+        Time.timeScale = paused ? 0 : 1;
     }
 }
