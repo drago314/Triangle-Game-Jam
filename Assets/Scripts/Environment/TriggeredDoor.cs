@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TriggeredDoor : MonoBehaviour
 {
@@ -12,17 +13,21 @@ public class TriggeredDoor : MonoBehaviour
 
     float yGoal, yNow, yStart;
 
+    public TextMeshProUGUI toBreakText;
+
     // Start is called before the first frame update
     void Start()
     {
         yStart = transform.position.y;
         yGoal = transform.position.y - yDown;
         yNow = transform.position.y;
+        if (toBreakText) toBreakText.text = "" + thingsNeededToBreak;
     }
 
     public void RemoveObject()
     {
         thingsNeededToBreak--;
+        if (toBreakText) { toBreakText.text = "" + thingsNeededToBreak; if (thingsNeededToBreak == 0) { toBreakText.text = ""; } }
         if (thingsNeededToBreak == 0)
             Close();
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyLockedDoor : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyLockedDoor : MonoBehaviour
 
     bool played;
 
+    public TextMeshProUGUI toBreakText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,7 @@ public class EnemyLockedDoor : MonoBehaviour
         }
         count = enemies.Count;
         yGoal = transform.position.y - yDown;
+        if (toBreakText) toBreakText.text = count + "";
     }
 
     private void Update()
@@ -42,5 +46,6 @@ public class EnemyLockedDoor : MonoBehaviour
     void OnDeath()
     {
         count -= 1;
+        if (toBreakText) { toBreakText.text = count + ""; if (count == 0) { toBreakText.text = ""; } }
     }
 }
