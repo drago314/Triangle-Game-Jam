@@ -31,6 +31,9 @@ public class ExplodingEnemy : Enemy
 
     private void Update()
     {
+        if (health.IsDead())
+            return;
+
         startingWindUp = false;
 
         player = GameManager.Inst.player;
