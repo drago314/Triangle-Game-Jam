@@ -44,8 +44,6 @@ public class EnemyWaveTrigger : MonoBehaviour
         if (!beenTriggered)
             return;
 
-        Debug.Log(waves.Count);
-
         if (count == 0 && waves.Count == 0)
         {
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, yGoal, downSpeed * Time.deltaTime), transform.position.z);
@@ -67,9 +65,9 @@ public class EnemyWaveTrigger : MonoBehaviour
 
     private void StartWave()
     {
-        if (GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play(); }
+        Debug.Log(waves.Count);
 
-        beenTriggered = true;
+        if (GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play(); }
 
         count = 0;
         foreach (var enemy in waves[0])
@@ -85,6 +83,8 @@ public class EnemyWaveTrigger : MonoBehaviour
         {
             enemy.gameObject.SetActive(true);
         }
+
         waves.RemoveAt(0);
+        beenTriggered = true;
     }
 }
