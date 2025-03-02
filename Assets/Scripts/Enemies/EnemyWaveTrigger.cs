@@ -11,6 +11,8 @@ public class EnemyWaveTrigger : MonoBehaviour
     private bool played = false;
     private int count = 0;
 
+    public bool FINAL_BOSS = false;
+
     public BackgroundMusic musicManager;
 
     private void OnTriggerEnter(Collider other)
@@ -37,15 +39,15 @@ public class EnemyWaveTrigger : MonoBehaviour
         if (wave5.Count > 0)
             waves.Add(wave5);
         if (wave6.Count > 0)
-            waves.Add(wave1);
+            waves.Add(wave6);
         if (wave7.Count > 0)
-            waves.Add(wave2);
+            waves.Add(wave7);
         if (wave8.Count > 0)
-            waves.Add(wave3);
+            waves.Add(wave8);
         if (wave9.Count > 0)
-            waves.Add(wave4);
+            waves.Add(wave9);
         if (wave10.Count > 0)
-            waves.Add(wave5);
+            waves.Add(wave10);
     }
 
     private void Update()
@@ -61,8 +63,11 @@ public class EnemyWaveTrigger : MonoBehaviour
 
         if (count == 0 && waves.Count == 0)
         {
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, yGoal, downSpeed * Time.deltaTime), transform.position.z);
-            if (GetComponent<AudioSource>() && !played) { GetComponent<AudioSource>().Play(); played = true; }
+            if (FINAL_BOSS)
+                Debug.Log("stuff"); //STUFF 
+            else
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, yGoal, downSpeed * Time.deltaTime), transform.position.z);
+                if (GetComponent<AudioSource>() && !played) { GetComponent<AudioSource>().Play(); played = true; }
         }
         else if (count == 0)
         {
@@ -96,6 +101,8 @@ public class EnemyWaveTrigger : MonoBehaviour
                 count++;
             }
         }
+
+        Debug.Log(waves.Count);
 
         waves.RemoveAt(0);
         beenTriggered = true;

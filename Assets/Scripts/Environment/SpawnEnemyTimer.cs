@@ -20,7 +20,6 @@ public class SpawnEnemyTimer : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(ees.Count);
         if (!started || ees.Count > 0) { return; }
 
         timer -= Time.deltaTime;
@@ -28,7 +27,6 @@ public class SpawnEnemyTimer : MonoBehaviour
         if (timer <= 0)
         {
             timer = time;
-            Debug.Log("spawned");
             Instantiate(enemy, transform.position, Quaternion.Euler(0, -90, 0));
         }
     }
