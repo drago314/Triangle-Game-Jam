@@ -280,7 +280,7 @@ public class Player : MonoBehaviour
 
             if (extraSongThing) extraSongThing.SetActive(true);
             if (backgroundMusic) backgroundMusic.SetActive(false);
-            if (duckCounter) duckCounter.SetActive(true);
+            if (duckCounter) { duckCounter.SetActive(true); GameManager.Inst.SwitchDimension(Dimension.Conscientiousness); }
         }
     }
 }

@@ -10,6 +10,7 @@ public class MouseOverlay : MonoBehaviour
     private void Start()
     {
         GameManager.Inst.OnDimensionSwitch += SwitchMouse;
+        SwitchMouse(GameManager.Inst.dimension);
     }
 
     private void SwitchMouse(Dimension d)
