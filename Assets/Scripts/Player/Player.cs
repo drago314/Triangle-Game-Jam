@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 
         if (PlayerPrefs.GetFloat("CheckpointX" + thing) != 0 && PlayerPrefs.GetFloat("CheckpointZ" + thing) != 0)
         {
-            rb.MovePosition(new Vector3(PlayerPrefs.GetFloat("CheckpointX"), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ")));
+            rb.MovePosition(new Vector3(PlayerPrefs.GetFloat("CheckpointX" + thing), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ" + thing)));
             Debug.Log(transform.position);
         }
 

@@ -20,7 +20,6 @@ public class checkpoint : MonoBehaviour
             string thing = scene.buildIndex.ToString();
             PlayerPrefs.SetFloat("CheckpointX" + thing, transform.position.x);
             PlayerPrefs.SetFloat("CheckpointZ" + thing, transform.position.z);
-            Debug.Log("Saved Position");
             GetComponent<AudioSource>().Play();
             ps.Play();
             GameManager.Inst.player.health.Heal(100);
