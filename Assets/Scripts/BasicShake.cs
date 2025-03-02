@@ -7,6 +7,7 @@ public class BasicShake : MonoBehaviour
     public float shakeAmount, lerpSpeed;
     public Transform goTowards;
     public bool lerping;
+    public bool overrideScreen;
     Vector2 startPos;
 
     private void Start()
@@ -19,7 +20,9 @@ public class BasicShake : MonoBehaviour
         if (!lerping) transform.position = startPos + new Vector2(Random.Range(-shakeAmount, shakeAmount), Random.Range(-shakeAmount, shakeAmount));
         else
         {
-            transform.position = Vector3.Lerp(transform.position, goTowards.position, lerpSpeed * Time.fixedDeltaTime * Screen.width / 1920);
+            float mult = Screen.width / 1920;
+            if (overrideScreen) mult = 1;
+            transform.position = Vector3.Lerp(transform.position, goTowards.position, lerpSpeed * Time.fixedDeltaTime * mult);
         }
     }
 }

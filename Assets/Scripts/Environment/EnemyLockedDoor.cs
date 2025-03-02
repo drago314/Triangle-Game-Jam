@@ -31,7 +31,7 @@ public class EnemyLockedDoor : MonoBehaviour
 
         if (destroyWithProgress)
         {
-            if (PlayerPrefs.GetFloat("CheckpointZ" + SceneManager.GetActiveScene().buildIndex) > transform.position.z) Destroy(gameObject);
+            if (PlayerPrefs.GetFloat("CheckpointZ" + SceneManager.GetActiveScene().buildIndex) > transform.position.z && PlayerPrefs.GetFloat("CheckpointZ" + SceneManager.GetActiveScene().buildIndex) != 0) Destroy(gameObject);
         }
     }
 

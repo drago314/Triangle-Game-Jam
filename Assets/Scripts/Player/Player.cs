@@ -51,6 +51,13 @@ public class Player : MonoBehaviour
 
     public GameObject extraSongThing, backgroundMusic, duckCounter, deathAnim;
 
+    public bool finalAnim;
+    public GameObject[] splits;
+    public GameObject particles1, particles2;
+    public AudioSource tingaling;
+    public Texture2D finalTexture;
+    public SceneTransitioner st;
+
     float defaultFov;
 
 
@@ -99,6 +106,8 @@ public class Player : MonoBehaviour
         health.OnHeal += OnHeal;
 
         healthBar.SetMaxHealth(health.GetMaxHealth());
+
+        // StartFinalAnim();
     }
 
     private void ReCheckpoint()
@@ -167,6 +176,8 @@ public class Player : MonoBehaviour
     {
         grounded = Physics.OverlapSphere(foot.position, 0.1f, ground).Length > 0;
         if (grounded) { transform.position = new(transform.position.x, 0.5f, transform.position.z); }
+
+        if (finalAnim) { health.Heal(10); dashSpriteFlip.transform.localPosition = Vector3.MoveTowards(dashSpriteFlip.transform.localPosition, new(0f, 1.7f, 0f), Time.fixedDeltaTime * 2); }
 
         daggerDashTimer -= Time.fixedDeltaTime;
         dashTimer -= Time.fixedDeltaTime;
@@ -292,5 +303,42 @@ public class Player : MonoBehaviour
             if (backgroundMusic) backgroundMusic.SetActive(false);
             if (duckCounter) { duckCounter.SetActive(true); GameManager.Inst.SwitchDimension(Dimension.Conscientiousness); }
         }
+    }
+
+    public void StartFinalAnim()
+    {
+        if (finalAnim) return;
+        weaponBase.gameObject.SetActive(false);
+        disableInput = true;
+        pw.disableInput = true;
+        finalAnim = true;
+        particles1.SetActive(true);
+        Invoke("Split", 3);
+    }
+    private void Split()
+    {
+        foreach(GameObject go in splits) { go.SetActive(true); }
+        Invoke("Merge", 3);
+    }
+    private void Merge()
+    {
+        foreach (GameObject go in splits)
+        {
+            go.GetComponent<BasicShake>().goTowards = particles2.transform;
+            Invoke("ChangeSprite", 1f);
+        }
+    }
+    private void ChangeSprite()
+    {
+        tingaling.Play();
+        pa.enabled = false;
+        pa.myMat.mainTexture = finalTexture;
+        foreach (GameObject go in splits) { go.SetActive(false); }
+        Invoke("Blast", 1);
+    }
+    private void Blast() { particles2.SetActive(true); Invoke("End", 3); }
+    private void End()
+    {
+        st.NextScene();
     }
 }

@@ -64,7 +64,10 @@ public class EnemyWaveTrigger : MonoBehaviour
         if (count == 0 && waves.Count == 0)
         {
             if (FINAL_BOSS)
-                Debug.Log("stuff"); //STUFF 
+            {
+                GameManager.Inst.player.StartFinalAnim();
+                GameManager.Inst.player.health.Heal(100);
+            }
             else
                 transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, yGoal, downSpeed * Time.deltaTime), transform.position.z);
                 if (GetComponent<AudioSource>() && !played) { GetComponent<AudioSource>().Play(); played = true; }
