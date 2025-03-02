@@ -262,8 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e7ef7c7a3e3a14b828d7c114006cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultScene: 1
-  slider: {fileID: 860972026}
 --- !u!4 &92593981
 Transform:
   m_ObjectHideFlags: 0
@@ -315,6 +313,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 95.70001
       objectReference: {fileID: 0}
+    - target: {fileID: 2368363655663277567, guid: 9bf3611a985ef4186ab78ef060ed1e41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2879541203329267335, guid: 9bf3611a985ef4186ab78ef060ed1e41, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -338,6 +340,14 @@ PrefabInstance:
     - target: {fileID: 5486837862941099910, guid: 9bf3611a985ef4186ab78ef060ed1e41, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691371194780289120, guid: 9bf3611a985ef4186ab78ef060ed1e41, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399036346358327323, guid: 9bf3611a985ef4186ab78ef060ed1e41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306100589762456085, guid: 9bf3611a985ef4186ab78ef060ed1e41, type: 3}
       propertyPath: m_Name
