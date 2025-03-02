@@ -1,25 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnEnemyTimer : MonoBehaviour
 {
     public GameObject enemy;
     public float time;
 
-    private float timer;
+    public bool started;
 
-    private void Start()
+    private float timer = 0;
+    public List<Enemy> ees = new List<Enemy>();
+
+    private void OnTriggerEnter(Collider other)
     {
-        timer = time;
+        if (other.gameObject.TryGetComponent(out Player _))
+            started = true;
     }
 
     private void Update()
     {
+        Debug.Log(ees.Count);
+        if (!started || ees.Count > 0) { return; }
+
         timer -= Time.deltaTime;
 
         if (timer <= 0)
         {
             timer = time;
+            Debug.Log("spawned");
             Instantiate(enemy, transform.position, Quaternion.Euler(0, -90, 0));
         }
     }

@@ -75,7 +75,6 @@ public class EnemyWaveTrigger : MonoBehaviour
 
     void OnDeath()
     {
-        Debug.Log(count + ", " + waves.Count);
         count -= 1;
     }
 
