@@ -10824,8 +10824,8 @@ MonoBehaviour:
   bufferTime: 0.1
   shootCooldown: 0.01
   shootWindupTime: 1
-  shotTime: 1.5
-  shootRange: 4
+  shotTime: 1
+  shootRange: 6
   moveSpeed: 2
   playerSeeDistance: 10
   damage: 1

@@ -5530,6 +5530,7 @@ GameObject:
   - component: {fileID: 3102510710523503901}
   - component: {fileID: 5211916057214126116}
   - component: {fileID: 2060568046133372155}
+  - component: {fileID: 2700994956980525957}
   m_Layer: 3
   m_Name: Particle System (1)
   m_TagString: Untagged
@@ -10407,6 +10408,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2700994956980525957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6104088264935015785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5930b56377244ca1b34e96bc4d94d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 5211916057214126116}
+  health: {fileID: 1057769005203111579}
 --- !u!1 &7228912965280452655
 GameObject:
   m_ObjectHideFlags: 0
@@ -10577,6 +10592,7 @@ MonoBehaviour:
   bloodToSpawn: 3
   blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
   shakeAmount: 0.36
+  dissipation: 2
   hitSource: {fileID: 2558669696629344761}
   deathSource: {fileID: 6184874495233468308}
   iframes: 0
