@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
 
     public Health health;
 
+    public GameObject extraSongThing, backgroundMusic, duckCounter;
+
 
     private void OnEnable()
     {
@@ -269,6 +271,10 @@ public class Player : MonoBehaviour
             cs.standardPos = other.transform.GetChild(0).localPosition;
             cs.standardRot = other.transform.GetChild(0).localEulerAngles;
             cs.realLerpSpeed = 3;
+
+            if (extraSongThing) extraSongThing.SetActive(true);
+            if (backgroundMusic) backgroundMusic.SetActive(false);
+            if (duckCounter) duckCounter.SetActive(true);
         }
     }
 }

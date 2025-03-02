@@ -41,6 +41,7 @@ public class Duck : Enemy
 
     void onDeath(){
         ds.ducksKilled += 1;
+        ds.PushKill();
         Destroy(gameObject);
     }
 } 

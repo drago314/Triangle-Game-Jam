@@ -109,6 +109,7 @@ MonoBehaviour:
   bloodToSpawn: 0
   blood: {fileID: 0}
   shakeAmount: 0
+  dissipation: 2
   hitSource: {fileID: 0}
   deathSource: {fileID: 0}
   iframes: 0
@@ -128,9 +129,10 @@ MonoBehaviour:
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
   speed: 2
-  bobAmount: 0.5
-  bobSpeed: 2
+  bobAmount: 0.1
+  bobSpeed: 4
   pw: {fileID: 0}
+  ds: {fileID: 0}
   health: {fileID: 2421996820434324925}
 --- !u!65 &-6092230658895210820
 BoxCollider:

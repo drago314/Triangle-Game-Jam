@@ -197,7 +197,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Relax, you won't feel a thing... at least, not for long.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b2e4fb1d1ea37f44c86c2959d678c314, type: 2}
   m_sharedMaterial: {fileID: -6896958978548369156, guid: b2e4fb1d1ea37f44c86c2959d678c314, type: 2}
@@ -887,7 +887,6 @@ MonoBehaviour:
   - 4
   randomPitch: 0
   activationRange: 1
-  player: {fileID: 1043805892}
   guys: []
   guySource: {fileID: 0}
   activateOnEnd: {fileID: 2048524019}

@@ -9,6 +9,7 @@ public class SceneTransitioner : MonoBehaviour
     public GameObject eyelid1, eyelid2;
 
     private bool loaded = false;
+    public float timeToTransition = 3;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,7 +24,7 @@ public class SceneTransitioner : MonoBehaviour
         eyelid1.SetActive(true);
         eyelid2.SetActive(true);
 
-        Invoke("LoadS", 1.5f);
+        Invoke("LoadS", timeToTransition);
     }
 
     public void LoadS()
