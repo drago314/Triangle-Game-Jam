@@ -51,7 +51,7 @@ public class DuckShooter : MonoBehaviour
             duck1.speed += ducksKilled * 0.24f;
             duck1.ds = this;
             
-            float spawnInterval = Random.Range(avgSpawnTime * 0.5f, avgSpawnTime * 1.5f);
+            float spawnInterval = Random.Range(2f / duck1.speed, 6f / duck1.speed);
             yield return new WaitForSeconds(spawnInterval);
         }
     }
