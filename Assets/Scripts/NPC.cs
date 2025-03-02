@@ -26,6 +26,9 @@ public class NPC : MonoBehaviour
     public string loadScene;
     public Animator anim;
 
+    public GameObject toDisable;
+    public SceneTransitioner st;
+
     private void Start()
     {
         TryGetComponent(out source);
@@ -39,6 +42,7 @@ public class NPC : MonoBehaviour
         float dis = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(player.position.x, player.position.z));
         if (dis < activationRange && !activated)
         {
+            if (toDisable) { toDisable.SetActive(false); GameManager.Inst.SwitchDimension(Dimension.Agreeableness); }
             activated = true;
             PlayLine();
         }
@@ -63,8 +67,9 @@ public class NPC : MonoBehaviour
             source.Play(); 
         }
         if (anim) anim.Play("Jump");
-        if (currentLine < lines.Length-1) { Invoke("PlayLine", lengths[currentLine]); currentLine++; }
+        if (currentLine < lines.Length - 1) { Invoke("PlayLine", lengths[currentLine]); currentLine++; }
         else if (activateOnEnd) { Invoke("ActivateObject", lengths[currentLine]); }
+        else if (st) st.NextScene();
         else { Invoke("EndDialogue", lengths[currentLine]); }
 
     }
@@ -73,6 +78,7 @@ public class NPC : MonoBehaviour
     {
         activateOnEnd.SetActive(true);
         if (loadScene != "") { Invoke("LoadScene", 3); }
+        else if (st) st.NextScene();
     }
     private void LoadScene() { SceneManager.LoadScene(loadScene); }
 

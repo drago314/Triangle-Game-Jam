@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
     public bool overrideCheckpoint;
 
-    public GameObject extraSongThing, backgroundMusic, duckCounter;
+    public GameObject extraSongThing, backgroundMusic, duckCounter, deathAnim;
 
     float defaultFov;
 
@@ -69,6 +69,9 @@ public class Player : MonoBehaviour
         startScreenPos = cam.WorldToScreenPoint(transform.position);
         defaultWeaponOffset = weapon.localPosition.z;
         health = GetComponent<Health>();
+
+        deathAnim = GameObject.Find("Death");
+        deathAnim.SetActive(false);
 
         defaultFov = cam.fieldOfView;
 
@@ -258,9 +261,12 @@ public class Player : MonoBehaviour
 
     protected void OnDeath()
     {
+        deathAnim.SetActive(true);
+        Invoke("RestartScene", 2);
         healthBar.SetHealth(health.GetHealth());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameObject.Find("Background Music Manager").SetActive(false);
     }
+    private void RestartScene() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
     protected void OnHit(Damage damage)
     {
         hitOverlay.Play("Hit");
