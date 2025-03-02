@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DuckShooter : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class DuckShooter : MonoBehaviour
     public float avgSpawnTime; // Same average spawn time for all spawners
     public SceneTransitioner st;
     public bool loaded = false;
+    public AudioSource song;
+    public TextMeshProUGUI ammo;
 
     public int ducksKilled;
 
@@ -24,10 +27,13 @@ public class DuckShooter : MonoBehaviour
 
     private void Update()
     {
-        if (ducksKilled == 20 && !loaded)
+        ammo.text = ducksKilled + "";
+
+        if (ducksKilled >= 30 && !loaded)
         {
             loaded = true;
             st.NextScene();
+            song.volume = 0;
         }
     }
 
@@ -49,4 +55,6 @@ public class DuckShooter : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
     }
+
+    public void PushKill() { song.pitch += 0.07f; }
 }

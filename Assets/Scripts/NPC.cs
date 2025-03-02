@@ -20,6 +20,8 @@ public class NPC : MonoBehaviour
     public BasicShake[] guys;
     public AudioSource guySource;
 
+    Transform player;
+
     public GameObject activateOnEnd;
     public string loadScene;
     public Animator anim;
@@ -28,11 +30,12 @@ public class NPC : MonoBehaviour
     {
         TryGetComponent(out source);
         if (guySource != null) { Invoke("Split", lengths[0] + 6); }
+        if (GameManager.Inst.player != null) player = GameManager.Inst.player.transform;
+        else player = transform;
     }
 
     private void FixedUpdate()
     {
-        Transform player = GameManager.Inst.player.transform;
         float dis = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(player.position.x, player.position.z));
         if (dis < activationRange && !activated)
         {
