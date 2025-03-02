@@ -23,6 +23,8 @@ public class NPC : MonoBehaviour
     Transform player;
 
     public GameObject activateOnEnd;
+    public bool setSam, amSam;
+    public GameObject sam;
     public string loadScene;
     public Animator anim;
 
@@ -35,6 +37,8 @@ public class NPC : MonoBehaviour
         if (guySource != null) { Invoke("Split", lengths[0] + 6); }
         if (GameManager.Inst != null && GameManager.Inst.player != null) player = GameManager.Inst.player.transform;
         else player = transform;
+
+        if (amSam) { if (PlayerPrefs.GetInt("Sam") == 0) { gameObject.SetActive(false); } }
     }
 
     private void FixedUpdate()
@@ -43,6 +47,7 @@ public class NPC : MonoBehaviour
         if (dis < activationRange && !activated)
         {
             if (toDisable) { toDisable.SetActive(false); GameManager.Inst.SwitchDimension(Dimension.Agreeableness); }
+            if (setSam) { PlayerPrefs.SetInt("Sam", 1); sam.SetActive(true); }
             activated = true;
             PlayLine();
         }
