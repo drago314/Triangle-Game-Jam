@@ -30,7 +30,7 @@ public class NPC : MonoBehaviour
     {
         TryGetComponent(out source);
         if (guySource != null) { Invoke("Split", lengths[0] + 6); }
-        if (GameManager.Inst.player != null) player = GameManager.Inst.player.transform;
+        if (GameManager.Inst != null && GameManager.Inst.player != null) player = GameManager.Inst.player.transform;
         else player = transform;
     }
 
