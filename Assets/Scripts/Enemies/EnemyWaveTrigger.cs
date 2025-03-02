@@ -65,7 +65,7 @@ public class EnemyWaveTrigger : MonoBehaviour
 
     private void StartWave()
     {
-        Debug.Log(waves.Count);
+                Debug.Log(waves.Count);
 
         if (GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play(); }
 
