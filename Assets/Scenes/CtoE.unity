@@ -644,7 +644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CONSCIENTIOUSNESS
+  m_text: EXTRAVERSION
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5cad3a8cb36807b40920ded68b48ea92, type: 2}
   m_sharedMaterial: {fileID: -1366360880120654892, guid: 5cad3a8cb36807b40920ded68b48ea92, type: 2}
@@ -671,8 +671,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.5
-  m_fontSizeBase: 30.5
+  m_fontSize: 35.75
+  m_fontSizeBase: 35.75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -871,18 +871,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 616697}
   lines:
-  - Think back to a memory when you were perfect...
-  - Analytical...
-  - Precise...
-  - Think as hard as you can.
+  - Have you ever failed spectacularly?
+  - In front of a crowd?
+  - Hold onto that feeling...
+  - I can utilize it...
   clips:
-  - {fileID: 8300000, guid: 426e35ef0f73e66458e87ab53642af88, type: 3}
-  - {fileID: 8300000, guid: c6458a4e9b0e19948a21f1580b057e32, type: 3}
-  - {fileID: 8300000, guid: ccbf4af3aac90414b9c0d990dfacfcde, type: 3}
-  - {fileID: 8300000, guid: c22c3607e1c62f84486a7cc291b5645b, type: 3}
+  - {fileID: 8300000, guid: 3a9ad8a7af7a49c4e95709328203e3db, type: 3}
+  - {fileID: 8300000, guid: 25009757719e21b4c9cd1f663dba033b, type: 3}
+  - {fileID: 8300000, guid: 136d56bdfb1bec14cb4dd4bf95538279, type: 3}
+  - {fileID: 8300000, guid: ddfb37e72fd2df141b1a8bdcf7c2178f, type: 3}
   lengths:
-  - 4
-  - 2
+  - 3
+  - 2.5
   - 2
   - 4
   randomPitch: 0
@@ -891,7 +891,7 @@ MonoBehaviour:
   guys: []
   guySource: {fileID: 0}
   activateOnEnd: {fileID: 2048524019}
-  loadScene: Conscientiousness
+  loadScene: Extraversion
   anim: {fileID: 0}
 --- !u!114 &1043805895
 MonoBehaviour:
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.89433956, g: 0.89433956, b: 0.89433956, a: 1}
+  m_Color: {r: 0.4392157, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
