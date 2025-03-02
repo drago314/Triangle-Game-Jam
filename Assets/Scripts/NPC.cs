@@ -15,7 +15,6 @@ public class NPC : MonoBehaviour
     AudioSource source;
     public bool randomPitch;
     public float activationRange;
-    public Transform player;
     bool activated, canEnd;
 
     public BasicShake[] guys;
@@ -33,6 +32,7 @@ public class NPC : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Transform player = GameManager.Inst.player.transform;
         float dis = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(player.position.x, player.position.z));
         if (dis < activationRange && !activated)
         {
