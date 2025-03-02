@@ -23,7 +23,9 @@ public class RhythmGame : MonoBehaviour
     public float avgSpawnPerArrow;
     public AudioSource[] sources;
     public AudioSource victory, defeat;
-    bool defeated;
+    bool defeated, fallingDefeat;
+
+    public SceneTransitioner st;
 
     private Animator[] anims;
     private SpriteFlip[] flips;
@@ -60,6 +62,8 @@ public class RhythmGame : MonoBehaviour
         }
 
         victory.volume = Mathf.Clamp(victory.volume - Time.fixedDeltaTime/10, 0, 0.2f);
+
+        if (fallingDefeat) { defeat.volume = Mathf.Clamp(defeat.volume - Time.deltaTime / 5, 0, 1); }
 
         anims = GetComponentsInChildren<Animator>();
         flips = GetComponentsInChildren<SpriteFlip>();
@@ -113,6 +117,7 @@ public class RhythmGame : MonoBehaviour
         sources[id].Play();
     }
 
-    private void Defeat() { defeat.Play(); InvokeRepeating("RandomJump", 0.1f, 0.1f); }
+    private void Defeat() { defeat.Play(); InvokeRepeating("RandomJump", 0.1f, 0.1f); Invoke("CloseEyes", 2); }
     private void RandomJump() { anims[Random.Range(0, anims.Length)].Play("Jump"); }
+    private void CloseEyes() { st.NextScene(); fallingDefeat = true; }
 }

@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: feebb31a4b989774f9cd4da28725c34e
   - enabled: 1
@@ -26,4 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Extraversion.unity
     guid: f1df07dbba5923843b50922e621319f9
+  - enabled: 1
+    path: Assets/Scenes/EtoA.unity
+    guid: aabde10ec4c1ab14790024484e7256a4
+  - enabled: 1
+    path: Assets/Scenes/Agreeableness.unity
+    guid: a2a887bcb41577349911ae4f4a595add
+  - enabled: 1
+    path: Assets/Scenes/AtoN.unity
+    guid: e3b7774635b719441bd1ade3baf3e311
+  - enabled: 1
+    path: Assets/Scenes/Nueroticism.unity
+    guid: db36338be6b234feba41ebff1b1c601b
   m_configObjects: {}
