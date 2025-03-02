@@ -151,14 +151,47 @@ public class PlayerWeapon : MonoBehaviour
             // first one from bullet tip
             RaycastHit hit;
             float range = (weaponMaxRangePoint.position - weaponTip.position).magnitude;
-            if (!GameManager.Inst.player.DUCK_MODE && Physics.Raycast(weaponTip.position, weaponMaxRangePoint.position - weaponTip.position, out hit, range) && hit.collider.TryGetComponent(out Health health))
+
+            Vector3 goal;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit3, Mathf.Infinity, LayerMask.GetMask("Weapon")))
             {
+                goal = hit3.point;
+                Debug.Log("here");
+            }
+            else
+            {
+                goal = weaponMaxRangePoint.transform.position;
+                Debug.Log("there");
+            }
+
+
+            lineEnd = Vector3.Normalize(goal - weaponTip.position) * range + weaponTip.position;
+
+            if (GameManager.Inst.player.DUCK_MODE)
+            {
+                RaycastHit hit2;
+                if (Physics.Raycast(ray, out hit2, Mathf.Infinity, LayerMask.GetMask("Enemy")) && hit2.collider.TryGetComponent(out Health enemy) && !hit2.collider.transform.root.TryGetComponent(out Player player))
+                {
+                    if (Vector3.Distance(hit2.collider.gameObject.transform.position, GameManager.Inst.player.transform.position) < range || GameManager.Inst.player.DUCK_MODE)
+                        lineEnd = TryHit(hit2);
+                }
+                if (Physics.Raycast(ray, out hit2, Mathf.Infinity, LayerMask.GetMask("DuckWall")))
+                {
+                    lineEnd = TryHit(hit2);
+                }
+            }
+            else if (Physics.Raycast(weaponTip.position, goal - weaponTip.position, out hit, range, ~LayerMask.GetMask("Weapon")) && hit.collider.gameObject.TryGetComponent(out Health ___) && !hit.collider.gameObject.TryGetComponent(out Player ____))
+            {
+                Debug.Log("hi");
                 lineEnd = TryHit(hit);
             }
             else
             {
+                Debug.Log("anit-hi");
+
                 // second one from cursor
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit2;
                 if (Physics.Raycast(ray, out hit2, Mathf.Infinity, LayerMask.GetMask("Enemy")) && hit2.collider.TryGetComponent(out Health enemy) && !hit2.collider.transform.root.TryGetComponent(out Player player))
                 {
@@ -183,7 +216,20 @@ public class PlayerWeapon : MonoBehaviour
         // Handels Bazooka (and maybe magic if that's also a projectile)
         if (activeWeapon.weaponType == Dimension.Extroversion || activeWeapon.weaponType == Dimension.Agreeableness)
         {
-            float angle = Mathf.Atan2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z);
+            float angle;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Weapon")))
+            {
+                angle = Mathf.Atan2(hit.point.x - weaponTip.position.x, hit.point.z - weaponTip.position.z);
+                Debug.Log("here");
+            }
+            else
+            {
+                angle = Mathf.Atan2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z);
+                Debug.Log("there");
+            }
+
             Quaternion rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 90, 0);
             GameObject go = Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
 
