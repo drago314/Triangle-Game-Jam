@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
 
     public Health health;
 
+    public bool overrideCheckpoint;
+
     public GameObject extraSongThing, backgroundMusic, duckCounter;
 
 
@@ -72,7 +74,7 @@ public class Player : MonoBehaviour
         int thing = scene.buildIndex;
         PlayerPrefs.SetInt("Scene", thing);
 
-        if (PlayerPrefs.GetFloat("CheckpointX" + thing) != 0 && PlayerPrefs.GetFloat("CheckpointZ" + thing) != 0)
+        if (PlayerPrefs.GetFloat("CheckpointX" + thing) != 0 && PlayerPrefs.GetFloat("CheckpointZ" + thing) != 0 && !overrideCheckpoint)
         {
             rb.MovePosition(new Vector3(PlayerPrefs.GetFloat("CheckpointX"), transform.position.y, PlayerPrefs.GetFloat("CheckpointZ")));
             Debug.Log(transform.position);
