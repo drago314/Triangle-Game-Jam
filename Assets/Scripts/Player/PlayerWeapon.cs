@@ -61,7 +61,7 @@ public class PlayerWeapon : MonoBehaviour
             if (w.reloadTimer > 0) w.reloadTimer -= Time.deltaTime;
             if (w.fireRateTimer > 0) w.fireRateTimer -= Time.deltaTime;
         }
-        if (Input.GetMouseButtonDown(0)) TryFire();
+        if (Input.GetMouseButtonDown(0) && !GameManager.Inst.paused) TryFire();
 
         // makes weapon go down when reloading
         float goalRot = 0;
