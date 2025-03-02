@@ -6,22 +6,19 @@ public class EnemyWaveTrigger : MonoBehaviour
     public List<GameObject> wave1, wave2, wave3, wave4, wave5;
     private List<List<GameObject>> waves;
     public float yGoal, downSpeed;
+    bool startWave = false;
     private bool beenTriggered = false;
     private bool played = false;
     private int count = 0;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Only trigger once
-        if (beenTriggered)
-            return;
-
         // Only trigger if player
         Player p;
         if (!other.TryGetComponent<Player>(out p))
             return;
 
-        StartWave();
+        startWave = true;
     }
 
     private void Start()
@@ -41,13 +38,19 @@ public class EnemyWaveTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (!beenTriggered)
+        if (!startWave)
             return;
+
+        if (startWave && !beenTriggered)
+        {
+            StartWave();
+            beenTriggered = true;
+        }
 
         if (count == 0 && waves.Count == 0)
         {
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, yGoal, downSpeed * Time.deltaTime), transform.position.z);
-            if (GetComponent<AudioSource>() && !played) { Debug.Log("Played"); GetComponent<AudioSource>().Play(); played = true; }
+            if (GetComponent<AudioSource>() && !played) { GetComponent<AudioSource>().Play(); played = true; }
         }
         else if (count == 0)
         {
@@ -60,28 +63,27 @@ public class EnemyWaveTrigger : MonoBehaviour
 
     void OnDeath()
     {
+        Debug.Log(count + ", " + waves.Count);
         count -= 1;
     }
 
     private void StartWave()
     {
-                Debug.Log(waves.Count);
-
         if (GetComponent<AudioSource>()) { GetComponent<AudioSource>().Play(); }
-
-        count = 0;
-        foreach (var enemy in waves[0])
-        {
-            if (TryGetComponent(out Health health))
-            {
-                health.OnDeath += OnDeath;
-                count++;
-            }
-        }
 
         foreach (GameObject enemy in waves[0])
         {
             enemy.gameObject.SetActive(true);
+        }
+
+        count = 0;
+        foreach (var enemy in waves[0])
+        {
+            if (enemy.TryGetComponent(out Health health))
+            {
+                health.OnDeath += OnDeath;
+                count++;
+            }
         }
 
         waves.RemoveAt(0);
