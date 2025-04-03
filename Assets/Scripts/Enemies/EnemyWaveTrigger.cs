@@ -65,7 +65,7 @@ public class EnemyWaveTrigger : MonoBehaviour
         {
             if (FINAL_BOSS)
             {
-                GameManager.Inst.player.StartFinalAnim();
+                //GameManager.Inst.player.StartFinalAnim();
                 GameManager.Inst.player.health.Heal(100);
             }
             else
