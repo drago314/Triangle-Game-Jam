@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   velocity: 18
-  rangeInTime: 3
+  rangeInTime: 1.75
   knockBack: 0
   particles: {fileID: 2719215621463936092}
 --- !u!82 &1227596351369583625
