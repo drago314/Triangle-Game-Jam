@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
 
     public bool TUTORIAL_MODE = false;
     public bool DUCK_MODE = false;
+    public bool USE_FREECAM = false;
 
     public int lockedToDim; // Start dim
     public SpriteFlip dashSpriteFlip; // Sprite that is flipped when dashing
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
     public float sprintMod, dashSpeed, dashTime, dashCooldown, dashGhostFreq, daggerDashSpeed, daggerDashTime;
     private float currentSprintMod, dashTimer, daggerDashTimer, dashCooldownTimer, dashGhostTimer;
     [HideInInspector] public float daggerDashMult;
+    public Transform faceCamera;
     public bool dashing, daggerDashing;
     private Vector2 dashDirection, daggerDashDirection;
     Vector3 adjustedInput;
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour
     [Header("Rotation")]
     public Camera cam;
     public Transform mousePoint, screenPoint, weaponBase, weapon, gyro;
+    public float weaponRotateSpeed;
     [HideInInspector] public Vector2 startScreenPos;
     float defaultWeaponOffset;
 
@@ -106,10 +110,9 @@ public class Player : MonoBehaviour
 
         if (disableInput) input = Vector2.zero;
 
-        if (input != Vector2.zero)
-            lastNonzeroInput = input;
-
-        adjustedInput = transform.right * input.x + transform.forward * input.y;
+        // Adjusts input based on camera direction
+        adjustedInput = -faceCamera.right * input.x + -faceCamera.forward * input.y;
+        if (adjustedInput != Vector3.zero) lastNonzeroInput = new Vector2(adjustedInput.x, adjustedInput.z);
 
         pa.walking = input != Vector2.zero;
         
@@ -182,6 +185,9 @@ public class Player : MonoBehaviour
             }
         }
 
+        // Default velocity
+        Vector2 adjustedVelocity = new Vector2(adjustedInput.x, adjustedInput.z).normalized * speed * currentSprintMod;
+
         // Dashing
         if (dashing)
         {
@@ -192,8 +198,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Vector2 adjustedVelocity = dashDirection.normalized * dashSpeed;
-                rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
+                adjustedVelocity = dashDirection.normalized * dashSpeed;
             }
         }
 
@@ -206,20 +211,16 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Vector2 adjustedVelocity = daggerDashDirection.normalized * daggerDashSpeed * daggerDashMult;
-                rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
+                adjustedVelocity = daggerDashDirection.normalized * daggerDashSpeed * daggerDashMult;
             }
         }
 
-        // Sets rb velocity
-        if (!dashing && !daggerDashing)
-        {
-            Vector2 adjustedVelocity = new Vector2(adjustedInput.x, adjustedInput.z).normalized * speed * currentSprintMod;
-            rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
-        }
+        // Actually sets rb.velocity based on camera rotation
+        rb.velocity = new Vector3(adjustedVelocity.x, rb.velocity.y, adjustedVelocity.y);
 
         // Sets rotation
-        weaponBase.localEulerAngles = new(weaponBase.eulerAngles.x, RotationFromMouse() + 90 + pw.offset, 0);
+        float rot = Mathf.LerpAngle(weaponBase.eulerAngles.y, RotationFromMouse() + 90 + pw.offset, weaponRotateSpeed * Time.fixedDeltaTime);
+        weaponBase.localEulerAngles = new(weaponBase.eulerAngles.x, rot, 0);
         gyro.localEulerAngles = new(0, RotationFromMouse() + 90, 0);
         // Offsets weapon localpos to avoid clipping through torso when weapon faces side to side
         weapon.localPosition = new(0, weapon.localPosition.y, defaultWeaponOffset - Mathf.Abs(Mathf.Sin(weaponBase.eulerAngles.y * Mathf.Deg2Rad)) / 4);
@@ -242,6 +243,9 @@ public class Player : MonoBehaviour
         float rot = Mathf.Rad2Deg * Mathf.Atan2((mousePoint.position.y - screenPoint.position.y), (-mousePoint.position.x + screenPoint.position.x));
         if (rot < 0) { rot += 360; }
         if (rot > 360) { rot -= 360; }
+
+        if (USE_FREECAM) { rot = Mathf.Atan2(-lastNonzeroInput.y, lastNonzeroInput.x) * Mathf.Rad2Deg + 180; }
+
         return rot;
     }
 
