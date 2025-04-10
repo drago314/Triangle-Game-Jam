@@ -20342,7 +20342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5754732214930879054, guid: b507de35029c3dc469db7fb403b3d94a, type: 3}
       propertyPath: lines.Array.data[2]
-      value: But did you find the one behind the locker in the hall?
+      value: I bet you can't find the one behind the locker in the hall.
       objectReference: {fileID: 0}
     - target: {fileID: 5754732214930879054, guid: b507de35029c3dc469db7fb403b3d94a, type: 3}
       propertyPath: lines.Array.data[3]
@@ -20362,7 +20362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5754732214930879054, guid: b507de35029c3dc469db7fb403b3d94a, type: 3}
       propertyPath: lengths.Array.data[2]
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5754732214930879054, guid: b507de35029c3dc469db7fb403b3d94a, type: 3}
       propertyPath: lengths.Array.data[3]
@@ -231210,7 +231210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6488795297094854830, guid: 047236594a66a4cfb99cc5ba083a2278, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.52
+      value: 0.73
       objectReference: {fileID: 0}
     - target: {fileID: 6488795297094854830, guid: 047236594a66a4cfb99cc5ba083a2278, type: 3}
       propertyPath: m_LocalRotation.w

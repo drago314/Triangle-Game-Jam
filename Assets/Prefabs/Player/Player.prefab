@@ -15707,10 +15707,10 @@ MonoBehaviour:
   pa: {fileID: 2953136314367074852}
   pw: {fileID: 7795942256846434076}
   healthBar: {fileID: 0}
-  lockedToDim: 0
-  dashSpriteFlip: {fileID: 0}
   TUTORIAL_MODE: 0
   DUCK_MODE: 0
+  lockedToDim: 0
+  dashSpriteFlip: {fileID: 0}
   speed: 5
   sprintMod: 1.4
   dashSpeed: 30
@@ -15749,6 +15749,7 @@ MonoBehaviour:
   extraSongThing: {fileID: 0}
   backgroundMusic: {fileID: 0}
   duckCounter: {fileID: 0}
+  deathAnim: {fileID: 0}
 --- !u!114 &2953136314367074852
 MonoBehaviour:
   m_ObjectHideFlags: 0
