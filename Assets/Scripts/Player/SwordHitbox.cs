@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SwordHitbox : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class SwordHitbox : MonoBehaviour
 
     public void HitAllIntersections(Weapon weapon)
     {
-        if (currentlyIntersecting.Count > 0) { health.SetIFrames(0.6f); }
+        if (currentlyIntersecting.Count > 0) { health.SetIFrames(SceneManager.GetActiveScene().name == "Clouds" ? 0.1f : 0.6f); }
         List<Health> killedThings = new List<Health>();
         foreach (Health health in currentlyIntersecting)
         {

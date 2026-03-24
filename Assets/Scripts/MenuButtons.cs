@@ -5,7 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
+
 {
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     private void Update()
     {
         if (Input.GetKey(KeyCode.N) || Input.GetKey(KeyCode.G))
@@ -22,4 +29,6 @@ public class MenuButtons : MonoBehaviour
 
     public void Unpause() { GameManager.Inst.TogglePause(); }
     public void Quit() { Application.Quit(); }
+
+    public void GoToScene(string scene) { SceneManager.LoadScene(scene); }
 }

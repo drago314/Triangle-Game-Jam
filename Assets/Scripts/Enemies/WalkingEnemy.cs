@@ -81,6 +81,17 @@ public class WalkingEnemy : Enemy
             GameManager.Inst.player.health.Damage(new Damage(damage));
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == GameManager.Inst.player.gameObject)
+        {
+            if (player.thorns > 0)
+            {
+                health.Damage(new Damage(player.thorns));
+            }
+        }
+    }
+
     protected void OnHit(Damage damage)
     {
         healthBar.gameObject.SetActive(true);

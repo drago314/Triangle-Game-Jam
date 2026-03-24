@@ -6,14 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu 1.unity
+    guid: cee3275e3d694404a9be28d244784d9b
+  - enabled: 1
+    path: Assets/Scenes/Opennenss.unity
+    guid: 234c9267de43e43ada62ea23517b14a7
+  - enabled: 1
+    path: Assets/Scenes/Snow.unity
+    guid: cb85a49d0a3704749a1b3d4de2f732ea
+  - enabled: 1
+    path: Assets/Scenes/Mines.unity
+    guid: 2354089932b451a4ca0781c2a29bad0b
+  - enabled: 1
+    path: Assets/Scenes/Clouds.unity
+    guid: 7f55bcbd35d5ac241a212ce193621261
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: feebb31a4b989774f9cd4da28725c34e
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: e6baf7d35d430dc44a388259f7187d88
-  - enabled: 1
-    path: Assets/Scenes/Opennenss.unity
-    guid: 234c9267de43e43ada62ea23517b14a7
   - enabled: 1
     path: Assets/Scenes/OtoC.unity
     guid: 56caa803a267d404fa66241eeaa4bb54

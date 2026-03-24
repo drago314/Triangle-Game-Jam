@@ -14,6 +14,12 @@ public class TurnTowardsCamera : MonoBehaviour
 
     void Update()
     {
+        if (cam == null && Camera.main != null)
+            cam = Camera.main.transform;
+
+        if (cam == null)
+            return;
+
         // Get the camera's position
         Vector3 cameraPosition = cam.position;
 

@@ -43,7 +43,10 @@ public class NPC : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float dis = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(player.position.x, player.position.z));
+        if (!player && GameManager.Inst != null && GameManager.Inst.player != null) player = GameManager.Inst.player.transform;
+        if (!player) return;
+
+            float dis = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(player.position.x, player.position.z));
         if (dis < activationRange && !activated)
         {
             if (toDisable) { toDisable.SetActive(false); GameManager.Inst.SwitchDimension(Dimension.Agreeableness); }

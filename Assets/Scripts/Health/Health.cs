@@ -32,6 +32,10 @@ public class Health : MonoBehaviour
     public event Action OnHeal;
     public event Action OnHealthChanged;
 
+    public bool immortal;
+
+    public GameObject winOb;
+
     private void Awake()
     {
         if (this.currentHealth > this.maxHealth)
@@ -104,6 +108,8 @@ public class Health : MonoBehaviour
         if (IsDead())
             return;
 
+        Debug.Log("Hit");
+
         if (iframeTimer > 0) return;
 
         if (iframes > 0) { iframeTimer = iframes; }
@@ -133,7 +139,7 @@ public class Health : MonoBehaviour
             }
         }
 
-        if (currentHealth <= MIN_HEALTH)
+        if (currentHealth <= MIN_HEALTH && !immortal)
         {
             this.isDead = true;
             this.currentHealth = MIN_HEALTH;
@@ -153,6 +159,10 @@ public class Health : MonoBehaviour
             }
 
             if (deathSource) { deathSource.Play(); }
+
+            GameObject.Find("Player").GetComponent<Player>().UpdateWater(maxHealth);
+
+            if (winOb) { winOb.SetActive(true); GetComponent<Rabbit>().töt = true; }
 
             OnDeath?.Invoke();
             OnHealthChanged?.Invoke();

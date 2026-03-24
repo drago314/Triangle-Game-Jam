@@ -13,10 +13,12 @@ public class VolLight : MonoBehaviour
     {
         myLight = GetComponent<Light>();
         if (maxIntensity == 0) maxIntensity = myLight.intensity;
+        if (!cam) cam = Camera.main.transform;
     }
 
     private void Update()
     {
+        if (!cam) cam = Camera.main.transform;
         float dis = Vector3.Distance(transform.position, cam.position);
         myLight.intensity = Mathf.Clamp(dis, 0, maxRange)/maxRange * (maxIntensity-minIntensity) + minIntensity; 
     }

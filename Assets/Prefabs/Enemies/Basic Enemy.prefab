@@ -5070,6 +5070,7 @@ GameObject:
   - component: {fileID: 3931275400291923644}
   - component: {fileID: 3123051522217608883}
   - component: {fileID: 6150786478472787935}
+  - component: {fileID: 4313920782816223017}
   m_Layer: 3
   m_Name: Basic Enemy
   m_TagString: Enemy
@@ -5148,8 +5149,11 @@ MonoBehaviour:
   bloodToSpawn: 3
   blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
   shakeAmount: 0.36
+  dissipation: 2
   hitSource: {fileID: 6150786478472787935}
   deathSource: {fileID: 8539799633900743722}
+  iframes: 0
+  iframeTimer: 0
 --- !u!114 &617830575843058416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5308,6 +5312,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4313920782816223017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954122529023259777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7845b15e9b8c916409ee2dc81c9ec25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1994885037681636850
 GameObject:
   m_ObjectHideFlags: 0

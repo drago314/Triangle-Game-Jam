@@ -5610,6 +5610,7 @@ GameObject:
   - component: {fileID: 6920543192064439315}
   - component: {fileID: 4841501942961245238}
   - component: {fileID: 6968811767786227764}
+  - component: {fileID: -3760892756046000545}
   m_Layer: 3
   m_Name: NoLunge Enemy
   m_TagString: Enemy
@@ -5688,6 +5689,7 @@ MonoBehaviour:
   bloodToSpawn: 3
   blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
   shakeAmount: 0.36
+  dissipation: 2
   hitSource: {fileID: 2558669696629344761}
   deathSource: {fileID: 6184874495233468308}
   iframes: 0
@@ -5880,3 +5882,15 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: -0.04, z: 0}
+--- !u!114 &-3760892756046000545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954827461423809958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7845b15e9b8c916409ee2dc81c9ec25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a59d45e49e72342aa6b38ed1202b29, type: 3}
+  m_Name: Oil
+  m_EditorClassIdentifier: 
+  id: -5
+  price: 35
+  requires: -1
+  description: "Fertilizer supplies essential nutrients like nitrogen, phosphorus,
+    and potassium\u2014elements plants use to fuel growth, root expansion, and energy
+    transfer. This ability floods your tissues with accelerated resources, boosting
+    growth rate and increasing movement speed through rapid cellular expansion."
+  bodyOffset: {x: 0, y: 0, z: 0}
+  enableComponent: 0
+  addSpeed: 1.5
+  addDamage: 0
+  addHealth: 0
+  enableProj: 0
+  animator: {fileID: 0}
+  prefab: {fileID: 4535155570428812032, guid: 2ac532aa2d4030f438e78c19ed9fe1a7, type: 3}

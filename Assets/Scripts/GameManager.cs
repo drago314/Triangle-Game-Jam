@@ -30,17 +30,18 @@ public class GameManager : MonoBehaviour
     public bool musicOff = false;
     public bool killEnemies = false;
 
+    public GameObject escText;
+
     void Awake()
     {
-        if (Inst != null)
-            Destroy(this);
         Inst = this;
 
         player = FindObjectOfType<Player>();
-        statusText = GameObject.Find("Status text").GetComponent<TextMeshProUGUI>();
+        statusText = GameObject.Find("Status text")?.GetComponent<TextMeshProUGUI>();
 
         pauseMenu = GameObject.Find("pause menu");
-        pauseMenu.SetActive(false);
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
 
         paused = false;
         Time.timeScale = 1;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) TogglePause();
+        if (!player) { player = FindObjectOfType<Player>(); }
     }
 
     public void SwitchDimension(Dimension newDimension)
@@ -73,6 +75,20 @@ public class GameManager : MonoBehaviour
     public void TogglePause()
     {
         paused = !paused;
+
+        escText.SetActive(false);
+
+        if (paused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
         pauseMenu.SetActive(paused);
         Time.timeScale = paused ? 0 : 1;
     }

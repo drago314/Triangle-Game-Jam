@@ -19,7 +19,9 @@ public class BasicEnemy : Enemy
         health.OnHit += OnHit;
         health.OnDeath += OnDeath;
 
-        healthBar.SetMaxHealth(health.GetMaxHealth());
+        if (healthBar) healthBar.SetMaxHealth(health.GetMaxHealth());
+
+        if (!player) { player = GameObject.Find("Player").GetComponent<Player>(); }
     }
 
     private void Update()
@@ -50,6 +52,10 @@ public class BasicEnemy : Enemy
     private void Attack() {
         attackTimer = attackCooldown;
         player.health.Damage(new Damage(damage));
+        if (player.thorns > 0)
+        {
+            health.Damage(new Damage(player.thorns));
+        }
     }
 
     private void MoveTowardsPlayer()

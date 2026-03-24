@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fbf0c46cb594cfd84e0e7339f985e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  velocity: 5
+  damage: 2
+  velocity: 7
   knockBack: 0
   explosionRadius: 4
   detonationTime: 2
@@ -468,8 +468,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.06652832, g: 0, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0.97139597, a: 1}
+      minColor: {r: 0, g: 0.1509434, b: 0.06953664, a: 1}
+      maxColor: {r: 0.05323696, g: 1, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5030,7 +5030,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.18301274, y: -0.18301274, z: 0.6830127, w: 0.6830127}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 939590856670408213}
@@ -5113,7 +5113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.18301266, y: 0.18301266, z: 0.6830127, w: 0.6830127}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 939590856670408213}

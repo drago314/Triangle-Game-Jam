@@ -27,6 +27,8 @@ public class LungeEnemy : Enemy
 
         healthBar.SetMaxHealth(health.GetHealth());
         healthBar.SetHealth(health.GetHealth());
+
+        if (!player) { player = GameObject.Find("Player").GetComponent<Player>(); }
     }
 
     private void Update()
@@ -139,6 +141,17 @@ public class LungeEnemy : Enemy
             lunging = false;
             lungeCooldownTimer = lungeCooldown;
 
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == GameManager.Inst.player.gameObject)
+        {
+            if (player.thorns > 0)
+            {
+                health.Damage(new Damage(player.thorns));
+            }
         }
     }
 

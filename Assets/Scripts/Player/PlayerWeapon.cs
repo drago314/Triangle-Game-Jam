@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Weapon
@@ -38,10 +39,16 @@ public class PlayerWeapon : MonoBehaviour
 
     public ParticleSystem gunParticles, swordParticles;
 
+    public bool[] weaponsEnabled;
+    public GameObject[] weaponProjectiles;
+    public Transform[] weaponSpawnPoints;
+
     public LayerMask enemy;
     public Camera cam;
 
     public bool disableInput;
+
+    public float customIframe;
 
     private void Start()
     {
@@ -111,6 +118,8 @@ public class PlayerWeapon : MonoBehaviour
             lastAttackTimer = 0.4f;
             combo++;
 
+            //transform.localEulerAngles = new(0, cam.transform.localEulerAngles.y, c)
+
             weaponBase.localEulerAngles = new(45, weaponBase.localEulerAngles.y, 0);
 
             if (activeWeapon.weaponType == Dimension.Openness)
@@ -132,7 +141,8 @@ public class PlayerWeapon : MonoBehaviour
                 activeWeapon.toSpawn.GetComponent<SwordHitbox>().active = 0.4f;
                 activeWeapon.toSpawn.GetComponent<SwordHitbox>().doubleDamage = 0.5f;
                 activeWeapon.fireRateTimer = 0.5f;
-                GetComponent<Health>().SetIFrames(1f);
+                Debug.Log((SceneManager.GetActiveScene().name == "Clouds"));
+                GetComponent<Health>().SetIFrames(SceneManager.GetActiveScene().name == "Clouds" ? 0 : 1);
                 weaponTrail.startColor = Color.red;
                 swordParticles.Play();
                 //weaponTrail.enabled = false;
@@ -213,36 +223,39 @@ public class PlayerWeapon : MonoBehaviour
             gunParticles.Play();
         }
 
-        // Handels Bazooka (and maybe magic if that's also a projectile)
-        if (activeWeapon.weaponType == Dimension.Extroversion || activeWeapon.weaponType == Dimension.Agreeableness)
+        // projectils
+        for (int i = 0; i < weaponsEnabled.Length; i++)
         {
-            float angle;
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Weapon")))
+            if (weaponsEnabled[i])
             {
-                angle = Mathf.Atan2(hit.point.x - weaponTip.position.x, hit.point.z - weaponTip.position.z);
-                Debug.Log("here");
-            }
-            else
-            {
-                angle = Mathf.Atan2(weaponMaxRangePoint.position.x - weaponTip.position.x, weaponMaxRangePoint.position.z - weaponTip.position.z);
-                Debug.Log("there");
-            }
+                float angle;
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-            Quaternion rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 90, 0);
-            GameObject go = Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Weapon")))
+                {
+                    angle = Mathf.Atan2(hit.point.x - weaponTip.position.x, hit.point.z - weaponTip.position.z);
+                    Debug.Log("here");
+                }
+                else
+                {
+                    angle = Mathf.Atan2(weaponMaxRangePoint.position.x - weaponSpawnPoints[i].position.x, weaponMaxRangePoint.position.z - weaponSpawnPoints[i].position.z);
+                    Debug.Log("there");
+                }
 
-            BazookaBullet bb = null;
-            go.TryGetComponent(out bb);
-            if (bb) bb.damage = activeWeapon.damage;
+                Quaternion rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 90, 0);
+                GameObject go = Instantiate(weaponProjectiles[i], weaponSpawnPoints[i].position, rotation);
 
-            if (activeWeapon.weaponType == Dimension.Agreeableness)
-            {
-                rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 60, 0);
-                Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
-                rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 120, 0);
-                Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+                BazookaBullet bb = null;
+                go.TryGetComponent(out bb);
+                if (bb) bb.damage = activeWeapon.damage;
+
+                /*if (activeWeapon.weaponType == Dimension.Agreeableness)
+                {
+                    rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 60, 0);
+                    Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+                    rotation = Quaternion.Euler(0, angle * 180 / Mathf.PI - 120, 0);
+                    Instantiate(activeWeapon.toSpawn, weaponTip.position, rotation);
+                }*/
             }
         }
     }

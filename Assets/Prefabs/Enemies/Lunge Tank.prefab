@@ -5698,8 +5698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9cd737ca8ae4292a40afcaf266ef14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 10
+  maxHealth: 20
+  currentHealth: 20
   renderers:
   - {fileID: 6435507758732228521}
   - {fileID: 3908069069258785798}
@@ -5712,10 +5712,12 @@ MonoBehaviour:
   bloodToSpawn: 3
   blood: {fileID: 8472763991551552950, guid: bf3d5bbc54521b846b5b39d2c6e3a698, type: 3}
   shakeAmount: 0.36
+  dissipation: 2
   hitSource: {fileID: 2558669696629344761}
   deathSource: {fileID: 6184874495233468308}
   iframes: 0
   iframeTimer: 0
+  immortal: 0
 --- !u!114 &1706810794037630070
 MonoBehaviour:
   m_ObjectHideFlags: 0
