@@ -16,6 +16,7 @@ public class PlayerAnimate : MonoBehaviour
     public Material myMat;
     public DimensionAnimations[] fullAnimations;
 
+    public bool USE_FREECAM;
     public int currentDimension, currentDirection;
     public Transform weaponBase, gyro, cam;
 
